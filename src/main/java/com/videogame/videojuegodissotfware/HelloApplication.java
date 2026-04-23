@@ -9,14 +9,15 @@ import java.io.IOException;
 
 public class HelloApplication extends Application {
     @Override
-    public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("fxml/launch-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Nombre del videogame");
-        stage.setScene(scene);
-        stage.setWidth(1280);
-        stage.setHeight(720);
+    public void start(Stage stage) {
+        // Creamos la escena de juego directamente
+        GameScene gameScene = new GameScene();
+
+        stage.setTitle("Pixel Art Game - Desarrollo");
+        stage.setScene(gameScene.getScene());
         stage.show();
+
+        gameScene.startGameLoop();
     }
 
     public static void main(String[] args) {

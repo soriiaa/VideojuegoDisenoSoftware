@@ -4,6 +4,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <StackPane alignment="CENTER" styleClass="background" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.videogame.videojuegodissotfware.LaunchController">
 
   <stylesheets>
@@ -17,6 +19,8 @@
       <TextField fx:id="name" promptText="Nombre del guerrero" styleClass="input" />
       <Separator minWidth="60.0" opacity="0.0" prefWidth="60" />
     </HBox>
-    <Button fx:id="enter" styleClass="button" text="COMENZAR" />
+    <ImageView fitWidth="200" fitHeight="100">
+      <Image url="@../images/Empezar.png"/>
+    </ImageView>
   </VBox>
 </StackPane>
