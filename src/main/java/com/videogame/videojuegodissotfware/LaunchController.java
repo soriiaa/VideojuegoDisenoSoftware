@@ -3,7 +3,7 @@ package com.videogame.videojuegodissotfware;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class HelloController {
+public class LaunchController {
     @FXML
     private Label welcomeText;
 

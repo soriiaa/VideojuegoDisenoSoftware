@@ -1,0 +1,33 @@
+.background {
+    -fx-background-image: url("../images/background.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+    -fx-padding: 100 500 100 100;
+}
+
+.launchBox {
+    -fx-background-color: rgba(255, 255, 255, 0.15);
+    -fx-background-radius: 20;
+    -fx-padding: 50;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 0);
+    -fx-spacing: 150;
+}
+
+.input {
+    -fx-background-color: rgb(216, 160, 110, 0.7);
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: #c64a2f;
+    -fx-prompt-text-fill: rgba(255, 255, 255, 0.75);
+    -fx-text-fill: white;
+    -fx-padding: 10;
+    -fx-font-size: 20px;
+    -fx-pref-height: 40;
+}
+
+.title {
+    -fx-font-size: 50px;
+    -fx-font-family: "Bell MT";
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}

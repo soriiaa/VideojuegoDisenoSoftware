@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane alignment="CENTER" styleClass="background" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.videogame.videojuegodissotfware.LaunchController">
+
+  <stylesheets>
+      <URL value="@../css/launch.css" />
+  </stylesheets>
+
+  <VBox styleClass="launchBox">
+    <Label styleClass="title" text="NOMBRE VIDEOGAME" />
+    <HBox>
+      <Separator minWidth="60.0" opacity="0.0" prefWidth="60" />
+      <TextField fx:id="name" promptText="Nombre del guerrero" styleClass="input" />
+      <Separator minWidth="60.0" opacity="0.0" prefWidth="60" />
+    </HBox>
+    <Button fx:id="enter" styleClass="button" text="COMENZAR" />
+  </VBox>
+</StackPane>
