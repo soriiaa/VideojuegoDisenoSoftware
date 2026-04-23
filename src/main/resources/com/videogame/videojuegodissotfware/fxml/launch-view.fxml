@@ -1,22 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<StackPane alignment="CENTER" styleClass="background" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.videogame.videojuegodissotfware.LaunchController">
+<StackPane fx:id="root" alignment="CENTER" styleClass="background"
+           xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.videogame.videojuegodissotfware.LaunchController">
 
   <stylesheets>
       <URL value="@../css/launch.css" />
   </stylesheets>
 
   <VBox styleClass="launchBox">
-    <Label styleClass="title" text="NOMBRE VIDEOGAME" />
-    <HBox>
-      <Separator minWidth="60.0" opacity="0.0" prefWidth="60" />
-      <TextField fx:id="name" promptText="Nombre del guerrero" styleClass="input" />
-      <Separator minWidth="60.0" opacity="0.0" prefWidth="60" />
-    </HBox>
-    <Button fx:id="enter" styleClass="button" text="COMENZAR" />
+    <Label fx:id="title" styleClass="title" text="NOMBRE VIDEOGAME" />
+    <VBox alignment="CENTER">
+      <TextField fx:id="name" alignment="TOP_LEFT" prefHeight="52.0" prefWidth="600.0" promptText="Nombre del guerrero/a" styleClass="input">
+            <VBox.margin>
+               <Insets />
+            </VBox.margin></TextField>
+      <HBox alignment="CENTER">
+        <RadioButton fx:id="menKnight" styleClass="radioBtn" text="Guerrero" />
+        <RadioButton fx:id="womanKnight" styleClass="radioBtn" text="Guerrera" />
+            <VBox.margin>
+               <Insets bottom="60.0" top="30.0" />
+            </VBox.margin>
+      </HBox>
+
+        <ImageView fx:id="enterImg" accessibleRole="BUTTON" fitHeight="100" fitWidth="350" preserveRatio="true" styleClass="imageBtn">
+            <Image url="@../images/comenzarBtn.png" />
+        </ImageView>
+         <Label fx:id="error" styleClass="errorText" text="Porfavor, introduce el nombre de tu guerrero/a" visible="false" />
+         <VBox.margin>
+            <Insets left="50.0" right="50.0" top="100.0" />
+         </VBox.margin>
+    </VBox>
   </VBox>
 </StackPane>

@@ -10,24 +10,54 @@
     -fx-background-radius: 20;
     -fx-padding: 50;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 0);
-    -fx-spacing: 150;
 }
 
 .input {
-    -fx-background-color: rgb(216, 160, 110, 0.7);
+    -fx-background-color: rgba(50, 30, 20, 0.7);
     -fx-background-radius: 10;
     -fx-border-radius: 10;
-    -fx-border-color: #c64a2f;
-    -fx-prompt-text-fill: rgba(255, 255, 255, 0.75);
-    -fx-text-fill: white;
+    -fx-border-width: 2;
+    -fx-border-color: #d8a06e;
+    -fx-prompt-text-fill: rgba(253, 242, 213, 0.8);
+    -fx-text-fill: #fdf2d5;
     -fx-padding: 10;
     -fx-font-size: 20px;
     -fx-pref-height: 40;
+    -fx-pref-width: 400;
 }
 
 .title {
     -fx-font-size: 50px;
     -fx-font-family: "Bell MT";
     -fx-font-weight: bold;
-    -fx-text-fill: white;
+    -fx-text-fill: #fdf2d5;
+    -fx-effect: dropshadow(one-pass-box, #c64a2f, 3, 0, 2, 2);
+}
+
+.errorText {
+    -fx-font-size: 17px;
+    -fx-text-fill: #ff0000;
+    -fx-effect: dropshadow(one-pass-box, #0e0e0e, 2, 0, 1.5, 1.5);
+    -fx-font-weight: bold;
+}
+
+.radioBtn {
+    -fx-text-fill: #fdf2d5;
+    -fx-font-size: 20px;
+    -fx-padding: 10;
+}
+
+.radioBtn .radio {
+    -fx-background-color: #321e14;
+    -fx-border-color: #d8a06e;
+    -fx-border-radius: 80;
+}
+
+.radioBtn:selected .radio .dot {
+    -fx-background-color:  #c64a2f;
+    -fx-background-insets: 1.5;
+}
+
+.imageBtn {
+    -fx-alignment: center;
 }

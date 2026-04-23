@@ -1,0 +1,32 @@
+.sidebar {
+    -fx-background-color: #321e14;
+    -fx-background-radius: 20;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.4), 10, 0, 0, 2);
+}
+
+.background {
+    -fx-background-color: #d8a06e;
+}
+
+.menuAtr {
+    -fx-padding: 10 20;
+    -fx-border-color: #d8a06e;
+    -fx-border-width: 1;
+    -fx-border-radius: 30;
+    -fx-background-radius: 30;
+    -fx-background-color: transparent;
+}
+
+.menuText {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #d8a06e;
+}
+
+.nameKnight {
+    -fx-font-size: 20px;
+    -fx-font-family: "Bell MT";
+    -fx-font-weight: bold;
+    -fx-text-fill: #d8a06e;
+}

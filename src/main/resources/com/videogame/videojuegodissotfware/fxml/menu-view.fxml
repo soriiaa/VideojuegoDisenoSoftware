@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane fx:id="root" alignment="CENTER" styleClass="background"
+           xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.videogame.videojuegodissotfware.MenuController">
+
+    <stylesheets>
+        <URL value="@../css/menu.css" />
+    </stylesheets>
+
+    <VBox alignment="CENTER" spacing="30.0" maxWidth="420">
+        <Button fx:id="resumeBtn" styleClass="menuBtn" text="CONTINUAR PARTIDA" maxWidth="Infinity"/>
+        <Button fx:id="restartBtn" styleClass="menuBtn" text="REINICIAR PARTIDA" maxWidth="Infinity"/>
+        <Button fx:id="exitBtn" styleClass="menuBtn" text="SALIR DE LA PARTIDA" maxWidth="Infinity"/>
+    </VBox>
+
+
+</StackPane>

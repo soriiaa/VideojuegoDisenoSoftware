@@ -1,0 +1,16 @@
+.menuBtn {
+    -fx-padding: 20 40;
+    -fx-background-color: #d8a06e;
+    -fx-text-fill: #321e14;
+    -fx-border-color: #321e14;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-wrap-text: true;
+    -fx-font-family: "Bell MT";
+    -fx-font-weight: bold;
+    -fx-font-size: 25px;
+}
+
+.background {
+    -fx-background-color: rgba(50, 30, 20, 0.85);
+}
