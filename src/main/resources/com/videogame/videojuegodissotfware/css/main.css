@@ -25,8 +25,14 @@
 }
 
 .nameKnight {
-    -fx-font-size: 20px;
+    -fx-font-size: 22px;
     -fx-font-family: "Bell MT";
+    -fx-font-weight: bold;
+    -fx-text-fill: #d8a06e;
+}
+
+.coinsNumber {
+    -fx-font-size: 25px;
     -fx-font-weight: bold;
     -fx-text-fill: #d8a06e;
 }

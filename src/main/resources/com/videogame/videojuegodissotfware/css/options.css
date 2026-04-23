@@ -14,3 +14,9 @@
 .background {
     -fx-background-color: rgba(50, 30, 20, 0.85);
 }
+
+.timeText {
+    -fx-font-family: "Bell MT";
+    -fx-font-weight: bold;
+    -fx-font-size: 35px;
+}

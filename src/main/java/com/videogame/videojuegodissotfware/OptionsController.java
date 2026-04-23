@@ -1,4 +1,4 @@
 package com.videogame.videojuegodissotfware;
 
-public class MenuController {
+public class OptionsController {
 }
