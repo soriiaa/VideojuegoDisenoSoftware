@@ -6,138 +6,139 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="rootPane" prefHeight="720" prefWidth="1280" styleClass="background" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.videogame.videojuegodissotfware.OptionsController">
-    <stylesheets>
-        <URL value="@../css/main.css" />
-    </stylesheets>
+<StackPane fx:id="contentPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.videogame.videojuegodissotfware.GameController">
 
-    <!-- menu lateral -->
-    <left>
-        <StackPane>
-            <VBox fx:id="sidebar" alignment="TOP_CENTER" prefWidth="300" styleClass="sidebar">
-                <VBox alignment="CENTER" spacing="10">
-                    <ImageView fitHeight="60" fitWidth="60">
-                        <Image url="@../images/nino.png" />
-                    </ImageView>
-                    <Label styleClass="nameKnight" text="Nombre Guerrero/a" />
-               <VBox.margin>
-                  <Insets bottom="20.0" />
-               </VBox.margin>
+    <BorderPane fx:id="rootPane" prefHeight="720" prefWidth="1280" styleClass="background">
+        <stylesheets>
+            <URL value="@../css/main.css" />
+        </stylesheets>
+
+        <!-- menu lateral -->
+        <left>
+            <StackPane>
+                <VBox fx:id="sidebar" alignment="TOP_CENTER" prefWidth="300" styleClass="sidebar">
+                    <VBox alignment="CENTER" spacing="10">
+                        <ImageView fitHeight="70" fitWidth="70">
+                            <Image url="@../images/nino.png" />
+                        </ImageView>
+                        <Label styleClass="nameKnight" text="Nombre Guerrero/a" />
+                   <VBox.margin>
+                      <Insets bottom="20.0" />
+                   </VBox.margin>
+                    </VBox>
+
+                    <VBox alignment="CENTER" spacing="10">
+                        <HBox alignment="CENTER_LEFT" spacing="10" styleClass="menuAtr">
+                            <ImageView fitHeight="24" fitWidth="24">
+                                <Image url="@../images/cuidado-del-corazon.png" />
+                            </ImageView>
+                            <Label styleClass="menuText" text="HP:" />
+                            <Region HBox.hgrow="ALWAYS" />
+                            <Label styleClass="menuText" text="80/100" />
+                        </HBox>
+
+                        <HBox alignment="CENTER_LEFT" spacing="10" styleClass="menuAtr">
+                            <ImageView fitHeight="24" fitWidth="24">
+                                <Image url="@../images/espada.png" />
+                            </ImageView>
+                            <Label styleClass="menuText" text="Estado:" />
+                            <Region HBox.hgrow="ALWAYS" />
+                            <Label styleClass="menuText" text="60" />
+                        </HBox>
+
+                        <HBox alignment="CENTER_LEFT" spacing="10" styleClass="menuAtr">
+                            <ImageView fitHeight="24" fitWidth="24">
+                                <Image url="@../images/elevar-a-mismo-nivel.png" />
+                            </ImageView>
+                            <Label styleClass="menuText" text="Nivel:" />
+                            <Region HBox.hgrow="ALWAYS" />
+                            <Label styleClass="menuText" text="1" />
+                        </HBox>
+
+                        <HBox alignment="CENTER_LEFT" spacing="10" styleClass="menuAtr">
+                            <ImageView fitHeight="24" fitWidth="24">
+                                <Image url="@../images/espada.png" />
+                            </ImageView>
+                            <Label styleClass="menuText" text="Ataque:" />
+                            <Region HBox.hgrow="ALWAYS" />
+                            <Label styleClass="menuText" text="30" />
+                        </HBox>
+
+                        <HBox alignment="CENTER_LEFT" spacing="10" styleClass="menuAtr">
+                            <ImageView fitHeight="24" fitWidth="24">
+                                <Image url="@../images/escudo-roto.png" />
+                            </ImageView>
+                            <Label styleClass="menuText" text="Resistencia:" />
+                            <Region HBox.hgrow="ALWAYS" />
+                            <Label styleClass="menuText" text="100" />
+                        </HBox>
+
+                   <VBox.margin>
+                      <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
+                   </VBox.margin>
+                    </VBox>
+                    <HBox alignment="CENTER" fillHeight="false" prefHeight="50.0" prefWidth="200.0">
+                        <ImageView fitHeight="34" fitWidth="34">
+                            <Image url="@../images/pila-de-monedas.png" />
+                      <HBox.margin>
+                         <Insets right="10.0" />
+                      </HBox.margin>
+                        </ImageView>
+                        <Label styleClass="coinsNumber" text="100" />
+                   <VBox.margin>
+                      <Insets bottom="15.0" top="20.0" />
+                   </VBox.margin>
+                    </HBox>
+
+                    <Separator>
+                   <VBox.margin>
+                      <Insets bottom="10.0" left="20.0" right="20.0" />
+                   </VBox.margin></Separator>
+                    <HBox alignment="CENTER_LEFT" spacing="10" styleClass="inventario">
+                        <Label styleClass="menuText" text="Inventario:" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <ImageView fitHeight="24" fitWidth="24">
+                            <Image url="@../images/espada.png" />
+                        </ImageView>
+                        <ImageView fitHeight="24" fitWidth="24">
+                            <Image url="@../images/espada.png" />
+                        </ImageView>
+                        <ImageView fitHeight="24" fitWidth="24">
+                            <Image url="@../images/espada.png" />
+                        </ImageView>
+                   <VBox.margin>
+                      <Insets left="20.0" right="20.0" />
+                   </VBox.margin>
+                    </HBox>
+                <StackPane.margin>
+                   <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+                </StackPane.margin>
                 </VBox>
+            </StackPane>
+        </left>
 
-                <VBox alignment="CENTER" spacing="10">
-                    <HBox alignment="CENTER_LEFT" spacing="10" styleClass="menuAtr">
-                        <ImageView fitHeight="24" fitWidth="24">
-                            <Image url="@../images/espada.png" />
-                        </ImageView>
-                        <Label styleClass="menuText" text="HP(vida):" />
-                        <Region HBox.hgrow="ALWAYS" />
-                        <Label styleClass="menuText" text="80/100" />
-                    </HBox>
+        <!-- aqui cargamos todo el contenido de dentro -->
+        <center>
+            <StackPane fx:id="centralContent" styleClass="centralContent">
+            <BorderPane.margin>
+               <Insets bottom="40.0" top="40.0" />
+            </BorderPane.margin></StackPane>
+        </center>
 
-                    <HBox alignment="CENTER_LEFT" spacing="10" styleClass="menuAtr">
-                        <ImageView fitHeight="24" fitWidth="24">
-                            <Image url="@../images/espada.png" />
-                        </ImageView>
-                        <Label styleClass="menuText" text="Estado:" />
-                        <Region HBox.hgrow="ALWAYS" />
-                        <Label styleClass="menuText" text="60" />
-                    </HBox>
-
-                    <HBox alignment="CENTER_LEFT" spacing="10" styleClass="menuAtr">
-                        <ImageView fitHeight="24" fitWidth="24">
-                            <Image url="@../images/espada.png" />
-                        </ImageView>
-                        <Label styleClass="menuText" text="Nivel:" />
-                        <Region HBox.hgrow="ALWAYS" />
-                        <Label styleClass="menuText" text="1" />
-                    </HBox>
-
-                    <HBox alignment="CENTER_LEFT" spacing="10" styleClass="menuAtr">
-                        <ImageView fitHeight="24" fitWidth="24">
-                            <Image url="@../images/espada.png" />
-                        </ImageView>
-                        <Label styleClass="menuText" text="Ataque:" />
-                        <Region HBox.hgrow="ALWAYS" />
-                        <Label styleClass="menuText" text="30" />
-                    </HBox>
-
-                    <HBox alignment="CENTER_LEFT" spacing="10" styleClass="menuAtr">
-                        <ImageView fitHeight="24" fitWidth="24">
-                            <Image url="@../images/espada.png" />
-                        </ImageView>
-                        <Label styleClass="menuText" text="Resistencia:" />
-                        <Region HBox.hgrow="ALWAYS" />
-                        <Label styleClass="menuText" text="100" />
-                    </HBox>
-
-                    <HBox alignment="CENTER_LEFT" spacing="10" styleClass="menuAtr">
-                        <ImageView fitHeight="24" fitWidth="24">
-                            <Image url="@../images/espada.png" />
-                        </ImageView>
-                        <Label styleClass="menuText" text="Estado:" />
-                        <Region HBox.hgrow="ALWAYS" />
-                        <Label styleClass="menuText" text="100" />
-                    </HBox>
-               <VBox.margin>
-                  <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
-               </VBox.margin>
-                </VBox>
-                <HBox alignment="CENTER" fillHeight="false" prefHeight="50.0" prefWidth="200.0">
-                    <ImageView fitHeight="34" fitWidth="34">
-                        <Image url="@../images/pila-de-monedas.png" />
-                  <HBox.margin>
-                     <Insets right="10.0" />
-                  </HBox.margin>
-                    </ImageView>
-                    <Label styleClass="coinsNumber" text="100" />
-               <VBox.margin>
-                  <Insets bottom="15.0" />
-               </VBox.margin>
-                </HBox>
-
-                <Separator>
-               <VBox.margin>
-                  <Insets bottom="10.0" left="20.0" right="20.0" />
-               </VBox.margin></Separator>
-                <HBox alignment="CENTER_LEFT" spacing="10" styleClass="inventario">
-                    <Label styleClass="menuText" text="Inventario:" />
-                    <Region HBox.hgrow="ALWAYS" />
-                    <ImageView fitHeight="24" fitWidth="24">
-                        <Image url="@../images/espada.png" />
-                    </ImageView>
-                    <ImageView fitHeight="24" fitWidth="24">
-                        <Image url="@../images/espada.png" />
-                    </ImageView>
-                    <ImageView fitHeight="24" fitWidth="24">
-                        <Image url="@../images/espada.png" />
-                    </ImageView>
-               <VBox.margin>
-                  <Insets left="20.0" right="20.0" />
-               </VBox.margin>
-                </HBox>
-            <StackPane.margin>
-               <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
-            </StackPane.margin>
-            </VBox>
-        </StackPane>
-    </left>
-
-    <!-- aqui cargamos todo el contenido de dentro -->
-    <center>
-        <StackPane fx:id="contentPane" />
-    </center>
-
-   <right>
-      <VBox prefHeight="60.0" prefWidth="60.0" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                <Image url="@../images/en-pausa.png" />
-               <VBox.margin>
-                  <Insets right="15.0" top="20.0" />
-               </VBox.margin>
-            </ImageView>
-         </children>
-      </VBox>
-   </right>
-</BorderPane>
+       <right>
+          <VBox prefHeight="60.0" prefWidth="60.0" BorderPane.alignment="CENTER">
+             <children>
+                <ImageView fx:id="pauseBtn" fitHeight="40.0" fitWidth="40.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" styleClass="pauseBtn">
+                    <Image url="@../images/en-pausa.png" />
+                   <VBox.margin>
+                      <Insets />
+                   </VBox.margin>
+                </ImageView>
+             </children>
+            <BorderPane.margin>
+               <Insets left="20.0" top="20.0" />
+            </BorderPane.margin>
+          </VBox>
+       </right>
+    </BorderPane>
+</StackPane>

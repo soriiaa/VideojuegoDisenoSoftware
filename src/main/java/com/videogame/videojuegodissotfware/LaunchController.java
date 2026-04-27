@@ -59,7 +59,6 @@ public class LaunchController {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            
         }
     }
 
