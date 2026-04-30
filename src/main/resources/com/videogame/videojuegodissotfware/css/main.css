@@ -23,6 +23,10 @@
     -fx-font-weight: bold;
     -fx-text-fill: #d8a06e;
 }
+.btnText {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
 
 .nameKnight {
     -fx-font-size: 22px;
@@ -38,5 +42,12 @@
 }
 
 .pauseBtn {
+    -fx-cursor: hand;
+}
+
+.itemsButton {
+    -fx-background-color: #53be0e;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
     -fx-cursor: hand;
 }

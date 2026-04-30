@@ -15,7 +15,16 @@ public class GameController {
     @FXML
     private StackPane contentPane;
 
+    @FXML
+    private StackPane centralContent; // El hueco en el center del BorderPane
     public void initialize() {
+
+        GameScene game = new GameScene(centralContent);
+        centralContent.getChildren().add(game.getCanvas());
+        game.start();
+
+
+
         pauseBtn.setOnMouseClicked(event -> pause());
     }
 
