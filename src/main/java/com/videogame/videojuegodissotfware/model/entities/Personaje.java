@@ -4,7 +4,7 @@ import com.videogame.videojuegodissotfware.model.items.Item;
 
 import java.util.ArrayList;
 
-public class Personaje {
+public class Personaje extends Entidad {
     private int puntosVidaMax;
     private int nivel;
     private int oro;

@@ -5,7 +5,7 @@ import com.videogame.videojuegodissotfware.model.entities.Personaje;
 
 import java.util.ArrayList;
 
-public class Mundo {
+public abstract class Mundo {
     private ArrayList<Monstruo> listaMonstruos;
     private Personaje personaje;
     private long tiempoPartida;
