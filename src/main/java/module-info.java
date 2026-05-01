@@ -6,4 +6,8 @@ module com.videogame.videojuegodissotfware {
 
     opens com.videogame.videojuegodissotfware to javafx.fxml;
     exports com.videogame.videojuegodissotfware;
+    exports com.videogame.videojuegodissotfware.gui.controllers;
+    opens com.videogame.videojuegodissotfware.gui.controllers to javafx.fxml;
+    exports com.videogame.videojuegodissotfware.gui.view;
+    opens com.videogame.videojuegodissotfware.gui.view to javafx.fxml;
 }

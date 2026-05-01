@@ -1,4 +1,4 @@
-package com.videogame.videojuegodissotfware;
+package com.videogame.videojuegodissotfware.gui.view;
 
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.Canvas;

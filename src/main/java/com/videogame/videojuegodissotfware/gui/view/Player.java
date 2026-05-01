@@ -1,4 +1,4 @@
-package com.videogame.videojuegodissotfware;
+package com.videogame.videojuegodissotfware.gui.view;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
@@ -17,7 +17,7 @@ public class Player {
         this.y = y;
         // CARGA AQUÍ TU SPRITE (asegúrate de que la ruta sea correcta)
         try {
-            this.sprite = new Image(getClass().getResourceAsStream("mapa/Personaje.png"));
+            this.sprite = new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Personaje.png"));
             // He puesto la torre como ejemplo, cámbialo por el png de tu personaje
         } catch (Exception e) {
             System.out.println("No se pudo cargar el sprite del jugador, se usará un cuadro azul.");

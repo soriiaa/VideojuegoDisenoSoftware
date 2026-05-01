@@ -1,4 +1,4 @@
-package com.videogame.videojuegodissotfware;
+package com.videogame.videojuegodissotfware.gui.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

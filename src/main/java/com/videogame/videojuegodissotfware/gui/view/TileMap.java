@@ -1,4 +1,4 @@
-package com.videogame.videojuegodissotfware;
+package com.videogame.videojuegodissotfware.gui.view;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -18,20 +18,20 @@ public class TileMap {
     public TileMap() {
         cargarImagenes();
         // Cargamos el mapa usando getResourceAsStream para que funcione dentro del JAR
-        this.mapa = leerTxt("mapa/mapa.txt");
+        this.mapa = leerTxt("/com/videogame/videojuegodissotfware/mapa/mapa.txt");
     }
 
     private void cargarImagenes() {
         // IMPORTANTE: Asegúrate de que las rutas coincidan con tu carpeta en resources
         try {
-            tileset.put(0, new Image(getClass().getResourceAsStream("mapa/Summer_Ground 01.png")));
-            tileset.put(1, new Image(getClass().getResourceAsStream("mapa/Summer_Ground 10.png")));
-            tileset.put(2, new Image(getClass().getResourceAsStream("mapa/Summer_Prop - Rock 01.png")));
-            tileset.put(3, new Image(getClass().getResourceAsStream("mapa/Summer_Prop - Tree Large.png")));
-            tileset.put(4, new Image(getClass().getResourceAsStream("mapa/Summer_Prop - House.png")));
-            tileset.put(5, new Image(getClass().getResourceAsStream("mapa/Summer_Prop - Campfire.png")));
-            tileset.put(6, new Image(getClass().getResourceAsStream("mapa/Summer_Prop - Tent.png")));
-            tileset.put(7, new Image(getClass().getResourceAsStream("mapa/Summer_Prop - Treasure Chest.png")));
+            tileset.put(0, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Summer_Ground 01.png")));
+            tileset.put(1, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Summer_Ground 10.png")));
+            tileset.put(2, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Summer_Prop - Rock 01.png")));
+            tileset.put(3, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Summer_Prop - Tree Large.png")));
+            tileset.put(4, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Summer_Prop - House.png")));
+            tileset.put(5, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Summer_Prop - Campfire.png")));
+            tileset.put(6, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Summer_Prop - Tent.png")));
+            tileset.put(7, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Summer_Prop - Treasure Chest.png")));
         } catch (Exception e) {
             System.err.println("Error cargando imágenes: " + e.getMessage());
         }
