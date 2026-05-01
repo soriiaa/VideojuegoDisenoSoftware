@@ -1,4 +1,5 @@
 package com.videogame.videojuegodissotfware.model.items;
 
-public class Armadura {
+public class Armadura extends Item {
+    private int resistencia;
 }
