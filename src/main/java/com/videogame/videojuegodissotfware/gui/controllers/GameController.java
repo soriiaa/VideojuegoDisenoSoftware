@@ -2,6 +2,8 @@ package com.videogame.videojuegodissotfware.gui.controllers;
 
 import com.videogame.videojuegodissotfware.gui.view.GameEventListener;
 import com.videogame.videojuegodissotfware.gui.view.GameScene;
+import com.videogame.videojuegodissotfware.model.core.state.EstadoJuego;
+import com.videogame.videojuegodissotfware.model.core.state.MenuState;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,9 +24,15 @@ public class GameController implements GameEventListener {
     public Label state;
     @FXML
     private ImageView pauseBtn;
-
     @FXML
     private StackPane contentPane;
+
+    // Aqui van los atributos y métodos del patron STATE
+    // =================================================
+
+    private EstadoJuego estadoJuego = new MenuState();
+
+    // =================================================
 
     @FXML
     private StackPane centralContent; // El hueco en el center del BorderPane
