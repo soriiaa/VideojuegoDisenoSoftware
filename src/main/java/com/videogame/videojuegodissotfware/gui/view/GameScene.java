@@ -11,14 +11,18 @@ import javafx.scene.input.KeyCode;
 public class GameScene {
     private Canvas canvas;
     private GraphicsContext gc;
-    private TileMap tileMap;
-    private Player player;
+    private Mapa tileMap;
+    private Personaje player;
     private Set<KeyCode> inputKeys = new HashSet<>();
+    private GameEventListener listener;
+    private AnimationTimer gameLoop; // para poder parar el renderizado de 60 veces por segundo
+    private boolean fightStarted = false;
 
-    public GameScene(Pane container) {
+    public GameScene(Pane container, GameEventListener listener) {
         // 1. Crear el canvas
         this.canvas = new Canvas();
         this.gc = canvas.getGraphicsContext2D();
+        this.listener = listener;
 
         // 2. Vincular el tamaño de forma bidireccional y forzar el renderizado nítido
         canvas.widthProperty().bind(container.widthProperty().subtract(40));
@@ -30,8 +34,8 @@ public class GameScene {
         // IMPORTANTE: Esto evita que el canvas "flote" y cause el desplazamiento infinito
         canvas.setManaged(false);
 
-        this.tileMap = new TileMap();
-        this.player = new Player(100, 100);
+        this.tileMap = new Mapa();
+        this.player = new Personaje(100, 100);
 
         canvas.setFocusTraversable(true);
         canvas.setOnKeyPressed(e -> inputKeys.add(e.getCode()));
@@ -40,17 +44,27 @@ public class GameScene {
     }
 
     public void start() {
-        new AnimationTimer() {
+        gameLoop = new AnimationTimer() {
             @Override
             public void handle(long now) {
                 update();
                 render();
             }
-        }.start();
+        };
+        gameLoop.start();
     }
 
     private void update() {
-        player.update(inputKeys, tileMap);
+        // solo si no hay combate todavia manda el update
+        if (!fightStarted) {
+            int idEnemyCollision = player.update(inputKeys, tileMap);
+
+            if (idEnemyCollision != -1) {
+                fightStarted = true;
+                gameLoop.stop();
+                listener.onFightStarted(idEnemyCollision);
+            }
+        }
     }
 
     private void render() {

@@ -6,7 +6,8 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<StackPane fx:id="contentPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.videogame.videojuegodissotfware.gui.controllers.GameController">
+<StackPane fx:id="contentPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.videogame.videojuegodissotfware.gui.controllers.GameController">
 
     <BorderPane fx:id="rootPane" prefHeight="720" prefWidth="1280" styleClass="background">
         <stylesheets>
@@ -21,7 +22,7 @@
                         <ImageView fitHeight="70" fitWidth="70">
                             <Image url="@../images/nino.png" />
                         </ImageView>
-                        <Label styleClass="nameKnight" text="Nombre Guerrero/a" />
+                        <Label fx:id="name" styleClass="nameKnight" text="Nombre Guerrero/a" />
                    <VBox.margin>
                       <Insets bottom="20.0" />
                    </VBox.margin>
@@ -34,7 +35,7 @@
                             </ImageView>
                             <Label styleClass="menuText" text="HP:" />
                             <Region HBox.hgrow="ALWAYS" />
-                            <Label styleClass="menuText" text="80/100" />
+                            <Label fx:id="hp" styleClass="menuText" text="80/100" />
                         </HBox>
 
                         <HBox alignment="CENTER_LEFT" spacing="10" styleClass="menuAtr">
@@ -43,7 +44,7 @@
                             </ImageView>
                             <Label styleClass="menuText" text="Estado:" />
                             <Region HBox.hgrow="ALWAYS" />
-                            <Label styleClass="menuText" text="60" />
+                            <Label fx:id="state" styleClass="menuText" text="60" />
                         </HBox>
 
                         <HBox alignment="CENTER_LEFT" spacing="10" styleClass="menuAtr">
@@ -52,7 +53,7 @@
                             </ImageView>
                             <Label styleClass="menuText" text="Nivel:" />
                             <Region HBox.hgrow="ALWAYS" />
-                            <Label styleClass="menuText" text="1" />
+                            <Label fx:id="level" styleClass="menuText" text="1" />
                         </HBox>
 
                         <HBox alignment="CENTER_LEFT" spacing="10" styleClass="menuAtr">
@@ -61,7 +62,7 @@
                             </ImageView>
                             <Label styleClass="menuText" text="Ataque:" />
                             <Region HBox.hgrow="ALWAYS" />
-                            <Label styleClass="menuText" text="30" />
+                            <Label fx:id="attack" styleClass="menuText" text="30" />
                         </HBox>
 
                         <HBox alignment="CENTER_LEFT" spacing="10" styleClass="menuAtr">
@@ -70,7 +71,7 @@
                             </ImageView>
                             <Label styleClass="menuText" text="Resistencia:" />
                             <Region HBox.hgrow="ALWAYS" />
-                            <Label styleClass="menuText" text="100" />
+                            <Label fx:id="res" styleClass="menuText" text="100" />
                         </HBox>
 
                    <VBox.margin>
@@ -84,7 +85,7 @@
                          <Insets right="10.0" />
                       </HBox.margin>
                         </ImageView>
-                        <Label styleClass="coinsNumber" text="100" />
+                        <Label fx:id="coins" styleClass="coinsNumber" text="100" />
                    <VBox.margin>
                       <Insets bottom="15.0" top="20.0" />
                    </VBox.margin>
