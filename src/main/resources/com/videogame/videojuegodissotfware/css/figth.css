@@ -1,0 +1,103 @@
+.backgroundFight {
+    -fx-background-image: url("../images/fightBackground.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+}
+
+.atrEnemy,.nameEnemy {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.nameEnemy {
+    -fx-font-family: "Bell MT";
+    -fx-font-size: 25px;
+    -fx-text-fill: #a07d5a;
+}
+
+.zonaBtn, .zonaEnemy {
+    -fx-background-color: rgba(43, 29, 18, 0.6);
+    -fx-background-radius: 10px;
+    -fx-border-color: #a07d5a;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+    -fx-padding: 15px;
+}
+
+.itemsButton {
+    -fx-background-color: linear-gradient(to bottom, #4a3528, #2b1d12);
+    -fx-background-insets: 0;
+    -fx-background-radius: 5px;
+    -fx-border-color: #d4af37;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-text-fill: #f0e68c;
+    -fx-font-family: "Bell MT";
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 5, 0.0, 0, 2);
+}
+
+.itemsButton:hover {
+    -fx-background-color: linear-gradient(to bottom, #634735, #3d2a1a);
+    -fx-border-color: #ffffff; /* Brillo blanco al apuntar */
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(212, 175, 55, 0.5), 10, 0.0, 0, 0);
+}
+
+.itemsButton:pressed {
+    -fx-background-color: #1a120b;
+    -fx-translate-y: 2px;
+}
+
+.btn-atacar {
+    -fx-border-color: #8b0000;
+}
+.btn-atacar:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(255, 0, 0, 0.4), 10, 0.0, 0, 0);
+}
+
+.btn-protegerse {
+    -fx-border-color: #2e5a88;
+}
+.btn-protegerse:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 191, 255, 0.4), 10, 0.0, 0, 0);
+}
+
+
+/* para los mensajes */
+.combat-log {
+    -fx-background-color: #1a120b;
+    -fx-border-color: #a07d5a;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-insets: 0;
+}
+
+.log-container {
+    -fx-background-color: #1a120b;
+}
+
+.mensaje-base {
+    -fx-text-fill: #1a120b;
+    -fx-font-family: "Bell MT";
+    -fx-font-size: 14px;
+}
+
+.mensaje-ataque {
+    -fx-text-fill: #f0e68c;
+    -fx-font-weight: bold;
+}
+
+.mensaje-proteger {
+    -fx-text-fill: #ff4d4d;
+    -fx-font-weight: bold;
+}
+
+
+
+
+
+
