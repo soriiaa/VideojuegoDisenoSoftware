@@ -1,4 +1,4 @@
 package com.videogame.videojuegodissotfware.model.entities.state;
 
-public interface Estado {
+public class PlayState {
 }
