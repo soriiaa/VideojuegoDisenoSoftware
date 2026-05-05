@@ -1,5 +1,6 @@
 package com.videogame.videojuegodissotfware.gui.controllers;
 
+import com.videogame.videojuegodissotfware.gui.view.Personaje;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -38,22 +39,23 @@ public class LaunchController {
         if (nameKnight.isEmpty()) {
             error.setText("Porfavor, introduce el nombre de tu guerrero/a");
             error.setVisible(true);
-            return false;
+            return true;
         } else if (genderCaracter.getSelectedToggle() == null) {
             error.setText("Porfavor, selecciona el genero de tu guerrero/a");
             error.setVisible(true);
-            return false;
+            return true;
         } else {
             error.setText("");
             error.setVisible(false);
-            return true;
+            return false;
         }
     }
     
     public void enter() {
-        if (fieldsEmpty()) {
+        if (!fieldsEmpty()) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/game-view.fxml"));
+                //Personaje personaje = new Personaje()
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/videogame/videojuegodissotfware/fxml/game-view.fxml"));
                 Parent menuRoot = loader.load();
                 root.getScene().setRoot(menuRoot);
             } catch (Exception e) {

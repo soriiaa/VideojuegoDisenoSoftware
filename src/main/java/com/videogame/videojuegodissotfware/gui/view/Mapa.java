@@ -10,28 +10,28 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class TileMap {
+public class Mapa {
     private int[][] mapa;
     private Map<Integer, Image> tileset = new HashMap<>();
-    private final int TILE_SIZE = 32; // Cámbialo a 16 o 64 si tus sprites se ven pequeños
+    private List<Enemy> enemigos = new ArrayList<>();
+    private final int TILE_SIZE = 32;
 
-    public TileMap() {
-        cargarImagenes();
-        // Cargamos el mapa usando getResourceAsStream para que funcione dentro del JAR
+    public Mapa() {
+        cargarPixeles();
+        // crgamos el mapa usando getResourceAsStream para que funcione dentro del JAR
         this.mapa = leerTxt("/com/videogame/videojuegodissotfware/mapa/mapa.txt");
+        procesarEnemigos();
     }
 
-    private void cargarImagenes() {
-        // IMPORTANTE: Asegúrate de que las rutas coincidan con tu carpeta en resources
+    private void cargarPixeles() {
         try {
             tileset.put(0, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Summer_Ground 01.png")));
             tileset.put(1, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Summer_Ground 10.png")));
             tileset.put(2, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Summer_Prop - Rock 01.png")));
-            tileset.put(3, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Summer_Prop - Tree Large.png")));
-            tileset.put(4, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Summer_Prop - House.png")));
-            tileset.put(5, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Summer_Prop - Campfire.png")));
-            tileset.put(6, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Summer_Prop - Tent.png")));
-            tileset.put(7, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Summer_Prop - Treasure Chest.png")));
+            tileset.put(8, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/mago.png")));
+            tileset.put(9, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/ogro.png")));
+            tileset.put(10, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/esqueleto.png")));
+            //tileset.put(11, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/dragon.png")));
         } catch (Exception e) {
             System.err.println("Error cargando imágenes: " + e.getMessage());
         }
@@ -54,10 +54,22 @@ public class TileMap {
             }
         } catch (Exception e) {
             System.err.println("Error al leer el archivo de mapa: " + e.getMessage());
-            // Mapa de emergencia por si falla la lectura
+            // mapa de emergencia por si falla la lectura
             return new int[][]{{0}};
         }
         return lineas.toArray(new int[0][]);
+    }
+    private void procesarEnemigos() {
+        for (int i = 0; i < mapa.length; i++) {
+            for (int j = 0; j < mapa[i].length; j++) {
+                int id = mapa[i][j];
+                // Si el ID es 8, 9 o 10, creamos un objeto enemigo
+                if (id >= 8 && id <= 10) {
+                    enemigos.add(new Enemy(id, j * TILE_SIZE, i * TILE_SIZE, tileset.get(id)));
+                    mapa[i][j] = 0;
+                }
+            }
+        }
     }
 
     public void render(GraphicsContext gc) {
@@ -89,6 +101,9 @@ public class TileMap {
                 }
             }
         }
+        for (Enemy e : enemigos) {
+            e.render(gc);
+        }
     }
 
     public int getTileAt(double x, double y) {
@@ -102,6 +117,7 @@ public class TileMap {
     }
 
     public int getTileSize() { return TILE_SIZE; }
+    public List<Enemy> getEnemigos() { return enemigos; }
     public int getAnchoMapa() { return mapa[0].length * TILE_SIZE; }
     public int getAltoMapa() { return mapa.length * TILE_SIZE; }
 }

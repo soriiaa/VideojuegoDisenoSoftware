@@ -10,4 +10,5 @@ module com.videogame.videojuegodissotfware {
     opens com.videogame.videojuegodissotfware.gui.controllers to javafx.fxml;
     exports com.videogame.videojuegodissotfware.gui.view;
     opens com.videogame.videojuegodissotfware.gui.view to javafx.fxml;
+    opens com.videogame.videojuegodissotfware.fxml to javafx.fxml;
 }
