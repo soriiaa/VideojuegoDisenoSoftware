@@ -33,6 +33,7 @@ public class GameController implements GameEventListener {
     private EstadoJuego estadoJuego = new MenuState();
 
     // =================================================
+    // =================================================
 
     @FXML
     private StackPane centralContent; // El hueco en el center del BorderPane
