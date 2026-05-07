@@ -1,6 +1,6 @@
 package com.videogame.videojuegodissotfware.model.entities;
 
-import com.videogame.videojuegodissotfware.gui.view.Mapa;
+import com.videogame.videojuegodissotfware.model.core.Mapa;
 import com.videogame.videojuegodissotfware.model.items.Item;
 import com.videogame.videojuegodissotfware.model.strategies.EstrategiaCombate;
 import javafx.scene.canvas.GraphicsContext;
