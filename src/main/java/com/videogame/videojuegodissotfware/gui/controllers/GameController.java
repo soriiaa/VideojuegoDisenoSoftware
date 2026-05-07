@@ -2,6 +2,7 @@ package com.videogame.videojuegodissotfware.gui.controllers;
 
 import com.videogame.videojuegodissotfware.gui.view.GameEventListener;
 import com.videogame.videojuegodissotfware.gui.view.GameScene;
+import com.videogame.videojuegodissotfware.model.core.GameFacade;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,13 +23,16 @@ public class GameController implements GameEventListener {
     public Label state;
     @FXML
     private ImageView pauseBtn;
-
     @FXML
     private StackPane contentPane;
+
+    GameFacade facade;
 
     @FXML
     private StackPane centralContent; // El hueco en el center del BorderPane
     public void initialize() {
+        this.facade = GameFacade.getInstance();
+
         GameScene game = new GameScene(centralContent, this);
         centralContent.getChildren().add(game.getCanvas());
         game.start();

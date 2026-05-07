@@ -5,3 +5,4 @@ public interface EstrategiaCombate {
     double modificadorDefensa();
     String getEstrategia();
 }
+
