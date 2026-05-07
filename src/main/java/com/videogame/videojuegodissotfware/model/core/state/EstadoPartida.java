@@ -1,5 +1,5 @@
 package com.videogame.videojuegodissotfware.model.core.state;
 
-public interface EstadoJuego {
+public interface EstadoPartida {
     void manejarInput(String tecla);
 }

@@ -1,6 +1,7 @@
 package com.videogame.videojuegodissotfware.gui.controllers;
 
 import com.videogame.videojuegodissotfware.gui.view.Personaje;
+import com.videogame.videojuegodissotfware.model.core.GameFacade;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,8 +13,6 @@ public class LaunchController {
     @FXML
     private StackPane root; // panel principal
     @FXML
-    private Label title;
-    @FXML
     private TextField name;
     @FXML
     private ImageView enterImg;
@@ -24,8 +23,12 @@ public class LaunchController {
     @FXML
     private Label error;
 
+    GameFacade facade;
     ToggleGroup genderCaracter;
+    private String gender;
     public void initialize() {
+        facade = GameFacade.getInstance(); // creado con MenuState
+
         genderCaracter = new ToggleGroup(); // inicializan los generos del los radio buttons
         menKnight.setToggleGroup(genderCaracter);
         womanKnight.setToggleGroup(genderCaracter);
@@ -49,12 +52,18 @@ public class LaunchController {
             error.setVisible(false);
             return false;
         }
+
     }
     
     public void enter() {
         if (!fieldsEmpty()) {
             try {
-                //Personaje personaje = new Personaje()
+                String nombreGuerrero = name.getText();
+                RadioButton seleccionado = (RadioButton) genderCaracter.getSelectedToggle();
+                String genero = seleccionado.getText();
+
+                facade.inicializarNuevaPartida(nombreGuerrero, genero); // al iniciar se pasa a PlayState
+
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/videogame/videojuegodissotfware/fxml/game-view.fxml"));
                 Parent menuRoot = loader.load();
                 root.getScene().setRoot(menuRoot);

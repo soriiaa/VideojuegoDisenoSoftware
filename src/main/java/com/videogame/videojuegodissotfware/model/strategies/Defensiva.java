@@ -1,4 +1,18 @@
 package com.videogame.videojuegodissotfware.model.strategies;
 
-public interface Defensiva {
+public class Defensiva implements EstrategiaCombate {
+    @Override
+    public double modificadorAtaque() {
+        return 0.8; // reduce el daño de ataque en un 20%
+    }
+
+    @Override
+    public double modificadorDefensa() {
+        return 1.2; // aumenta la defensa en un 20%
+    }
+
+    @Override
+    public String getEstrategia() {
+        return "Defensiva";
+    }
 }

@@ -11,6 +11,12 @@ public class Mundo {
     private long tiempoPartida;
     private int[][] mapaBits = new int[15][24];
 
+    public Mundo(String nombrePersonaje, String generoPersonaje) {
+        this.listaMonstruos = new ArrayList<>();
+        // this.personaje = new Personaje(nombrePersonaje, generoPersonaje);
+        this.tiempoPartida = 0;
+    }
+
     public void reiniciarMundo() {
 
     }
