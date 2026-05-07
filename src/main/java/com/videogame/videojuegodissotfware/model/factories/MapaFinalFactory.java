@@ -9,11 +9,11 @@ public class MapaFinalFactory implements EnemigoFactory {
 
     @Override
     public List<Monstruo> createGrupoMapa1() {
-        return new ArrayList<>(); // Lista vacía, ¡no hay bichos normales aquí!
+        return new ArrayList<>();
     }
 
     @Override
     public Monstruo crearJefe() {
-        return new Dragon(); // Aquí tienes a tu boss
+        return new Dragon();
     }
 }

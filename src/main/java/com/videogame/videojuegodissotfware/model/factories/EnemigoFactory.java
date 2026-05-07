@@ -6,6 +6,6 @@ import java.util.List;
 
 
 public interface EnemigoFactory {
-    List<Monstruo> createGrupoMapa1(); // Te devuelve todos los monstruos normales del mapa
-    Monstruo crearJefe();              // Te devuelve el boss del mapa
+    List<Monstruo> createGrupoMapa1();
+    Monstruo crearJefe();
 }
