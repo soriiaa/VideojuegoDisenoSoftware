@@ -5,6 +5,6 @@ import com.videogame.videojuegodissotfware.model.strategies.Agresiva;
 
 public class Esqueleto  extends Monstruo {
     public Esqueleto() {
-        super("Mago", 150, 20, 5, new Agresiva());
+        super("Esqueleto", 150, 20, 5, new Agresiva());
     }
 }

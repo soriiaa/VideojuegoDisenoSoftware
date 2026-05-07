@@ -5,6 +5,6 @@ import com.videogame.videojuegodissotfware.model.strategies.Agresiva;
 
 public class Dragon extends Monstruo {
     public Dragon() {
-        super("Mago", 150, 20, 5, new Agresiva());
+        super("Dragon", 150, 20, 5, new Agresiva());
     }
 }
