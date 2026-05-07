@@ -1,7 +1,7 @@
 package com.videogame.videojuegodissotfware.model.factories;
 
 import com.videogame.videojuegodissotfware.model.entities.Monstruo;
-
+import java.util.List;
 
 public class MonsterFactoryManager {
     private static MonsterFactoryManager instance;
@@ -22,20 +22,11 @@ public class MonsterFactoryManager {
         this.abstractMonsterFactory = factory;
     }
 
-
-    public Monstruo createOrco() {
-        return abstractMonsterFactory.crearOrco();
+    public List<Monstruo> createGrupoMapa1() {
+        return abstractMonsterFactory.createGrupoMapa1();
     }
 
-    public Monstruo createMago() {
-        return abstractMonsterFactory.crearMago();
-    }
-
-    public Monstruo createEsqueleto() {
-        return abstractMonsterFactory.crearEsqueleto();
-    }
-
-    public Monstruo createDragon() {
-        return abstractMonsterFactory.crearDragon();
+    public Monstruo crearJefe() {
+        return abstractMonsterFactory.crearJefe();
     }
 }
