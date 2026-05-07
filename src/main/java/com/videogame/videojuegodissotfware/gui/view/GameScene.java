@@ -1,5 +1,7 @@
 package com.videogame.videojuegodissotfware.gui.view;
 
+import com.videogame.videojuegodissotfware.model.core.Mapa;
+import com.videogame.videojuegodissotfware.model.entities.Personaje;
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -35,7 +37,7 @@ public class GameScene {
         canvas.setManaged(false);
 
         this.tileMap = new Mapa();
-        this.player = new Personaje(100, 100);
+        //this.player = new Personaje("caca", 100);
 
         canvas.setFocusTraversable(true);
         canvas.setOnKeyPressed(e -> inputKeys.add(e.getCode()));

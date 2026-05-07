@@ -1,8 +1,15 @@
 package com.videogame.videojuegodissotfware.model.entities;
 
+import com.videogame.videojuegodissotfware.model.core.Mapa;
 import com.videogame.videojuegodissotfware.model.items.Item;
+import com.videogame.videojuegodissotfware.model.strategies.EstrategiaCombate;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 public class Personaje extends Entidad {
     private int puntosVidaMax;
@@ -10,6 +17,67 @@ public class Personaje extends Entidad {
     private int oro;
     private ArrayList<Item> listaItems;
     private int sexo; // 0 hombre, 1 mujer
+    private double speed = 4.0;
+    private final int PLAYER_SIZE = 64;
+
+    public Personaje(String nombre, int puntosVida, String estado, int dano, int resistencia,
+                     Image sprite, double x, double y, EstrategiaCombate estrategiaCombate,
+                     int puntosVidaMax, int nivel, int oro, int sexo, double speed) {
+        super(nombre, puntosVida, estado, dano, resistencia, sprite, x, y, estrategiaCombate);
+        this.puntosVidaMax = puntosVidaMax;
+        this.nivel = nivel;
+        this.oro = oro;
+        this.listaItems = new ArrayList<>();
+        this.sexo = sexo;
+        try {
+            this.setSprite(new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Personaje.png")));
+        } catch (Exception e) {
+            System.out.println("No se pudo cargar el sprite del jugador, se usará un cuadro azul.");
+        }
+    }
+
+    public int update(Set<KeyCode> keys, Mapa map) {
+        double nextX = getX();
+        double nextY = getY();
+
+        if (keys.contains(KeyCode.W)) {
+            nextY -= speed;
+        }
+        if (keys.contains(KeyCode.S)) {
+            nextY += speed;
+        }
+        if (keys.contains(KeyCode.A)) {
+            nextX -= speed;
+        }
+        if (keys.contains(KeyCode.D)) {
+            nextX += speed;
+        }
+
+        int tileDestino = map.getTileAt(nextX, nextY);
+        if (tileDestino != 2 && tileDestino != 3 && tileDestino != 4) {
+            setX(nextX);
+            setY(nextY);
+        }
+
+        int idEnemyCollision = -1;
+        for (Monstruo monstruo : map.getEnemigos()) {
+            // Comprobamos si el jugador toca al enemigo usando un rectángulo de colisión
+            if (Math.abs(nextX - monstruo.getX()) < 32 && Math.abs(nextY - monstruo.getY()) < 32) {
+                idEnemyCollision = monstruo.getType();
+            }
+        }
+        return idEnemyCollision;
+    }
+
+    public void render(GraphicsContext gc) {
+        if (getSprite() != null) {
+            gc.drawImage(getSprite(), getX(), getY(), PLAYER_SIZE, PLAYER_SIZE);
+        } else {
+            // si falla imagen se pone un cuadro azul
+            gc.setFill(Color.BLUE);
+            gc.fillRect(getX(), getY(), PLAYER_SIZE, PLAYER_SIZE);
+        }
+    }
 
     public void usarPocion() {
 

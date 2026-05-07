@@ -1,6 +1,5 @@
 package com.videogame.videojuegodissotfware.gui.controllers;
 
-import com.videogame.videojuegodissotfware.gui.view.Personaje;
 import com.videogame.videojuegodissotfware.model.core.GameFacade;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
