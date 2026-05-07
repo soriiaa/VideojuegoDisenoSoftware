@@ -11,6 +11,10 @@ public class Personaje extends Entidad {
     private ArrayList<Item> listaItems;
     private int sexo; // 0 hombre, 1 mujer
 
+    public Personaje(int puntosVida) {
+        super(puntosVida); // Le pasamos la vida al padre (Entidad)
+    }
+
     public void usarPocion() {
 
     }
