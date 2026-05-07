@@ -1,5 +1,6 @@
 package com.videogame.videojuegodissotfware.gui.view;
 
+import com.videogame.videojuegodissotfware.model.entities.Monstruo;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import java.io.BufferedReader;
@@ -13,7 +14,7 @@ import java.util.Map;
 public class Mapa {
     private int[][] mapa;
     private Map<Integer, Image> tileset = new HashMap<>();
-    private List<Enemy> enemigos = new ArrayList<>();
+    private List<Monstruo> enemigos = new ArrayList<>();
     private final int TILE_SIZE = 32;
 
     public Mapa() {
@@ -65,7 +66,18 @@ public class Mapa {
                 int id = mapa[i][j];
                 // Si el ID es 8, 9 o 10, creamos un objeto enemigo
                 if (id >= 8 && id <= 10) {
-                    enemigos.add(new Enemy(id, j * TILE_SIZE, i * TILE_SIZE, tileset.get(id)));
+
+                    String nombre = "";
+                    if (id == 8) {
+                        nombre = "mago";
+                    } else if (id == 9) {
+                        nombre = "ogro";
+                    } else if (id == 10) {
+                        nombre = "esqueleto";
+                    }
+                    Image image = new Image("hola.com");
+                    // Aqui habria que crear el monstruo pero llamando al factory
+                    //enemigos.add(new Monstruo(nombre, 100, "Malo", 100, 100, image, 10, 10, "a", );
                     mapa[i][j] = 0;
                 }
             }
@@ -101,8 +113,8 @@ public class Mapa {
                 }
             }
         }
-        for (Enemy e : enemigos) {
-            e.render(gc);
+        for (Monstruo monstruo : enemigos) {
+            monstruo.render(gc);
         }
     }
 
@@ -117,7 +129,7 @@ public class Mapa {
     }
 
     public int getTileSize() { return TILE_SIZE; }
-    public List<Enemy> getEnemigos() { return enemigos; }
+    public List<Monstruo> getEnemigos() { return enemigos; }
     public int getAnchoMapa() { return mapa[0].length * TILE_SIZE; }
     public int getAltoMapa() { return mapa.length * TILE_SIZE; }
 }
