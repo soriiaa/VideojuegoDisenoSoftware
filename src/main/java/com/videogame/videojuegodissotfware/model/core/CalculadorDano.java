@@ -17,7 +17,7 @@ public class CalculadorDano {
 
     public int calcularAtaque(int fuerzaBase, EstadoEntidad estado, EstrategiaCombate estrategia) {
         double danoConEstado = estado.modificarDano(fuerzaBase);
-        double danoFinal = danoConEstado * estrategia.modificadorAtaque();
+        double danoFinal = danoConEstado * estrategia.modificadorCombate();
 
         return (int) Math.round(danoFinal);
     }

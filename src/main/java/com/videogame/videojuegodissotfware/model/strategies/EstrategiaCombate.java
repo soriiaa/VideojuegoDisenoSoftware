@@ -1,7 +1,8 @@
 package com.videogame.videojuegodissotfware.model.strategies;
 
 public interface EstrategiaCombate {
-    double modificadorAtaque();
+    double modificadorCombate();
     double modificadorDefensa();
     String getEstrategia();
 }
+

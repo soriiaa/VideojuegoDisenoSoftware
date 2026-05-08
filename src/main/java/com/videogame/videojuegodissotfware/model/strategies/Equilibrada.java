@@ -2,7 +2,7 @@ package com.videogame.videojuegodissotfware.model.strategies;
 
 public class Equilibrada implements EstrategiaCombate {
     @Override
-    public double modificadorAtaque() {
+    public double modificadorCombate() {
         return 1.0; // no modifica
     }
 
