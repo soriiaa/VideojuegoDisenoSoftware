@@ -1,25 +1,29 @@
-package com.videogame.videojuegodissotfware.model.factories;
+package com.videogame.videojuegodissotfware.model.factories.selva;
 
 import com.videogame.videojuegodissotfware.model.entities.Monstruo;
 import com.videogame.videojuegodissotfware.model.entities.monstruos.Orco;
 import com.videogame.videojuegodissotfware.model.entities.monstruos.Mago;
 import com.videogame.videojuegodissotfware.model.entities.monstruos.Esqueleto;
+import com.videogame.videojuegodissotfware.model.factories.EnemigoFactory;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Mapa1Factory implements EnemigoFactory {
+public class SelvaFactory implements EnemigoFactory {
+
 
     @Override
-    public List<Monstruo> createGrupoMapa1() {
-        List<Monstruo> enemigos = new ArrayList<>();
-        enemigos.add(new Orco());
-        enemigos.add(new Mago());
-        enemigos.add(new Esqueleto());
-        return enemigos;
+    public Monstruo crearOrco() {
+        return null;
     }
 
     @Override
-    public Monstruo crearJefe() {
+    public Monstruo crearEsqueleto() {
+        return null;
+    }
+
+    @Override
+    public Monstruo crarMago() {
         return null;
     }
 }

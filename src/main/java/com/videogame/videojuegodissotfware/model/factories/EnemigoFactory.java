@@ -6,6 +6,7 @@ import java.util.List;
 
 
 public interface EnemigoFactory {
-    List<Monstruo> createGrupoMapa1();
-    Monstruo crearJefe();
+    Monstruo crearOrco();
+    Monstruo crearEsqueleto();
+    Monstruo crarMago();
 }
