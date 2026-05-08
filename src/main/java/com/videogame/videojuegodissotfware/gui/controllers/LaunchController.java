@@ -59,9 +59,9 @@ public class LaunchController {
             try {
                 String nombreGuerrero = name.getText();
                 RadioButton seleccionado = (RadioButton) genderCaracter.getSelectedToggle();
-                String genero = seleccionado.getText();
+                String tipoMapa = seleccionado.getText();
 
-                facade.inicializarNuevaPartida(nombreGuerrero, genero); // al iniciar se pasa a PlayState
+                facade.inicializarNuevaPartida(nombreGuerrero, tipoMapa); // al iniciar se pasa a PlayState
 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/videogame/videojuegodissotfware/fxml/game-view.fxml"));
                 Parent menuRoot = loader.load();

@@ -11,29 +11,41 @@ import java.util.ArrayList;
 public class Mundo {
     private ArrayList<Monstruo> listaMonstruos;
     private Personaje personaje;
+    private ArrayList<Combate> listaCombates;
+    private Mapa mapa;
     private long tiempoPartida;
-    private int[][] mapaBits = new int[15][24];
 
-    public Mundo(String nombrePersonaje) {
+    public Mundo(String nombrePersonaje, String tipoMapa) {
+
         this.listaMonstruos = new ArrayList<>();
-        this.personaje = new Personaje(
-                nombrePersonaje,
-                100,
-                new EstadoBasico(),
-                15,
-                30,
-                new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Personaje.png")),
-                10,
-                10,
-                new Equilibrada(),
-                100,
-                1,
-                0);
+        this.listaCombates = new ArrayList<>();
         this.tiempoPartida = 0;
+
+        inicializarMundo(nombrePersonaje, tipoMapa);
     }
 
-    public Personaje getPersonaje() {
-        return personaje;
+    public void inicializarMundo(String nombrePersonaje, String tipoMapa) {
+        this.personaje = generarPersonaje(nombrePersonaje);
+        this.mapa = generarMapa(tipoMapa);
+        this.listaMonstruos = generarMonstruos();
+    }
+
+    private Personaje generarPersonaje(String nombrePersonaje) {
+        return new Personaje(nombrePersonaje, 100, new EstadoBasico(), 15, 30,
+                new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Personaje.png")),
+                10, 10, new Equilibrada(), 100, 1, 0);
+    }
+
+    private ArrayList<Monstruo> generarMonstruos() {
+
+    }
+
+    private Mapa generarMapa(String tipoMapa) {
+        return new Mapa(tipoMapa);
+    }
+
+    public void crearCombate() {
+        Combate combate = new Combate();
     }
 
     public void reiniciarMundo() {
@@ -50,5 +62,13 @@ public class Mundo {
 
     public void finalizarPartida() {
 
+    }
+
+    public String getTipoMapa() {
+        return mapa.getTipoMapa();
+    }
+
+    public Personaje getPersonaje() {
+        return personaje;
     }
 }

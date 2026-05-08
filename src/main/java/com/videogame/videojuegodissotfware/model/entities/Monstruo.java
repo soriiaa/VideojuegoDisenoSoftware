@@ -5,7 +5,7 @@ import com.videogame.videojuegodissotfware.model.strategies.EstrategiaCombate;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
-public class Monstruo extends Entidad {
+public abstract class Monstruo extends Entidad {
     private String categoria;
     private int botin;
     private int type;
@@ -19,6 +19,23 @@ public class Monstruo extends Entidad {
         this.botin = botin;
         this.type = type;
     }
+
+    public void realizarTurno() {
+        comprobarEstado();
+        comprobarEstrategia();
+        accion();
+    }
+
+    private void comprobarEstado() {
+
+    }
+
+    private void comprobarEstrategia() {
+
+    }
+
+    abstract void accion();
+
 
     public void render(GraphicsContext gc) {
         // Los dibujamos centrados respecto al tile de 32x32 o simplemente desde la esquina

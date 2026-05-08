@@ -9,6 +9,11 @@ public class Combate {
     private Personaje personaje;
     private Entidad ganador;
 
+    public Combate (Monstruo monstruo, Personaje personaje) {
+        this.monstruo = monstruo;
+        this.personaje = personaje;
+    }
+
     public void setMonstruo(Monstruo monstruo) {
         this.monstruo = monstruo;
     }

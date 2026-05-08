@@ -16,15 +16,26 @@ public class Mapa {
     private Map<Integer, Image> tileset = new HashMap<>();
     private List<Monstruo> enemigos = new ArrayList<>();
     private final int TILE_SIZE = 32;
+    private String tipoMapa;
 
-    public Mapa() {
+    public Mapa(String tipoMapa) {
         cargarPixeles();
         // crgamos el mapa usando getResourceAsStream para que funcione dentro del JAR
         this.mapa = leerTxt("/com/videogame/videojuegodissotfware/mapa/mapa.txt");
+        this.tipoMapa = tipoMapa;
         procesarEnemigos();
     }
 
     private void cargarPixeles() {
+
+        if (tipoMapa.equals("selva")) {
+
+        } else if (tipoMapa.equals("desierto")) {
+
+        } else {
+
+        }
+
         try {
             tileset.put(0, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Summer_Ground 01.png")));
             tileset.put(1, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Summer_Ground 10.png")));
@@ -127,6 +138,9 @@ public class Mapa {
         return -1;
     }
 
+    public String getTipoMapa() {
+        return this.tipoMapa;
+    }
     public int getTileSize() { return TILE_SIZE; }
     public List<Monstruo> getEnemigos() { return enemigos; }
     public int getAnchoMapa() { return mapa[0].length * TILE_SIZE; }

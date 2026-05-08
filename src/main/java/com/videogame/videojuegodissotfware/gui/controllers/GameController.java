@@ -28,21 +28,21 @@ public class GameController implements GameEventListener {
     public Label attack;
     @FXML
     public Label state;
-
     @FXML
     private ImageView pauseBtn;
     @FXML
     private StackPane contentPane;
+    @FXML
+    private StackPane centralContent;
 
     GameFacade facade;
 
-    @FXML
-    private StackPane centralContent; // El hueco en el center del BorderPane
     public void initialize() {
         this.facade = GameFacade.getInstance();
 
-        Personaje player = facade.getMundo().getPersonaje();
-        GameScene game = new GameScene(centralContent, this, player);
+        Personaje player = facade.getPersonaje();
+        String tipoMapa = facade.getTipoMapa();
+        GameScene game = new GameScene(centralContent, this, player, tipoMapa);
         setPlayerData(player);
 
         centralContent.getChildren().add(game.getCanvas());
@@ -68,12 +68,6 @@ public class GameController implements GameEventListener {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/videogame/videojuegodissotfware/fxml/fight-view.fxml"));
             Parent combatView = loader.load();
-            /*
-            // Obtenemos el controlador de la pelea para pasarle el ID del enemigo
-            FightController fightCtrl = loader.getController();
-            fightCtrl.setEnemyData(enemyId);
-             */
-
             centralContent.getChildren().clear();
             centralContent.getChildren().add(combatView);
             System.out.println("Creado el combate con enemigo de tipo: " + enemyId);
@@ -84,12 +78,11 @@ public class GameController implements GameEventListener {
 
     @FXML
     public void pause() {
+        facade.pausarPartida();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/videogame/videojuegodissotfware/fxml/options-view.fxml"));
             Parent pauseMenu = loader.load();
-
             contentPane.getChildren().add(pauseMenu);
-
         } catch (IOException e) {
             e.printStackTrace();
         }
