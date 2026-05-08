@@ -5,5 +5,6 @@ import com.videogame.videojuegodissotfware.model.strategies.Agresiva;
 
 public class Orco extends Monstruo {
     public Orco() {
-        super("Orco", 150, 20, 5, new Agresiva());    }
+        super("Orco", 150, 20, 5, new Agresiva());
+    }
 }

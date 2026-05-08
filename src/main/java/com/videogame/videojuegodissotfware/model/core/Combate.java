@@ -24,4 +24,8 @@ public class Combate {
     public void comprobarResultado() {
 
     }
+
+    private void setGanador(Entidad entidadGanadora) {
+        this.ganador = entidadGanadora;
+    }
 }
