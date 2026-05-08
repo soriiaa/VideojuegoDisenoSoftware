@@ -22,11 +22,13 @@ public class MonsterFactoryManager {
         this.abstractMonsterFactory = factory;
     }
 
-    public List<Monstruo> createGrupoMapa1() {
-        return abstractMonsterFactory.createGrupoMapa1();
+    public Monstruo crearOgro() {
+        return abstractMonsterFactory.crearOrco();
     }
-
-    public Monstruo crearJefe() {
-        return abstractMonsterFactory.crearJefe();
+    public Monstruo crearMago() {
+        return abstractMonsterFactory.crearMago();
+    }
+    public Monstruo crearEsqueleto() {
+        return abstractMonsterFactory.crearEsqueleto();
     }
 }

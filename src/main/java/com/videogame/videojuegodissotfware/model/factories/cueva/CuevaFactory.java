@@ -5,6 +5,7 @@ import com.videogame.videojuegodissotfware.model.entities.monstruos.Dragon;
 public class CuevaFactory {
 
     public static Monstruo crearBossFinal() {
-        return new Dragon();
+        return null;
+        // return new Dragon();
     }
 }
