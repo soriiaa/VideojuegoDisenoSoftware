@@ -3,6 +3,7 @@ package com.videogame.videojuegodissotfware.gui.controllers;
 import com.videogame.videojuegodissotfware.gui.view.GameEventListener;
 import com.videogame.videojuegodissotfware.gui.view.GameScene;
 import com.videogame.videojuegodissotfware.model.core.GameFacade;
+import com.videogame.videojuegodissotfware.model.entities.Personaje;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,13 +15,20 @@ import java.io.IOException;
 
 public class GameController implements GameEventListener {
     @FXML
+    public Label name;
+    @FXML
     public Label coins;
+    @FXML
+    public Label level;
+    @FXML
+    public Label hp;
     @FXML
     public Label res;
     @FXML
     public Label attack;
     @FXML
     public Label state;
+
     @FXML
     private ImageView pauseBtn;
     @FXML
@@ -33,11 +41,26 @@ public class GameController implements GameEventListener {
     public void initialize() {
         this.facade = GameFacade.getInstance();
 
-        GameScene game = new GameScene(centralContent, this);
+        Personaje player = facade.getMundo().getPersonaje();
+        GameScene game = new GameScene(centralContent, this, player);
+        setPlayerData(player);
+
         centralContent.getChildren().add(game.getCanvas());
         game.start();
 
         pauseBtn.setOnMouseClicked(event -> pause());
+    }
+
+    public void setPlayerData(Personaje player) {
+        name.setText(player.getNombre());
+        hp.setText(player.getPuntosVida() + "/" + player.getPuntosVidaMax());
+        level.setText(String.valueOf(player.getNivel()));
+        coins.setText(String.valueOf(player.getOro()));
+        res.setText(String.valueOf(player.getResistencia()));
+        attack.setText(String.valueOf(player.getDano()));
+        state.setText(player.getEstado().getNombre());
+
+        // FALTA SETTEAR EL ARRAY DE ITEMS, AL INICIAR LA PARTIDA NO TIENE NINGUNO
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.videogame.videojuegodissotfware.model.entities;
 
 import com.videogame.videojuegodissotfware.model.core.Mapa;
+import com.videogame.videojuegodissotfware.model.entities.state.EstadoEntidad;
 import com.videogame.videojuegodissotfware.model.items.Item;
 import com.videogame.videojuegodissotfware.model.strategies.EstrategiaCombate;
 import javafx.scene.canvas.GraphicsContext;
@@ -16,19 +17,17 @@ public class Personaje extends Entidad {
     private int nivel;
     private int oro;
     private ArrayList<Item> listaItems;
-    private int sexo; // 0 hombre, 1 mujer
-    private double speed = 4.0;
-    private final int PLAYER_SIZE = 64;
+    private double speed = 1.0;
+    private final double PLAYER_SIZE = 64.0;
 
-    public Personaje(String nombre, int puntosVida, String estado, int dano, int resistencia,
+    public Personaje(String nombre, int puntosVida, EstadoEntidad estado, int dano, int resistencia,
                      Image sprite, double x, double y, EstrategiaCombate estrategiaCombate,
-                     int puntosVidaMax, int nivel, int oro, int sexo, double speed) {
+                     int puntosVidaMax, int nivel, int oro) {
         super(nombre, puntosVida, estado, dano, resistencia, sprite, x, y, estrategiaCombate);
         this.puntosVidaMax = puntosVidaMax;
         this.nivel = nivel;
         this.oro = oro;
         this.listaItems = new ArrayList<>();
-        this.sexo = sexo;
         try {
             this.setSprite(new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Personaje.png")));
         } catch (Exception e) {
@@ -53,8 +52,10 @@ public class Personaje extends Entidad {
             nextX += speed;
         }
 
-        int tileDestino = map.getTileAt(nextX, nextY);
-        if (tileDestino != 2 && tileDestino != 3 && tileDestino != 4) {
+        int tileCentro = map.getTileAt(nextX + PLAYER_SIZE/2, nextY + PLAYER_SIZE /2);
+
+        // Si el tile NO es un obstáculo, movemos
+        if (tileCentro != 2) {
             setX(nextX);
             setY(nextY);
         }
@@ -89,5 +90,57 @@ public class Personaje extends Entidad {
 
     public void iniciarCombate() {
 
+    }
+
+
+
+    public String getNombre() {
+        return super.getNombre();
+    }
+    public int getPuntosVida() {
+        return super.getPuntosVida();
+    }
+    public EstadoEntidad getEstado() {
+        return super.getEstado();
+    }
+
+    public int getDano() {
+        return super.getDano();
+    }
+
+    public int getResistencia() {
+        return super.getResistencia();
+    }
+
+    public EstrategiaCombate getEstrategiaCombate() {
+        return super.getEstrategiaCombate();
+    }
+
+    public int getPuntosVidaMax() {
+        return puntosVidaMax;
+    }
+
+    public int getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
+    }
+
+    public int getOro() {
+        return oro;
+    }
+
+    public void setOro(int oro) {
+        this.oro = oro;
+    }
+
+    public ArrayList<Item> getListaItems() {
+        return listaItems;
+    }
+
+    public void setListaItems(ArrayList<Item> listaItems) {
+        this.listaItems = listaItems;
     }
 }

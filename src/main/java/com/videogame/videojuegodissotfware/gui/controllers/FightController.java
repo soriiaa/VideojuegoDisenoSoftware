@@ -1,5 +1,7 @@
 package com.videogame.videojuegodissotfware.gui.controllers;
 
+import com.videogame.videojuegodissotfware.model.core.GameFacade;
+import com.videogame.videojuegodissotfware.model.entities.Personaje;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -7,6 +9,20 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 
 public class FightController {
+    @FXML
+    private Label enemyName;
+    @FXML
+    private Label enemyHp;
+    @FXML
+    private Label enemyRes;
+    @FXML
+    private Label enemyDamage;
+    @FXML
+    private Label enemyState;
+    @FXML
+    private Label enemyStrategy;
+    @FXML
+    private Label enemyReward;
 
     @FXML
     private Button atackBtn;
@@ -16,10 +32,29 @@ public class FightController {
     private ScrollPane scrollLog;
     @FXML
     private VBox vboxMensajes;
+    GameFacade facade;
 
     public void initialize() {
+        this.facade = GameFacade.getInstance();
+        Personaje player = facade.getMundo().getPersonaje();
+
+        //setEnemyData(enemy);
+
         atackBtn.setOnMouseClicked(event -> handleAttack());
         protectBtn.setOnMouseClicked(event -> handleProtect());
+    }
+
+    public void setEnemyData() {
+        /*
+        enemyName.setText(enemy.getNombre());
+        enemyHp.setText(enemy.getPuntosVida() + "/" + enemy.getPuntosVidaMax());
+        enemyRes.setText(String.valueOf(enemy.getResistencia()));
+        enemyDamage.setText(String.valueOf(enemy.getDano()));
+        enemyState.setText(enemy.getEstado().getNombre());
+        enemyStrategy.setText(enemy.getEstrategia().getNombre());
+        enemyReward.setText(enemy.getRecompensa() + " oro");
+
+         */
     }
     @FXML
     private void handleAttack() {

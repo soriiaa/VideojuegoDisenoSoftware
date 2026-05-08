@@ -67,15 +67,14 @@ public class Mapa {
                 // Si el ID es 8, 9 o 10, creamos un objeto enemigo
                 if (id >= 8 && id <= 10) {
 
-                    String nombre = "";
+                    String nombre;
                     if (id == 8) {
                         nombre = "mago";
                     } else if (id == 9) {
                         nombre = "ogro";
-                    } else if (id == 10) {
+                    } else {
                         nombre = "esqueleto";
                     }
-                    Image image = new Image("hola.com");
                     // Aqui habria que crear el monstruo pero llamando al factory
                     //enemigos.add(new Monstruo(nombre, 100, "Malo", 100, 100, image, 10, 10, "a", );
                     mapa[i][j] = 0;

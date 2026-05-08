@@ -1,19 +1,20 @@
 package com.videogame.videojuegodissotfware.model.entities;
 
+import com.videogame.videojuegodissotfware.model.entities.state.EstadoEntidad;
 import com.videogame.videojuegodissotfware.model.strategies.EstrategiaCombate;
 import javafx.scene.image.Image;
 
 public abstract class Entidad {
     private String nombre;
     private int puntosVida;
-    private String estado;
+    private EstadoEntidad estado;
     private int dano;
     private int resistencia;
     private Image sprite; // Aquí tenemos que guardar la ruta al png, no el png como tal.
     private double x, y;
     private EstrategiaCombate estrategiaCombate;
 
-    public Entidad (String nombre, int puntosVida, String estado, int dano, int resistencia, Image sprite, double x, double y, EstrategiaCombate estrategiaCombate) {
+    public Entidad (String nombre, int puntosVida, EstadoEntidad estado, int dano, int resistencia, Image sprite, double x, double y, EstrategiaCombate estrategiaCombate) {
         this.nombre = nombre;
         this.puntosVida = puntosVida;
         this.estado = estado;
@@ -47,6 +48,54 @@ public abstract class Entidad {
 
     public void setSprite(Image sprite) {
         this.sprite = sprite;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getPuntosVida() {
+        return puntosVida;
+    }
+
+    public void setPuntosVida(int puntosVida) {
+        this.puntosVida = puntosVida;
+    }
+
+    public EstadoEntidad getEstado() {
+        return estado;
+    }
+
+    public void setEstado(EstadoEntidad estado) {
+        this.estado = estado;
+    }
+
+    public int getDano() {
+        return dano;
+    }
+
+    public void setDano(int dano) {
+        this.dano = dano;
+    }
+
+    public int getResistencia() {
+        return resistencia;
+    }
+
+    public void setResistencia(int resistencia) {
+        this.resistencia = resistencia;
+    }
+
+    public EstrategiaCombate getEstrategiaCombate() {
+        return estrategiaCombate;
+    }
+
+    public void setEstrategiaCombate(EstrategiaCombate estrategiaCombate) {
+        this.estrategiaCombate = estrategiaCombate;
     }
 
     public void atacar() {

@@ -20,11 +20,12 @@ public class GameScene {
     private AnimationTimer gameLoop; // para poder parar el renderizado de 60 veces por segundo
     private boolean fightStarted = false;
 
-    public GameScene(Pane container, GameEventListener listener) {
+    public GameScene(Pane container, GameEventListener listener, Personaje player) {
         // 1. Crear el canvas
         this.canvas = new Canvas();
         this.gc = canvas.getGraphicsContext2D();
         this.listener = listener;
+        this.player = player;
 
         // 2. Vincular el tamaño de forma bidireccional y forzar el renderizado nítido
         canvas.widthProperty().bind(container.widthProperty().subtract(40));
@@ -37,7 +38,6 @@ public class GameScene {
         canvas.setManaged(false);
 
         this.tileMap = new Mapa();
-        //this.player = new Personaje("caca", 100);
 
         canvas.setFocusTraversable(true);
         canvas.setOnKeyPressed(e -> inputKeys.add(e.getCode()));

@@ -23,12 +23,17 @@ public class GameFacade {
 
     // Método para que LaunchController configure al héroe
     public void inicializarNuevaPartida(String nombre, String genero) {
-        this.mundo = new Mundo(nombre, genero);
+        this.mundo = new Mundo(nombre);
         setEstado(new PlayState());
     }
 
     public void setEstado(EstadoPartida nuevoEstado) {
         this.estadoPartida = nuevoEstado;
+    }
+    public void getPersonaje() {
+        if (mundo != null) {
+            mundo.getPersonaje();
+        }
     }
 
     public Mundo getMundo() {
