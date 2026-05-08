@@ -7,7 +7,6 @@ import javafx.scene.image.Image;
 
 public class Monstruo extends Entidad {
     private String categoria;
-    private EstrategiaCombate estrategia;
     private int botin;
     private int type;
     private final int ENEMY_SIZE = 80;

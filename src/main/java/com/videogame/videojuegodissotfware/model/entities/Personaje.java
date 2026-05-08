@@ -1,6 +1,7 @@
 package com.videogame.videojuegodissotfware.model.entities;
 
 import com.videogame.videojuegodissotfware.model.core.Mapa;
+import com.videogame.videojuegodissotfware.model.entities.state.EstadoEntidad;
 import com.videogame.videojuegodissotfware.model.items.Item;
 import com.videogame.videojuegodissotfware.model.strategies.EstrategiaCombate;
 import javafx.scene.canvas.GraphicsContext;
@@ -20,7 +21,7 @@ public class Personaje extends Entidad {
     private double speed = 4.0;
     private final int PLAYER_SIZE = 64;
 
-    public Personaje(String nombre, int puntosVida, String estado, int dano, int resistencia,
+    public Personaje(String nombre, int puntosVida, EstadoEntidad estado, int dano, int resistencia,
                      Image sprite, double x, double y, EstrategiaCombate estrategiaCombate,
                      int puntosVidaMax, int nivel, int oro, int sexo, double speed) {
         super(nombre, puntosVida, estado, dano, resistencia, sprite, x, y, estrategiaCombate);
@@ -77,10 +78,6 @@ public class Personaje extends Entidad {
             gc.setFill(Color.BLUE);
             gc.fillRect(getX(), getY(), PLAYER_SIZE, PLAYER_SIZE);
         }
-    }
-
-    public Personaje(int puntosVida) {
-        super(puntosVida); // Le pasamos la vida al padre (Entidad)
     }
 
     public void usarPocion() {
