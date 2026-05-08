@@ -3,6 +3,7 @@ package com.videogame.videojuegodissotfware.model.core;
 import com.videogame.videojuegodissotfware.model.core.state.EstadoPartida;
 import com.videogame.videojuegodissotfware.model.core.state.MenuState;
 import com.videogame.videojuegodissotfware.model.core.state.PlayState;
+import com.videogame.videojuegodissotfware.model.entities.Personaje;
 
 public class GameFacade {
     private static GameFacade instance;
@@ -10,7 +11,6 @@ public class GameFacade {
     private EstadoPartida estadoPartida;
 
     private GameFacade() {
-        // El constructor es privado
         this.estadoPartida = new MenuState();
     }
 
@@ -30,9 +30,11 @@ public class GameFacade {
     public void setEstado(EstadoPartida nuevoEstado) {
         this.estadoPartida = nuevoEstado;
     }
-    public void getPersonaje() {
+    public Personaje getPersonaje() {
         if (mundo != null) {
-            mundo.getPersonaje();
+            return mundo.getPersonaje();
+        } else {
+            return null;
         }
     }
 
