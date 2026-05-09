@@ -32,7 +32,7 @@ public class Mapa {
     private void cargarPixeles() {
         try {
             if (tipoMapa.equalsIgnoreCase("Pradera")) {
-                String pathPradera = "/com/videogame/videojuegodissotfware/mapa/assetsJungla/";
+                String pathPradera = "/com/videogame/videojuegodissotfware/mapa/assetsPradera/";
 
                 int[] tilesPradera = {
                         0, 1, 2, 3, 4, 6, 7, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 33, 34, 35
