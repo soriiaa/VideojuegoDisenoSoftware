@@ -25,38 +25,15 @@ public class Mapa {
 
     private void cargarPixeles() {
         try {
-            // --- ASSETS DEL DESIERTO (en subcarpeta assetsDesierto) ---
-            String pathDesierto = "/com/videogame/videojuegodissotfware/mapa/assetsDesierto/";
-
-            // Suelo base y variantes (basados en image_ab78fd.jpg)
-            tileset.put(0, new Image(getClass().getResourceAsStream(pathDesierto + "suelo.png")));
-            tileset.put(1, new Image(getClass().getResourceAsStream(pathDesierto + "tile1.png")));
-            tileset.put(2, new Image(getClass().getResourceAsStream(pathDesierto + "tile2.png")));
-            tileset.put(5, new Image(getClass().getResourceAsStream(pathDesierto + "tile5.png")));
-            tileset.put(16, new Image(getClass().getResourceAsStream(pathDesierto + "tile16.png")));
-            tileset.put(28, new Image(getClass().getResourceAsStream(pathDesierto + "tile28.png")));
-            tileset.put(30, new Image(getClass().getResourceAsStream(pathDesierto + "tile30.png")));
-
-            // Decoración
-            tileset.put(45, new Image(getClass().getResourceAsStream(pathDesierto + "tile45.png")));
-            tileset.put(48, new Image(getClass().getResourceAsStream(pathDesierto + "tile48.png")));
-            tileset.put(61, new Image(getClass().getResourceAsStream(pathDesierto + "tile61.png")));
-
-            // Estructuras y Muros (IDs del 126 al 185)
-            int[] castillo = {126, 127, 128, 129, 140,141, 142, 143, 154, 155, 156, 157, 168, 169, 170, 171, 182, 183, 184, 185};
-            for (int id : castillo) {
-                tileset.put(id, new Image(getClass().getResourceAsStream(pathDesierto + "tile" + id + ".png")));
-            }
-
-            // --- MONSTRUOS (en carpeta mapa) ---
-            String pathMapa = "/com/videogame/videojuegodissotfware/mapa/";
-            tileset.put(8, new Image(getClass().getResourceAsStream(pathMapa + "mago.png")));
-            tileset.put(9, new Image(getClass().getResourceAsStream(pathMapa + "ogro.png")));
-            tileset.put(10, new Image(getClass().getResourceAsStream(pathMapa + "esqueleto.png")));
-
+            tileset.put(0, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Summer_Ground 01.png")));
+            tileset.put(1, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Summer_Ground 10.png")));
+            tileset.put(2, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Summer_Prop - Rock 01.png")));
+            tileset.put(8, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/mago.png")));
+            tileset.put(9, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/ogro.png")));
+            tileset.put(10, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/esqueleto.png")));
+            //tileset.put(11, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/dragon.png")));
         } catch (Exception e) {
             System.err.println("Error cargando imágenes: " + e.getMessage());
-            e.printStackTrace();
         }
     }
 
