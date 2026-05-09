@@ -37,7 +37,7 @@ public class Mundo {
     }
 
     private ArrayList<Monstruo> generarMonstruos() {
-
+        return null;
     }
 
     private Mapa generarMapa(String tipoMapa) {
@@ -45,7 +45,7 @@ public class Mundo {
     }
 
     public void crearCombate() {
-        Combate combate = new Combate();
+        // Combate combate = new Combate();
     }
 
     public void reiniciarMundo() {

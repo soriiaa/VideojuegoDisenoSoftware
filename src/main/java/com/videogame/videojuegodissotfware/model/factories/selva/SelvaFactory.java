@@ -23,7 +23,7 @@ public class SelvaFactory implements EnemigoFactory {
     }
 
     @Override
-    public Monstruo crarMago() {
+    public Monstruo crearMago() {
         return null;
     }
 }

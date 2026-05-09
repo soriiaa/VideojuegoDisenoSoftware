@@ -16,21 +16,21 @@ public class LaunchController {
     @FXML
     private ImageView enterImg;
     @FXML
-    private RadioButton menKnight;
+    private RadioButton selva;
     @FXML
-    private RadioButton womanKnight;
+    private RadioButton desierto;
     @FXML
     private Label error;
 
     GameFacade facade;
-    ToggleGroup genderCaracter;
-    private String gender;
+    ToggleGroup typeMap;
+    private String typeMapSelected;
     public void initialize() {
         facade = GameFacade.getInstance(); // creado con MenuState
 
-        genderCaracter = new ToggleGroup(); // inicializan los generos del los radio buttons
-        menKnight.setToggleGroup(genderCaracter);
-        womanKnight.setToggleGroup(genderCaracter);
+        typeMap = new ToggleGroup(); // inicializan los generos del los radio buttons
+        selva.setToggleGroup(typeMap);
+        desierto.setToggleGroup(typeMap);
 
         enterImg.setOnMouseClicked(event -> enter());
     }
@@ -42,8 +42,8 @@ public class LaunchController {
             error.setText("Porfavor, introduce el nombre de tu guerrero/a");
             error.setVisible(true);
             return true;
-        } else if (genderCaracter.getSelectedToggle() == null) {
-            error.setText("Porfavor, selecciona el genero de tu guerrero/a");
+        } else if (typeMap.getSelectedToggle() == null) {
+            error.setText("Porfavor, selecciona el tipo de mapa");
             error.setVisible(true);
             return true;
         } else {
@@ -58,10 +58,10 @@ public class LaunchController {
         if (!fieldsEmpty()) {
             try {
                 String nombreGuerrero = name.getText();
-                RadioButton seleccionado = (RadioButton) genderCaracter.getSelectedToggle();
-                String tipoMapa = seleccionado.getText();
+                RadioButton seleccionado = (RadioButton) typeMap.getSelectedToggle();
+                typeMapSelected = seleccionado.getText();
 
-                facade.inicializarNuevaPartida(nombreGuerrero, tipoMapa); // al iniciar se pasa a PlayState
+                facade.inicializarNuevaPartida(nombreGuerrero, typeMapSelected); // al iniciar se pasa a PlayState
 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/videogame/videojuegodissotfware/fxml/game-view.fxml"));
                 Parent menuRoot = loader.load();

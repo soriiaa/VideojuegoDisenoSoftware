@@ -22,8 +22,8 @@
                <Insets />
             </VBox.margin></TextField>
       <HBox alignment="CENTER">
-        <RadioButton fx:id="menKnight" styleClass="radioBtn" text="Guerrero" />
-        <RadioButton fx:id="womanKnight" styleClass="radioBtn" text="Guerrera" />
+        <RadioButton fx:id="selva" styleClass="radioBtn" text="Selva" />
+        <RadioButton fx:id="desierto" styleClass="radioBtn" text="Desierto" />
             <VBox.margin>
                <Insets bottom="60.0" top="30.0" />
             </VBox.margin>
