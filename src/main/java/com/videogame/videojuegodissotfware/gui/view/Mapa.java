@@ -19,21 +19,21 @@ public class Mapa {
     public Mapa() {
         cargarPixeles();
         // crgamos el mapa usando getResourceAsStream para que funcione dentro del JAR
-        this.mapa = leerTxt("/com/videogame/videojuegodissotfware/mapa/mapa.txt");
+        this.mapa = leerTxt("/com/videogame/videojuegodissotfware/mapa/mapaJungla.txt");
         procesarEnemigos();
     }
 
     private void cargarPixeles() {
-        try {
-            tileset.put(0, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Summer_Ground 01.png")));
-            tileset.put(1, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Summer_Ground 10.png")));
-            tileset.put(2, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Summer_Prop - Rock 01.png")));
-            tileset.put(8, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/mago.png")));
-            tileset.put(9, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/ogro.png")));
-            tileset.put(10, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/esqueleto.png")));
-            //tileset.put(11, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/dragon.png")));
-        } catch (Exception e) {
-            System.err.println("Error cargando imágenes: " + e.getMessage());
+        String pathNaturaleza = "/com/videogame/videojuegodissotfware/mapa/assetsJungla/";
+
+        // Estos son todos los IDs que existen en tu imagen
+        int[] nuevosTiles = {
+                0,6,7,9,15,16,17,18,36
+        };
+
+        // Bucle que carga todos los tiles de golpe
+        for (int id : nuevosTiles) {
+            tileset.put(id, new Image(getClass().getResourceAsStream(pathNaturaleza + "tile" + id + ".png")));
         }
     }
 
