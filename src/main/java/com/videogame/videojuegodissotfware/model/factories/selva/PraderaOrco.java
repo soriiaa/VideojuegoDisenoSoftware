@@ -5,19 +5,20 @@ import com.videogame.videojuegodissotfware.model.entities.state.EstadoBasico;
 import com.videogame.videojuegodissotfware.model.strategies.Equilibrada;
 import javafx.scene.image.Image;
 
-public class SelvaMago extends Mago {
-    public SelvaMago(double x, double y){
-        super("Mago de la Selva",
-                80,
+public class PraderaOrco extends Mago {
+    public PraderaOrco(double x, double y) {
+        super("Orco de la Selva",
+                150,
                 new EstadoBasico(),
-                20,
-                5,
-                new Image(SelvaMago.class.getResourceAsStream("com/videogame/videojuegodissotfware/mapa/monstruosPradera/magoPradera.png")),
+                10,
+                40,
+                new Image(PraderaOrco.class.getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/monstruosPradera/ogroPradera.png")),
                 x,
                 y,
                 new Equilibrada(),
-                50,
-                1
+                150,
+                2
         );
+        System.out.println("DEBUG: Orco de la Selva creado en (" + x + ", " + y + ")");
     }
 }

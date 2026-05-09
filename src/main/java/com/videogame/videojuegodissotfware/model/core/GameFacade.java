@@ -11,7 +11,7 @@ import com.videogame.videojuegodissotfware.model.entities.Personaje;
 import com.videogame.videojuegodissotfware.model.factories.EnemigoFactory;
 import com.videogame.videojuegodissotfware.model.factories.EnemigoFactoryManager;
 import com.videogame.videojuegodissotfware.model.factories.desierto.DesiertoFactory;
-import com.videogame.videojuegodissotfware.model.factories.selva.SelvaFactory;
+import com.videogame.videojuegodissotfware.model.factories.selva.PraderaFactory;
 import javafx.scene.input.KeyCode;
 
 public class GameFacade {
@@ -56,7 +56,7 @@ public class GameFacade {
     private void inicializarFactory(String tipoMapa) {
         EnemigoFactory factoryConcreta;
         if (tipoMapa.equalsIgnoreCase("Pradera")) {
-            factoryConcreta = new SelvaFactory();
+            factoryConcreta = new PraderaFactory();
         } else {
             factoryConcreta = new DesiertoFactory();
         }
