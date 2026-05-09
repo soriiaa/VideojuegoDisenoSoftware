@@ -19,7 +19,7 @@ public class Mapa {
     public Mapa() {
         cargarPixeles();
         // crgamos el mapa usando getResourceAsStream para que funcione dentro del JAR
-        this.mapa = leerTxt("/com/videogame/videojuegodissotfware/mapa/mapa.txt");
+        this.mapa = leerTxt("/com/videogame/videojuegodissotfware/mapa/mapaDesierto.txt");
         procesarEnemigos();
     }
 
