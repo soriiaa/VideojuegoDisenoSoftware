@@ -4,6 +4,7 @@ import com.videogame.videojuegodissotfware.gui.view.GameEventListener;
 import com.videogame.videojuegodissotfware.gui.view.GameScene;
 import com.videogame.videojuegodissotfware.model.core.GameFacade;
 import com.videogame.videojuegodissotfware.model.core.Mapa;
+import com.videogame.videojuegodissotfware.model.core.state.FightState;
 import com.videogame.videojuegodissotfware.model.entities.Monstruo;
 import com.videogame.videojuegodissotfware.model.entities.Personaje;
 import javafx.fxml.FXML;
@@ -42,10 +43,10 @@ public class GameController implements GameEventListener {
     public void initialize() {
         this.facade = GameFacade.getInstance();
 
-        Personaje player = facade.getPersonaje();
+        Personaje personaje = facade.getPersonaje();
         Mapa mapaReal = facade.getMundo().getMapa();
-        GameScene game = new GameScene(centralContent, this, player, mapaReal);
-        setPlayerData(player);
+        GameScene game = new GameScene(centralContent, this, personaje, mapaReal);
+        setPlayerData(personaje);
 
         centralContent.getChildren().add(game.getCanvas());
         game.start();
@@ -53,26 +54,28 @@ public class GameController implements GameEventListener {
         pauseBtn.setOnMouseClicked(event -> pause());
     }
 
-    public void setPlayerData(Personaje player) {
-        name.setText(player.getNombre());
-        hp.setText(player.getPuntosVida() + "/" + player.getPuntosVidaMax());
-        level.setText(String.valueOf(player.getNivel()));
-        coins.setText(String.valueOf(player.getOro()));
-        res.setText(String.valueOf(player.getResistencia()));
-        attack.setText(String.valueOf(player.getDano()));
-        state.setText(player.getEstado().getNombre());
+    public void setPlayerData(Personaje personaje) {
+        name.setText(personaje.getNombre());
+        hp.setText(personaje.getPuntosVida() + "/" + personaje.getPuntosVidaMax());
+        level.setText(String.valueOf(personaje.getNivel()));
+        coins.setText(String.valueOf(personaje.getOro()));
+        res.setText(String.valueOf(personaje.getResistencia()));
+        attack.setText(String.valueOf(personaje.getDano()));
+        state.setText(personaje.getEstado().getNombre());
 
         // FALTA SETTEAR EL ARRAY DE ITEMS, AL INICIAR LA PARTIDA NO TIENE NINGUNO
     }
 
     @Override
-    public void onFightStarted(Monstruo monstruo) {
+    public void onFightStarted(Monstruo enemigo) {
+        facade.setEstado(new FightState());
+        facade.iniciarCombate(enemigo);
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/videogame/videojuegodissotfware/fxml/fight-view.fxml"));
             Parent combatView = loader.load();
             centralContent.getChildren().clear();
             centralContent.getChildren().add(combatView);
-            System.out.println("Creado el combate con enemigo de tipo: " + monstruo.getTipo());
+            System.out.println("Creado el combate con enemigo de tipo: " + enemigo.getTipo());
         } catch (IOException e) {
             e.printStackTrace();
         }

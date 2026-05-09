@@ -35,7 +35,18 @@ public class Personaje extends Entidad {
         }
     }
 
-    // Cambiamos el retorno de int a Monstruo
+    public void accion() {
+
+    }
+
+    public void usarPocion() {
+
+    }
+
+    public void comprarItem() {
+
+    }
+
     public Monstruo update(Set<KeyCode> keys, Mapa map) {
         double nextX = getX();
         double nextY = getY();
@@ -47,21 +58,17 @@ public class Personaje extends Entidad {
 
         int tileCentro = map.getTileAt(nextX + PLAYER_SIZE/2, nextY + PLAYER_SIZE /2);
 
-        // Lógica de movimiento
         if (tileCentro != 2) {
             setX(nextX);
             setY(nextY);
         }
 
-        // Buscamos la colisión
         for (Monstruo monstruo : map.getEnemigos()) {
-            // Usamos las coordenadas actuales (o las siguientes) para detectar el choque
             if (Math.abs(getX() - monstruo.getX()) < 32 && Math.abs(getY() - monstruo.getY()) < 32) {
-                return monstruo; // Devolvemos el objeto encontrado directamente
+                return monstruo;
             }
         }
-
-        return null; // Si no hay colisión, devolvemos null
+        return null;
     }
 
     public void render(GraphicsContext gc) {
@@ -73,20 +80,6 @@ public class Personaje extends Entidad {
             gc.fillRect(getX(), getY(), PLAYER_SIZE, PLAYER_SIZE);
         }
     }
-
-    public void usarPocion() {
-
-    }
-
-    public void comprarItem() {
-
-    }
-
-    public void iniciarCombate() {
-
-    }
-
-
 
     public String getNombre() {
         return super.getNombre();

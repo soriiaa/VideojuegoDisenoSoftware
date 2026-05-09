@@ -23,7 +23,6 @@ public class FightController {
     private Label enemyStrategy;
     @FXML
     private Label enemyReward;
-
     @FXML
     private Button atackBtn;
     @FXML
@@ -32,33 +31,23 @@ public class FightController {
     private ScrollPane scrollLog;
     @FXML
     private VBox vboxMensajes;
+
     GameFacade facade;
 
     public void initialize() {
         this.facade = GameFacade.getInstance();
         Personaje player = facade.getMundo().getPersonaje();
-
-        //setEnemyData(enemy);
-
         atackBtn.setOnMouseClicked(event -> handleAttack());
         protectBtn.setOnMouseClicked(event -> handleProtect());
     }
 
-    public void setEnemyData() {
-        /*
-        enemyName.setText(enemy.getNombre());
-        enemyHp.setText(enemy.getPuntosVida() + "/" + enemy.getPuntosVidaMax());
-        enemyRes.setText(String.valueOf(enemy.getResistencia()));
-        enemyDamage.setText(String.valueOf(enemy.getDano()));
-        enemyState.setText(enemy.getEstado().getNombre());
-        enemyStrategy.setText(enemy.getEstrategia().getNombre());
-        enemyReward.setText(enemy.getRecompensa() + " oro");
-
-         */
-    }
     @FXML
     private void handleAttack() {
-        // Lógica de cálculo de daño...
+
+
+
+
+
         addMsj("¡Has atacado al Ogro causando 100 de daño!", "ATAQUE");
     }
     @FXML

@@ -1,9 +1,10 @@
 package com.videogame.videojuegodissotfware.model.core;
 
+import com.videogame.videojuegodissotfware.model.core.combate.Combate;
+import com.videogame.videojuegodissotfware.model.entities.Entidad;
 import com.videogame.videojuegodissotfware.model.entities.Monstruo;
 import com.videogame.videojuegodissotfware.model.entities.Personaje;
 import com.videogame.videojuegodissotfware.model.entities.state.EstadoBasico;
-import com.videogame.videojuegodissotfware.model.factories.EnemigoFactory;
 import com.videogame.videojuegodissotfware.model.factories.EnemigoFactoryManager;
 import com.videogame.videojuegodissotfware.model.strategies.Equilibrada;
 import javafx.scene.image.Image;
@@ -68,8 +69,20 @@ public class Mundo {
         return new Mapa(tipoMapa);
     }
 
-    public void crearCombate() {
-        // Combate combate = new Combate();
+    public void gestionarCombate(Monstruo enemigo) {
+        Combate combate = new Combate(enemigo, this.personaje);
+        Entidad ganador = null;
+
+        do {
+            ganador = combate.ejecutarTurno();
+        } while (ganador != null);
+
+
+        listaCombates.add(combate);
+    }
+
+    public Combate getCombateActual() {
+        return listaCombates.get(listaCombates.size() - 1);
     }
 
     public void reiniciarMundo() {

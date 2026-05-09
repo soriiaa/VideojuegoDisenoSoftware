@@ -15,27 +15,24 @@ public class GameScene {
     private Canvas canvas;
     private GraphicsContext gc;
     private Mapa tileMap;
-    private Personaje player;
+    private Personaje personaje;
     private Set<KeyCode> inputKeys = new HashSet<>();
     private GameEventListener listener;
-    private AnimationTimer gameLoop; // para poder parar el renderizado de 60 veces por segundo
+    private AnimationTimer gameLoop;
     private boolean fightStarted = false;
 
-    public GameScene(Pane container, GameEventListener listener, Personaje player, Mapa mapaReal) {
-        // 1. Crear el canvas
+    public GameScene(Pane container, GameEventListener listener, Personaje personaje, Mapa mapaReal) {
         this.canvas = new Canvas();
         this.gc = canvas.getGraphicsContext2D();
         this.listener = listener;
-        this.player = player;
+        this.personaje = personaje;
 
-        // 2. Vincular el tamaño de forma bidireccional y forzar el renderizado nítido
         canvas.widthProperty().bind(container.widthProperty().subtract(40));
         canvas.heightProperty().bind(container.heightProperty().subtract(110));
 
         canvas.setLayoutX(20);
         canvas.setLayoutY(20);
 
-        // IMPORTANTE: Esto evita que el canvas "flote" y cause el desplazamiento infinito
         canvas.setManaged(false);
 
         this.tileMap = mapaReal;
@@ -59,13 +56,11 @@ public class GameScene {
 
     private void update() {
         if (!fightStarted) {
-            // Recibimos el objeto (o null)
-            Monstruo enemigoChocado = player.update(inputKeys, tileMap);
+            Monstruo enemigoChocado = personaje.update(inputKeys, tileMap);
 
             if (enemigoChocado != null) {
                 fightStarted = true;
                 gameLoop.stop();
-                // Ahora le pasas el monstruo real a la pelea
                 listener.onFightStarted(enemigoChocado);
             }
         }
@@ -74,7 +69,7 @@ public class GameScene {
     private void render() {
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         tileMap.render(gc);
-        player.render(gc);
+        personaje.render(gc);
     }
 
     public Canvas getCanvas() {

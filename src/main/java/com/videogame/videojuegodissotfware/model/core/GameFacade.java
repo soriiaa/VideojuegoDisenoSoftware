@@ -1,14 +1,17 @@
 package com.videogame.videojuegodissotfware.model.core;
 
+import com.videogame.videojuegodissotfware.model.core.combate.Combate;
 import com.videogame.videojuegodissotfware.model.core.state.EstadoPartida;
 import com.videogame.videojuegodissotfware.model.core.state.MenuState;
 import com.videogame.videojuegodissotfware.model.core.state.PauseState;
 import com.videogame.videojuegodissotfware.model.core.state.PlayState;
+import com.videogame.videojuegodissotfware.model.entities.Monstruo;
 import com.videogame.videojuegodissotfware.model.entities.Personaje;
 import com.videogame.videojuegodissotfware.model.factories.EnemigoFactory;
 import com.videogame.videojuegodissotfware.model.factories.EnemigoFactoryManager;
 import com.videogame.videojuegodissotfware.model.factories.desierto.DesiertoFactory;
 import com.videogame.videojuegodissotfware.model.factories.selva.SelvaFactory;
+import javafx.scene.input.KeyCode;
 
 public class GameFacade {
     private static GameFacade instance;
@@ -32,9 +35,13 @@ public class GameFacade {
         setEstado(new PlayState());
     }
 
-    public void iniciarCombate(int idEnemigo) {
-        // Aqui hay que llamar a mundo.crearCombate(idEnemigo);
+    public void iniciarCombate(Monstruo enemigo) {
+        mundo.gestionarCombate(enemigo);
 
+    }
+
+    public void procesarInput(KeyCode tecla) {
+        this.estadoPartida.manejarInput(tecla, this);
     }
 
     public void pausarPartida() {
@@ -51,6 +58,10 @@ public class GameFacade {
         }
         // setteamos el tipo de factory para que en el mundo el manager sepa cual usar para crear los monstruos
         EnemigoFactoryManager.getInstance().setEnemigoFactory(factoryConcreta);
+    }
+
+    public Combate getCombateActual() {
+        return mundo.getCombateActual();
     }
 
     public String getTipoMapa() {
