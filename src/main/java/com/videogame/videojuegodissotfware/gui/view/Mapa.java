@@ -28,7 +28,7 @@ public class Mapa {
 
         // Estos son todos los IDs que existen en tu imagen
         int[] nuevosTiles = {
-                0,6,7,9,15,16,17,18,36
+                0,1,2,3,4,6,7,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,33,34,35
         };
 
         // Bucle que carga todos los tiles de golpe
