@@ -31,7 +31,7 @@
                </HBox.margin>
                     </VBox>
                     <VBox alignment="CENTER" fillWidth="false" prefHeight="200.0" prefWidth="50.0">
-                          <Button alignment="TOP_LEFT" focusTraversable="false" styleClass="itemsButton">
+                          <Button fx:id="potionBtn" alignment="TOP_LEFT" focusTraversable="false" styleClass="itemsButton">
                               <graphic>
                                   <ImageView fitHeight="28.0" fitWidth="28.0">
                                       <Image url="@../images/pocion.png" />

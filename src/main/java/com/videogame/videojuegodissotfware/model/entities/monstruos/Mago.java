@@ -1,5 +1,6 @@
 package com.videogame.videojuegodissotfware.model.entities.monstruos;
 
+import com.videogame.videojuegodissotfware.model.entities.Entidad;
 import com.videogame.videojuegodissotfware.model.entities.Monstruo;
 import com.videogame.videojuegodissotfware.model.entities.state.EstadoBasico;
 import com.videogame.videojuegodissotfware.model.entities.state.EstadoEntidad;
@@ -18,8 +19,19 @@ public class Mago extends Monstruo {
         super(nombre, puntosVida, estado, dano, resistencia, sprite, x, y, estrategiaCombate, botin, type);
     }
 
+
     @Override
-    protected void accion() {
+    public int atacar(Entidad enemigo) {
+        return 0;
+    }
+
+    @Override
+    public void proteger() {
+
+    }
+
+    @Override
+    public void usarPocion() {
 
     }
 }

@@ -100,11 +100,12 @@ public abstract class Entidad {
         this.estrategiaCombate = estrategiaCombate;
     }
 
-    public void atacar() {
-
-    }
-
-    public void fortalecer() {
-
-    }
+    /**
+     *
+     * @param enemigo
+     * @return El daño que se le ha inflingido al enemigo.
+     */
+    public abstract int atacar(Entidad enemigo);
+    public abstract void proteger();
+    public abstract void usarPocion();
 }

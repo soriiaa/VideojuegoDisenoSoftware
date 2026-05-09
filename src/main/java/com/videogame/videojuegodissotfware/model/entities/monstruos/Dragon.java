@@ -1,5 +1,6 @@
 package com.videogame.videojuegodissotfware.model.entities.monstruos;
 
+import com.videogame.videojuegodissotfware.model.entities.Entidad;
 import com.videogame.videojuegodissotfware.model.entities.Monstruo;
 import com.videogame.videojuegodissotfware.model.entities.state.EstadoEntidad;
 import com.videogame.videojuegodissotfware.model.strategies.EstrategiaCombate;
@@ -12,8 +13,19 @@ public class Dragon extends Monstruo {
         super(nombre, puntosVida, estadoDragon, dano, resistencia, sprite, x, y, estrategiaCombate, botin, type);
     }
 
+
     @Override
-    protected void accion() {
+    public int atacar(Entidad enemigo) {
+        return 0;
+    }
+
+    @Override
+    public void proteger() {
+
+    }
+
+    @Override
+    public void usarPocion() {
 
     }
 }

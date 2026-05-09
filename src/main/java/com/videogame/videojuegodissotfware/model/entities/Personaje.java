@@ -35,8 +35,13 @@ public class Personaje extends Entidad {
         }
     }
 
-    public void atacar (Monstruo enemigo) {
+    public int atacar (Entidad enemigo) {
         enemigo.setPuntosVida(enemigo.getPuntosVida() - this.getDano());
+        return this.getDano();
+    }
+
+    public void proteger() {
+
     }
 
     public void usarPocion() {

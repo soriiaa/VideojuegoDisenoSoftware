@@ -22,7 +22,7 @@ public abstract class Monstruo extends Entidad {
     public void realizarTurno() {
         comprobarEstado();
         comprobarEstrategia();
-        accion();
+        //accion();
     }
 
     private void comprobarEstado() {
@@ -32,8 +32,6 @@ public abstract class Monstruo extends Entidad {
     private void comprobarEstrategia() {
 
     }
-
-    protected abstract void accion();
 
     public void render(GraphicsContext gc) {
         Image sprite = getSprite();

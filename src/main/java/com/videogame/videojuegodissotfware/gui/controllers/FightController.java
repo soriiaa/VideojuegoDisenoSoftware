@@ -1,5 +1,6 @@
 package com.videogame.videojuegodissotfware.gui.controllers;
 
+import com.videogame.videojuegodissotfware.model.actions.Accion;
 import com.videogame.videojuegodissotfware.model.core.GameFacade;
 import com.videogame.videojuegodissotfware.model.core.combate.Combate;
 import com.videogame.videojuegodissotfware.model.entities.Monstruo;
@@ -9,6 +10,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
+
+import static com.videogame.videojuegodissotfware.model.actions.Accion.*;
 
 public class FightController {
     @FXML
@@ -30,6 +33,8 @@ public class FightController {
     @FXML
     private Button protectBtn;
     @FXML
+    private Button potionBtn;
+    @FXML
     private ScrollPane scrollLog;
     @FXML
     private VBox vboxMensajes;
@@ -42,6 +47,7 @@ public class FightController {
         rellenarEtiquetasEnemigo(combate.getEnemigo());
         atackBtn.setOnMouseClicked(event -> handleAttack());
         protectBtn.setOnMouseClicked(event -> handleProtect());
+        potionBtn.setOnMouseClicked(event -> handlePotion());
     }
 
     public void rellenarEtiquetasEnemigo(Monstruo enemigo) {
@@ -56,14 +62,24 @@ public class FightController {
 
     @FXML
     private void handleAttack() {
-        facade.ejecutarTurno();
-        addMsj("¡Has atacado al Ogro causando 100 de daño!", "ATAQUE");
+        Accion accion = ATACAR;
+        int danoInflingido = facade.ejecutarTurno(accion);
+        addMsj("¡Has atacado al " + facade.getCombateActual().getEnemigo().getNombre() +" causando " + danoInflingido + " de daño!", "ATAQUE");
     }
     @FXML
     private void handleProtect() {
-        // Lógica de cálculo de daño...
+        Accion accion = PROTEGER;
+        facade.ejecutarTurno(accion);
         addMsj("¡El guerrero se ha protegido (+ 20 de HP)!", "PROTEGER");
     }
+
+    @FXML
+    private void handlePotion() {
+        Accion accion = USAR_POCION;
+        facade.ejecutarTurno(accion);
+        addMsj("¡El guerrero se ha echado una poción (+ 20 de HP)!", "PROTEGER");
+    }
+
     public void addMsj(String texto, String tipo) {
         // 1. Crear el Label con el texto
         Label nuevoMensaje = new Label(texto);

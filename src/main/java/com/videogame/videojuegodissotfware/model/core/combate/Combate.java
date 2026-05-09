@@ -1,5 +1,6 @@
 package com.videogame.videojuegodissotfware.model.core.combate;
 
+import com.videogame.videojuegodissotfware.model.actions.Accion;
 import com.videogame.videojuegodissotfware.model.entities.Entidad;
 import com.videogame.videojuegodissotfware.model.entities.Monstruo;
 import com.videogame.videojuegodissotfware.model.entities.Personaje;
@@ -18,14 +19,25 @@ public class Combate {
         this.estadoActual = FaseCombate.TURNO_JUGADOR;
     }
 
-    public void ejecutarTurno() {
+    public int ejecutarTurno(Accion accion) {
         if (estadoActual == FaseCombate.TURNO_JUGADOR) {
-            personaje.atacar();
+            estadoActual = FaseCombate.TURNO_ENEMIGO;
+            switch (accion) {
+                case ATACAR:
+                    return personaje.atacar(enemigo);
+                case PROTEGER:
+                    personaje.proteger();
+                    break;
+                case USAR_POCION:
+                    personaje.usarPocion();
+                    break;
+            }
         } else if (estadoActual == FaseCombate.TURNO_ENEMIGO) {
             enemigo.realizarTurno();
             estadoActual = FaseCombate.TURNO_JUGADOR;
             comprobarResultado();
         }
+        return 0;
     }
 
     public void finalizarCombate() {

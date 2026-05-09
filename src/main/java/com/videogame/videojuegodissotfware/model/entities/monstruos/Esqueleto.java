@@ -1,5 +1,6 @@
 package com.videogame.videojuegodissotfware.model.entities.monstruos;
 
+import com.videogame.videojuegodissotfware.model.entities.Entidad;
 import com.videogame.videojuegodissotfware.model.entities.Monstruo;
 import com.videogame.videojuegodissotfware.model.entities.state.EstadoEntidad;
 import com.videogame.videojuegodissotfware.model.strategies.Agresiva;
@@ -15,7 +16,17 @@ public class Esqueleto extends Monstruo {
     }
 
     @Override
-    protected void accion() {
+    public int atacar(Entidad enemigo) {
+        return 0;
+    }
+
+    @Override
+    public void proteger() {
+
+    }
+
+    @Override
+    public void usarPocion() {
 
     }
 }
