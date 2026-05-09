@@ -14,14 +14,6 @@ public class Combate {
         this.personaje = personaje;
     }
 
-    public void setMonstruo(Monstruo monstruo) {
-        this.monstruo = monstruo;
-    }
-
-    public void setPersonaje(Personaje personaje) {
-        this.personaje = personaje;
-    }
-
     public void finalizarCombate() {
 
     }
@@ -32,5 +24,13 @@ public class Combate {
 
     private void setGanador(Entidad entidadGanadora) {
         this.ganador = entidadGanadora;
+    }
+
+    public void setMonstruo(Monstruo monstruo) {
+        this.monstruo = monstruo;
+    }
+
+    public void setPersonaje(Personaje personaje) {
+        this.personaje = personaje;
     }
 }

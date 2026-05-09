@@ -35,39 +35,33 @@ public class Personaje extends Entidad {
         }
     }
 
-    public int update(Set<KeyCode> keys, Mapa map) {
+    // Cambiamos el retorno de int a Monstruo
+    public Monstruo update(Set<KeyCode> keys, Mapa map) {
         double nextX = getX();
         double nextY = getY();
 
-        if (keys.contains(KeyCode.W)) {
-            nextY -= speed;
-        }
-        if (keys.contains(KeyCode.S)) {
-            nextY += speed;
-        }
-        if (keys.contains(KeyCode.A)) {
-            nextX -= speed;
-        }
-        if (keys.contains(KeyCode.D)) {
-            nextX += speed;
-        }
+        if (keys.contains(KeyCode.W)) nextY -= speed;
+        if (keys.contains(KeyCode.S)) nextY += speed;
+        if (keys.contains(KeyCode.A)) nextX -= speed;
+        if (keys.contains(KeyCode.D)) nextX += speed;
 
         int tileCentro = map.getTileAt(nextX + PLAYER_SIZE/2, nextY + PLAYER_SIZE /2);
 
-        // Si el tile NO es un obstáculo, movemos
+        // Lógica de movimiento
         if (tileCentro != 2) {
             setX(nextX);
             setY(nextY);
         }
 
-        int idEnemyCollision = -1;
+        // Buscamos la colisión
         for (Monstruo monstruo : map.getEnemigos()) {
-            // Comprobamos si el jugador toca al enemigo usando un rectángulo de colisión
-            if (Math.abs(nextX - monstruo.getX()) < 32 && Math.abs(nextY - monstruo.getY()) < 32) {
-                idEnemyCollision = monstruo.getTipo();
+            // Usamos las coordenadas actuales (o las siguientes) para detectar el choque
+            if (Math.abs(getX() - monstruo.getX()) < 32 && Math.abs(getY() - monstruo.getY()) < 32) {
+                return monstruo; // Devolvemos el objeto encontrado directamente
             }
         }
-        return idEnemyCollision;
+
+        return null; // Si no hay colisión, devolvemos null
     }
 
     public void render(GraphicsContext gc) {

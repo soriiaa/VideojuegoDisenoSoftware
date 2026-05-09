@@ -4,6 +4,7 @@ import com.videogame.videojuegodissotfware.gui.view.GameEventListener;
 import com.videogame.videojuegodissotfware.gui.view.GameScene;
 import com.videogame.videojuegodissotfware.model.core.GameFacade;
 import com.videogame.videojuegodissotfware.model.core.Mapa;
+import com.videogame.videojuegodissotfware.model.entities.Monstruo;
 import com.videogame.videojuegodissotfware.model.entities.Personaje;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -42,7 +43,6 @@ public class GameController implements GameEventListener {
         this.facade = GameFacade.getInstance();
 
         Personaje player = facade.getPersonaje();
-        String tipoMapa = facade.getTipoMapa();
         Mapa mapaReal = facade.getMundo().getMapa();
         GameScene game = new GameScene(centralContent, this, player, mapaReal);
         setPlayerData(player);
@@ -66,13 +66,13 @@ public class GameController implements GameEventListener {
     }
 
     @Override
-    public void onFightStarted(int enemyId) {
+    public void onFightStarted(Monstruo monstruo) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/videogame/videojuegodissotfware/fxml/fight-view.fxml"));
             Parent combatView = loader.load();
             centralContent.getChildren().clear();
             centralContent.getChildren().add(combatView);
-            System.out.println("Creado el combate con enemigo de tipo: " + enemyId);
+            System.out.println("Creado el combate con enemigo de tipo: " + monstruo.getTipo());
         } catch (IOException e) {
             e.printStackTrace();
         }

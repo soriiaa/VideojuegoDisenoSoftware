@@ -1,6 +1,7 @@
 package com.videogame.videojuegodissotfware.gui.view;
 
 import com.videogame.videojuegodissotfware.model.core.Mapa;
+import com.videogame.videojuegodissotfware.model.entities.Monstruo;
 import com.videogame.videojuegodissotfware.model.entities.Personaje;
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.Canvas;
@@ -57,14 +58,15 @@ public class GameScene {
     }
 
     private void update() {
-        // solo si no hay combate todavia manda el update
         if (!fightStarted) {
-            int idEnemyCollision = player.update(inputKeys, tileMap);
+            // Recibimos el objeto (o null)
+            Monstruo enemigoChocado = player.update(inputKeys, tileMap);
 
-            if (idEnemyCollision != -1) {
+            if (enemigoChocado != null) {
                 fightStarted = true;
                 gameLoop.stop();
-                listener.onFightStarted(idEnemyCollision);
+                // Ahora le pasas el monstruo real a la pelea
+                listener.onFightStarted(enemigoChocado);
             }
         }
     }

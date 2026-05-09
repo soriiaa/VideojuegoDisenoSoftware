@@ -11,6 +11,8 @@ public abstract class Monstruo extends Entidad {
     private int tipo; // 1 (mago), 2 (orco), 3 (esqueleto)
     private final int ENEMY_SIZE = 96;
 
+
+
     public Monstruo(String nombre, int puntosVida, EstadoEntidad estado, int dano,
                     int resistencia, Image sprite, double x, double y,
                     EstrategiaCombate estrategiaCombate, int botin, int tipo) {
