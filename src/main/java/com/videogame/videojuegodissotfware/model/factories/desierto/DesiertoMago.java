@@ -19,5 +19,6 @@ public class DesiertoMago extends Mago {
                 50,
                 1
         );
+        System.out.println("DEBUG: Mago del Desierto creado en (" + x + ", " + y + ")");
     }
 }

@@ -19,5 +19,6 @@ public class DesiertoEsqueleto extends Esqueleto {
                 100,
                 3
         );
+        System.out.println("DEBUG: Esqueleto del Desierto creado en (" + x + ", " + y + ")");
     }
 }

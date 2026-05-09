@@ -56,11 +56,10 @@ public class Mundo {
         double[] pos3 = mapa.getPosicionValidaAleatoria();
         System.out.println("DEBUG: Generando en " + pos3[0] + "," + pos3[1]);
 
-        if (enemigoFactoryManager != null) {
-            monstruos.add(enemigoFactoryManager.crearOrco(pos1[0], pos1[1]));
-            monstruos.add(enemigoFactoryManager.crearMago(pos2[0], pos2[1]));
-            monstruos.add(enemigoFactoryManager.crearEsqueleto(pos3[0], pos3[1]));
-        }
+        monstruos.add(enemigoFactoryManager.crearOrco(pos1[0], pos1[1]));
+        monstruos.add(enemigoFactoryManager.crearMago(pos2[0], pos2[1]));
+        monstruos.add(enemigoFactoryManager.crearEsqueleto(pos3[0], pos3[1]));
+
         System.out.println("DEBUG: Lista final tiene " + monstruos.size() + " monstruos");
         return monstruos;
     }
