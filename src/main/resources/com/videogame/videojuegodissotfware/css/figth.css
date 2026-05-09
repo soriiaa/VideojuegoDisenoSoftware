@@ -1,5 +1,11 @@
-.backgroundFight {
-    -fx-background-image: url("../images/fightBackground.png");
+.backgroundFightDesierto {
+    -fx-background-image: url("../images/fightBackgroundDesierto.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+}
+
+.backgroundFightPradera {
+    -fx-background-image: url("../images/fightBackgroundPradera.png");
     -fx-background-repeat: no-repeat;
     -fx-background-size: cover;
 }

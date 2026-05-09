@@ -41,6 +41,8 @@ public class FightController {
     private ScrollPane scrollLog;
     @FXML
     private VBox vboxMensajes;
+    @FXML
+    private VBox rootPane;
 
     GameFacade facade;
 
@@ -51,6 +53,14 @@ public class FightController {
         atackBtn.setOnMouseClicked(event -> handleAttack());
         protectBtn.setOnMouseClicked(event -> handleProtect());
         potionBtn.setOnMouseClicked(event -> handlePotion());
+
+        String tipoMapa = facade.getMundo().getMapa().getTipoMapa();
+
+        if (tipoMapa.equalsIgnoreCase("Desierto")) {
+            rootPane.getStyleClass().add("backgroundFightDesierto");
+        } else {
+            rootPane.getStyleClass().add("backgroundFightPradera");
+        }
     }
 
     public void rellenarEtiquetasEnemigo(Monstruo enemigo) {

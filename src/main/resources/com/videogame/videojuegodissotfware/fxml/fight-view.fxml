@@ -6,7 +6,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox styleClass="backgroundFight" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.videogame.videojuegodissotfware.gui.controllers.FightController">
+<VBox fx:id="rootPane" styleClass="backgroundFight" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.videogame.videojuegodissotfware.gui.controllers.FightController">
 
     <stylesheets>
         <URL value="@../css/figth.css" />
@@ -16,9 +16,9 @@
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                 <VBox alignment="TOP_CENTER">
                     <ImageView fx:id="enemyImage" fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" styleClass="imgCombate"></ImageView>
-            <padding>
-               <Insets bottom="20.0" />
-            </padding>
+                    <padding>
+                        <Insets bottom="20.0" />
+                    </padding>
                 </VBox>
                 <HBox alignment="TOP_CENTER" spacing="20.0" styleClass="zonaBtn">
                     <VBox alignment="CENTER" spacing="10.0" HBox.hgrow="ALWAYS">

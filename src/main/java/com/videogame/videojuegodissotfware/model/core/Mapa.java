@@ -158,6 +158,35 @@ public class Mapa {
     public String getTipoMapa() {
         return this.tipoMapa;
     }
+
+    public boolean esColision(double x, double y) {
+        //Colisiones con los bordes
+        if (x < 0 || y < 0 || x >= getAnchoMapa() || y >= getAltoMapa()) {
+            return true;
+        }
+
+        int tileId = getTileAt(x, y);
+
+        // Colisiones desierto
+        if (tipoMapa.equalsIgnoreCase("Desierto")) {
+            int[] murosCastillo = {
+                    45,48,126, 127, 128, 129,
+                    140, 141, 142, 143,
+                    154, 155, 156, 157,
+                    168, 169, 170, 171,
+                    182, 183, 184, 185
+            };
+
+            for (int id : murosCastillo) {
+                if (tileId == id) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
     public int getTileSize() { return TILE_SIZE; }
     public List<Monstruo> getEnemigos() { return enemigos; }
     public int getAnchoMapa() { return matrizMapa[0].length * TILE_SIZE; }
