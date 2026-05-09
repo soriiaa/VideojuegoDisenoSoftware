@@ -15,19 +15,17 @@ public class Combate {
     public Combate (Monstruo enemigo, Personaje personaje) {
         this.enemigo = enemigo;
         this.personaje = personaje;
-        this.estadoActual = determinarTurnoInicial();
+        this.estadoActual = FaseCombate.TURNO_JUGADOR;
     }
 
-    public Entidad ejecutarTurno() {
+    public void ejecutarTurno() {
         if (estadoActual == FaseCombate.TURNO_JUGADOR) {
-
+            personaje.atacar();
         } else if (estadoActual == FaseCombate.TURNO_ENEMIGO) {
             enemigo.realizarTurno();
             estadoActual = FaseCombate.TURNO_JUGADOR;
             comprobarResultado();
-            return ganador;
         }
-        return null;
     }
 
     public void finalizarCombate() {
@@ -42,9 +40,8 @@ public class Combate {
         }
     }
 
-    private FaseCombate determinarTurnoInicial() {
-        Random rand = new Random();
-        return rand.nextBoolean() ? FaseCombate.TURNO_JUGADOR : FaseCombate.TURNO_ENEMIGO;
+    public Monstruo getEnemigo() {
+        return this.enemigo;
     }
 
     public void setEnemigo(Monstruo enemigo) {

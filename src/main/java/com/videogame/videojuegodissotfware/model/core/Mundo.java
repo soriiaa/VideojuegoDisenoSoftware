@@ -71,13 +71,6 @@ public class Mundo {
 
     public void gestionarCombate(Monstruo enemigo) {
         Combate combate = new Combate(enemigo, this.personaje);
-        Entidad ganador = null;
-
-        do {
-            ganador = combate.ejecutarTurno();
-        } while (ganador != null);
-
-
         listaCombates.add(combate);
     }
 

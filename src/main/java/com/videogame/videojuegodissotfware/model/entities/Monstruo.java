@@ -47,6 +47,10 @@ public abstract class Monstruo extends Entidad {
     }
 
     public int getTipo() {
-        return tipo;
+        return this.tipo;
+    }
+
+    public int getBotin() {
+        return this.botin;
     }
 }

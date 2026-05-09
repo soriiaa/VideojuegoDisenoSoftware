@@ -1,6 +1,8 @@
 package com.videogame.videojuegodissotfware.gui.controllers;
 
 import com.videogame.videojuegodissotfware.model.core.GameFacade;
+import com.videogame.videojuegodissotfware.model.core.combate.Combate;
+import com.videogame.videojuegodissotfware.model.entities.Monstruo;
 import com.videogame.videojuegodissotfware.model.entities.Personaje;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -36,18 +38,25 @@ public class FightController {
 
     public void initialize() {
         this.facade = GameFacade.getInstance();
-        Personaje player = facade.getMundo().getPersonaje();
+        Combate combate = facade.getMundo().getCombateActual();
+        rellenarEtiquetasEnemigo(combate.getEnemigo());
         atackBtn.setOnMouseClicked(event -> handleAttack());
         protectBtn.setOnMouseClicked(event -> handleProtect());
     }
 
+    public void rellenarEtiquetasEnemigo(Monstruo enemigo) {
+        this.enemyName.setText(enemigo.getNombre());
+        this.enemyHp.setText(String.valueOf(enemigo.getPuntosVida()));
+        this.enemyRes.setText(String.valueOf(enemigo.getResistencia()));
+        this.enemyDamage.setText(String.valueOf(enemigo.getDano()));
+        this.enemyState.setText(enemigo.getEstado().toString());
+        this.enemyStrategy.setText(enemigo.getEstrategiaCombate().toString());
+        this.enemyReward.setText(String.valueOf(enemigo.getBotin()));
+    }
+
     @FXML
     private void handleAttack() {
-
-
-
-
-
+        facade.ejecutarTurno();
         addMsj("¡Has atacado al Ogro causando 100 de daño!", "ATAQUE");
     }
     @FXML

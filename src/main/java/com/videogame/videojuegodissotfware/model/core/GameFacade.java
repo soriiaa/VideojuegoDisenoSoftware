@@ -1,5 +1,6 @@
 package com.videogame.videojuegodissotfware.model.core;
 
+import com.videogame.videojuegodissotfware.model.actions.Accion;
 import com.videogame.videojuegodissotfware.model.core.combate.Combate;
 import com.videogame.videojuegodissotfware.model.core.state.EstadoPartida;
 import com.videogame.videojuegodissotfware.model.core.state.MenuState;
@@ -37,7 +38,10 @@ public class GameFacade {
 
     public void iniciarCombate(Monstruo enemigo) {
         mundo.gestionarCombate(enemigo);
+    }
 
+    public void ejecutarTurno(Accion accion) {
+        mundo.getCombateActual().ejecutarTurno();
     }
 
     public void procesarInput(KeyCode tecla) {
