@@ -54,14 +54,14 @@ public class FightController {
     }
 
     public void rellenarEtiquetasEnemigo(Monstruo enemigo) {
-        this.enemyName.setText(enemigo.getNombre());
-        this.enemyHp.setText(String.valueOf(enemigo.getPuntosVida()));
-        this.enemyRes.setText(String.valueOf(enemigo.getResistencia()));
-        this.enemyDamage.setText(String.valueOf(enemigo.getDano()));
-        this.enemyState.setText(enemigo.getEstado().toString());
-        this.enemyStrategy.setText(enemigo.getEstrategiaCombate().toString());
-        this.enemyReward.setText(String.valueOf(enemigo.getBotin()));
-        this.enemyImage.setImage(enemigo.getSprite());
+        enemyName.setText(enemigo.getNombre());
+        enemyHp.setText(String.valueOf(enemigo.getPuntosVida()));
+        enemyRes.setText(String.valueOf(enemigo.getResistencia()));
+        enemyDamage.setText(String.valueOf(enemigo.getDano()));
+        enemyState.setText(enemigo.getEstado().getNombre());
+        enemyStrategy.setText(enemigo.getEstrategiaCombate().getEstrategia());
+        enemyReward.setText(String.valueOf(enemigo.getBotin()));
+        enemyImage.setImage(enemigo.getSprite());
     }
 
     @FXML
