@@ -1,11 +1,23 @@
 package com.videogame.videojuegodissotfware.model.factories.selva;
 
-import com.videogame.videojuegodissotfware.model.entities.Monstruo;
 import com.videogame.videojuegodissotfware.model.entities.monstruos.Esqueleto;
-import com.videogame.videojuegodissotfware.model.factories.EnemigoFactory;
+import com.videogame.videojuegodissotfware.model.entities.state.EstadoBasico;
+import com.videogame.videojuegodissotfware.model.strategies.Equilibrada;
+import javafx.scene.image.Image;
 
 public class SelvaEsqueleto extends Esqueleto {
-    public SelvaEsqueleto(){
-        super();
+    public SelvaEsqueleto(double x, double y){
+        super("Esqueleto de la Selva",
+                100,
+                new EstadoBasico(),
+                30,
+                20,
+                new Image(SelvaEsqueleto.class.getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/esqueleto.png")),
+                x,
+                y,
+                new Equilibrada(),
+                100,
+                3
+        );
     }
 }

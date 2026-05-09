@@ -24,7 +24,7 @@ public class LaunchController {
 
     GameFacade facade;
     ToggleGroup typeMap;
-    private String typeMapSelected;
+
     public void initialize() {
         facade = GameFacade.getInstance(); // creado con MenuState
 
@@ -59,7 +59,7 @@ public class LaunchController {
             try {
                 String nombreGuerrero = name.getText();
                 RadioButton seleccionado = (RadioButton) typeMap.getSelectedToggle();
-                typeMapSelected = seleccionado.getText();
+                String typeMapSelected = seleccionado.getText();
 
                 facade.inicializarNuevaPartida(nombreGuerrero, typeMapSelected); // al iniciar se pasa a PlayState
 

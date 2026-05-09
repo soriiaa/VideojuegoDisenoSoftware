@@ -64,7 +64,7 @@ public class Personaje extends Entidad {
         for (Monstruo monstruo : map.getEnemigos()) {
             // Comprobamos si el jugador toca al enemigo usando un rectángulo de colisión
             if (Math.abs(nextX - monstruo.getX()) < 32 && Math.abs(nextY - monstruo.getY()) < 32) {
-                idEnemyCollision = monstruo.getType();
+                idEnemyCollision = monstruo.getTipo();
             }
         }
         return idEnemyCollision;

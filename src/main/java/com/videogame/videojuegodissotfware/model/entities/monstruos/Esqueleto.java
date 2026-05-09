@@ -1,10 +1,21 @@
 package com.videogame.videojuegodissotfware.model.entities.monstruos;
 
 import com.videogame.videojuegodissotfware.model.entities.Monstruo;
+import com.videogame.videojuegodissotfware.model.entities.state.EstadoEntidad;
 import com.videogame.videojuegodissotfware.model.strategies.Agresiva;
+import com.videogame.videojuegodissotfware.model.strategies.EstrategiaCombate;
+import javafx.scene.image.Image;
 
 public class Esqueleto extends Monstruo {
-    public Esqueleto() {
-        super("Esqueleto", 150, 20, 5, new Agresiva());
+    public Esqueleto(String nombre, int puntosVida, EstadoEntidad estado, int dano,
+                int resistencia, Image sprite, double x, double y,
+                EstrategiaCombate estrategiaCombate, int botin, int type) {
+
+        super(nombre, puntosVida, estado, dano, resistencia, sprite, x, y, estrategiaCombate, botin, type);
+    }
+
+    @Override
+    protected void accion() {
+
     }
 }

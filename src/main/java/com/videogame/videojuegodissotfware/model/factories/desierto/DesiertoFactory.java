@@ -5,17 +5,17 @@ import com.videogame.videojuegodissotfware.model.factories.EnemigoFactory;
 
 public class DesiertoFactory  implements EnemigoFactory {
     @Override
-    public Monstruo crearOrco() {
-        return null;
+    public Monstruo crearOrco(double x, double y) {
+        return new DesiertoOrco(x, y);
     }
 
     @Override
-    public Monstruo crearEsqueleto() {
-        return null;
+    public Monstruo crearEsqueleto(double x, double y) {
+        return new DesiertoEsqueleto(x, y);
     }
 
     @Override
-    public Monstruo crearMago() {
-        return null;
+    public Monstruo crearMago(double x, double y) {
+        return new DesiertoMago(x, y);
     }
 }

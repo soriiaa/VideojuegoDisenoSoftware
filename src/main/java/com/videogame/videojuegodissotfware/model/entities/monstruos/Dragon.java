@@ -7,8 +7,13 @@ import javafx.scene.image.Image;
 
 public class Dragon extends Monstruo {
     public Dragon (String nombre, int puntosVida, EstadoEntidad estadoDragon, int dano, int resistencia,
-                   Image sprite, double x, double y, String categoria, EstrategiaCombate estrategiaCombate,
+                   Image sprite, double x, double y, EstrategiaCombate estrategiaCombate,
                    int botin, int type) {
-        super(nombre, puntosVida, estadoDragon, dano, resistencia, sprite, x, y, categoria, estrategiaCombate, botin, type);
+        super(nombre, puntosVida, estadoDragon, dano, resistencia, sprite, x, y, estrategiaCombate, botin, type);
+    }
+
+    @Override
+    protected void accion() {
+
     }
 }

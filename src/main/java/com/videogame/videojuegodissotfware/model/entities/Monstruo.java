@@ -6,18 +6,16 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 public abstract class Monstruo extends Entidad {
-    private String categoria;
     private int botin;
-    private int type;
+    private int tipo; // 1 (mago), 2 (orco), 3 (esqueleto)
     private final int ENEMY_SIZE = 80;
 
     public Monstruo(String nombre, int puntosVida, EstadoEntidad estado, int dano,
-                    int resistencia, Image sprite, double x, double y, String categoria,
-                    EstrategiaCombate estrategiaCombate, int botin, int type) {
+                    int resistencia, Image sprite, double x, double y,
+                    EstrategiaCombate estrategiaCombate, int botin, int tipo) {
         super(nombre, puntosVida, estado, dano, resistencia, sprite, x, y, estrategiaCombate);
-        this.categoria = categoria;
         this.botin = botin;
-        this.type = type;
+        this.tipo = tipo;
     }
 
     public void realizarTurno() {
@@ -34,8 +32,7 @@ public abstract class Monstruo extends Entidad {
 
     }
 
-    abstract void accion();
-
+    protected abstract void accion();
 
     public void render(GraphicsContext gc) {
         // Los dibujamos centrados respecto al tile de 32x32 o simplemente desde la esquina
@@ -43,7 +40,7 @@ public abstract class Monstruo extends Entidad {
         gc.drawImage(getSprite(), getX() - 16, getY() - 32, ENEMY_SIZE, ENEMY_SIZE);
     }
 
-    public int getType() {
-        return type;
+    public int getTipo() {
+        return tipo;
     }
 }

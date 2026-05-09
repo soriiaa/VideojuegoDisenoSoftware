@@ -8,7 +8,6 @@ public abstract class Entidad {
 
     private EstadoEntidad estado;
     private EstrategiaCombate estrategiaCombate;
-
     private String nombre;
     private int puntosVida;
     private int dano;
