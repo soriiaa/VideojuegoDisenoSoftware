@@ -3,6 +3,7 @@ package com.videogame.videojuegodissotfware.gui.controllers;
 import com.videogame.videojuegodissotfware.gui.view.GameEventListener;
 import com.videogame.videojuegodissotfware.gui.view.GameScene;
 import com.videogame.videojuegodissotfware.model.core.GameFacade;
+import com.videogame.videojuegodissotfware.model.core.Mapa;
 import com.videogame.videojuegodissotfware.model.entities.Personaje;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -42,7 +43,8 @@ public class GameController implements GameEventListener {
 
         Personaje player = facade.getPersonaje();
         String tipoMapa = facade.getTipoMapa();
-        GameScene game = new GameScene(centralContent, this, player, tipoMapa);
+        Mapa mapaReal = facade.getMundo().getMapa();
+        GameScene game = new GameScene(centralContent, this, player, mapaReal);
         setPlayerData(player);
 
         centralContent.getChildren().add(game.getCanvas());

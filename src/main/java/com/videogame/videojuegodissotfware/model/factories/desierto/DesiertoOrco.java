@@ -12,12 +12,13 @@ public class DesiertoOrco extends Orco {
                 new EstadoBasico(),
                 10,
                 40,
-                new Image(DesiertoOrco.class.getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/orco.png")),
+                new Image(DesiertoOrco.class.getResourceAsStream("/com/videogame/videojuegodissotfware/images/orco.png")),
                 x,
                 y,
                 new Equilibrada(),
                 150,
                 2
         );
+        System.out.println("DEBUG: Orco del Desierto creado en (" + x + ", " + y + ")");
     }
 }

@@ -20,7 +20,7 @@ public class GameScene {
     private AnimationTimer gameLoop; // para poder parar el renderizado de 60 veces por segundo
     private boolean fightStarted = false;
 
-    public GameScene(Pane container, GameEventListener listener, Personaje player, String tipoMapa) {
+    public GameScene(Pane container, GameEventListener listener, Personaje player, Mapa mapaReal) {
         // 1. Crear el canvas
         this.canvas = new Canvas();
         this.gc = canvas.getGraphicsContext2D();
@@ -37,7 +37,7 @@ public class GameScene {
         // IMPORTANTE: Esto evita que el canvas "flote" y cause el desplazamiento infinito
         canvas.setManaged(false);
 
-        this.tileMap = new Mapa(tipoMapa); // PROVISIONAL
+        this.tileMap = mapaReal;
 
         canvas.setFocusTraversable(true);
         canvas.setOnKeyPressed(e -> inputKeys.add(e.getCode()));

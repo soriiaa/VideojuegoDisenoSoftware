@@ -28,6 +28,8 @@ public class Mundo {
         this.personaje = generarPersonaje(nombrePersonaje);
         this.mapa = generarMapa(tipoMapa);
         this.listaMonstruos = generarMonstruos();
+
+        this.mapa.setEnemigos(this.listaMonstruos);
     }
 
     private Personaje generarPersonaje(String nombrePersonaje) {
@@ -39,15 +41,26 @@ public class Mundo {
     private ArrayList<Monstruo> generarMonstruos() {
         ArrayList<Monstruo> monstruos = new ArrayList<>();
         EnemigoFactoryManager enemigoFactoryManager = EnemigoFactoryManager.getInstance();
+        System.out.println("DEBUG: Iniciando generación de monstruos...");
+
+        if (enemigoFactoryManager.getEnemigoFactory() == null) {
+            System.out.println("DEBUG: ¡ERROR! La Factory es NULL en el Manager");
+            return monstruos;
+        }
+
         double[] pos1 = mapa.getPosicionValidaAleatoria();
+        System.out.println("DEBUG: Generando en " + pos1[0] + "," + pos1[1]);
         double[] pos2 = mapa.getPosicionValidaAleatoria();
+        System.out.println("DEBUG: Generando en " + pos2[0] + "," + pos2[1]);
         double[] pos3 = mapa.getPosicionValidaAleatoria();
+        System.out.println("DEBUG: Generando en " + pos3[0] + "," + pos3[1]);
 
         if (enemigoFactoryManager != null) {
             monstruos.add(enemigoFactoryManager.crearOrco(pos1[0], pos1[1]));
             monstruos.add(enemigoFactoryManager.crearMago(pos2[0], pos2[1]));
             monstruos.add(enemigoFactoryManager.crearEsqueleto(pos3[0], pos3[1]));
         }
+        System.out.println("DEBUG: Lista final tiene " + monstruos.size() + " monstruos");
         return monstruos;
     }
 
@@ -77,6 +90,10 @@ public class Mundo {
 
     public String getTipoMapa() {
         return mapa.getTipoMapa();
+    }
+
+    public Mapa getMapa() {
+        return mapa;
     }
 
     public Personaje getPersonaje() {

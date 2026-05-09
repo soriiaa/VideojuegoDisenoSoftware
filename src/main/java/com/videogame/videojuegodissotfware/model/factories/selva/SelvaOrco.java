@@ -19,5 +19,6 @@ public class SelvaOrco extends Mago {
                 150,
                 2
         );
+        System.out.println("DEBUG: Orco de la Selva creado en (" + x + ", " + y + ")");
     }
 }

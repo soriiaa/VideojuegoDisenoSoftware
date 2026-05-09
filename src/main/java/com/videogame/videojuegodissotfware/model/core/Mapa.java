@@ -23,7 +23,6 @@ public class Mapa {
         // crgamos el mapa usando getResourceAsStream para que funcione dentro del JAR
         this.matrizMapa = leerTxt("/com/videogame/videojuegodissotfware/mapa/mapa.txt");
         this.tipoMapa = tipoMapa;
-        procesarEnemigos();
     }
 
     private void cargarPixeles() {
@@ -31,10 +30,6 @@ public class Mapa {
             tileset.put(0, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Summer_Ground 01.png")));
             tileset.put(1, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Summer_Ground 10.png")));
             tileset.put(2, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Summer_Prop - Rock 01.png")));
-            tileset.put(8, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/mago.png")));
-            tileset.put(9, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/orco.png")));
-            tileset.put(10, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/esqueleto.png")));
-            //tileset.put(11, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/dragon.png")));
         } catch (Exception e) {
             System.err.println("Error cargando imágenes: " + e.getMessage());
         }
@@ -62,27 +57,9 @@ public class Mapa {
         }
         return lineas.toArray(new int[0][]);
     }
-    private void procesarEnemigos() {
-        for (int i = 0; i < matrizMapa.length; i++) {
-            for (int j = 0; j < matrizMapa[i].length; j++) {
-                int id = matrizMapa[i][j];
-                // Si el ID es 8, 9 o 10, creamos un objeto enemigo
-                if (id >= 8 && id <= 10) {
 
-                    String nombre;
-                    if (id == 8) {
-                        nombre = "mago";
-                    } else if (id == 9) {
-                        nombre = "orco";
-                    } else {
-                        nombre = "esqueleto";
-                    }
-                    // Aqui habria que crear el monstruo pero llamando al factory
-                    //enemigos.add(new Monstruo(nombre, 100, "Malo", 100, 100, image, 10, 10, "a", );
-                    matrizMapa[i][j] = 0;
-                }
-            }
-        }
+    public void setEnemigos(List<Monstruo> lista) {
+        this.enemigos = lista;
     }
 
     public void render(GraphicsContext gc) {
@@ -114,8 +91,10 @@ public class Mapa {
                 }
             }
         }
-        for (Monstruo monstruo : enemigos) {
-            monstruo.render(gc);
+        if (enemigos != null) {
+            for (Monstruo monstruo : enemigos) {
+                monstruo.render(gc);
+            }
         }
     }
 
@@ -136,20 +115,16 @@ public class Mapa {
         int tipoTile;
 
         do {
-            // Elegimos una fila y columna al azar
             filaAleatoria = (int) (Math.random() * filas);
             colAleatoria = (int) (Math.random() * columnas);
 
-            // Miramos qué hay en esa posición del .txt
+            // vemos que hay en el tile
             tipoTile = matrizMapa[filaAleatoria][colAleatoria];
+            // Repetimos mientras sea un obstáculo
+        } while (tipoTile == 2);
 
-            // Repetimos mientras sea un obstáculo (2, 3 o 4)
-        } while (tipoTile == 2 || tipoTile == 3 || tipoTile == 4);
-
-        // Multiplicamos por 64 (o el tamaño de tus fotos de suelo)
-        // para pasar de "casilla" a "píxeles"
-        double xPixel = colAleatoria * 64.0;
-        double yPixel = filaAleatoria * 64.0;
+        double xPixel = colAleatoria * TILE_SIZE;
+        double yPixel = filaAleatoria * TILE_SIZE;
 
         return new double[]{xPixel, yPixel};
     }
