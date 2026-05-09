@@ -12,7 +12,7 @@ public class DesiertoEsqueleto extends Esqueleto {
                 new EstadoBasico(),
                 30,
                 20,
-                new Image(DesiertoEsqueleto.class.getResourceAsStream("/com/videogame/videojuegodissotfware/images/esqueleto.png")),
+                new Image(DesiertoEsqueleto.class.getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/monstruosDesierto/esqueletoDesierto.png")),
                 x,
                 y,
                 new Equilibrada(),

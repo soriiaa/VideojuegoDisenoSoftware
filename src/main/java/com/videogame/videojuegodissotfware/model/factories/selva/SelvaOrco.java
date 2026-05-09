@@ -12,7 +12,7 @@ public class SelvaOrco extends Mago {
                 new EstadoBasico(),
                 10,
                 40,
-                new Image(SelvaOrco.class.getResourceAsStream("/com/videogame/videojuegodissotfware/images/orco.png")),
+                new Image(SelvaOrco.class.getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/monstruosPradera/orcoPradera.png")),
                 x,
                 y,
                 new Equilibrada(),

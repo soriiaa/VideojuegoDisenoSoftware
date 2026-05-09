@@ -55,7 +55,7 @@ public class GameFacade {
 
     private void inicializarFactory(String tipoMapa) {
         EnemigoFactory factoryConcreta;
-        if (tipoMapa.equalsIgnoreCase("Selva")) {
+        if (tipoMapa.equalsIgnoreCase("Pradera")) {
             factoryConcreta = new SelvaFactory();
         } else {
             factoryConcreta = new DesiertoFactory();

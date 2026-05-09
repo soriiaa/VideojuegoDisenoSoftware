@@ -12,7 +12,7 @@ public class SelvaMago extends Mago {
                 new EstadoBasico(),
                 20,
                 5,
-                new Image(SelvaMago.class.getResourceAsStream("/com/videogame/videojuegodissotfware/images/mago.png")),
+                new Image(SelvaMago.class.getResourceAsStream("com/videogame/videojuegodissotfware/mapa/monstruosPradera/magoPradera.png")),
                 x,
                 y,
                 new Equilibrada(),

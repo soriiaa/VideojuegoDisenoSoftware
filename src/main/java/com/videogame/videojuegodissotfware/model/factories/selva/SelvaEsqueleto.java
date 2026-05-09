@@ -12,7 +12,7 @@ public class SelvaEsqueleto extends Esqueleto {
                 new EstadoBasico(),
                 30,
                 20,
-                new Image(SelvaEsqueleto.class.getResourceAsStream("/com/videogame/videojuegodissotfware/images/esqueleto.png")),
+                new Image(SelvaEsqueleto.class.getResourceAsStream("com/videogame/videojuegodissotfware/mapa/monstruosPradera/esqueletoPradera.png")),
                 x,
                 y,
                 new Equilibrada(),
