@@ -19,19 +19,45 @@ public class Mapa {
     private String tipoMapa;
 
     public Mapa(String tipoMapa) {
+        this.tipoMapa = tipoMapa;
         cargarPixeles();
         // crgamos el mapa usando getResourceAsStream para que funcione dentro del JAR
-        this.matrizMapa = leerTxt("/com/videogame/videojuegodissotfware/mapa/mapa.txt");
-        this.tipoMapa = tipoMapa;
+        if (tipoMapa.equalsIgnoreCase("Desierto")) {
+            this.matrizMapa = leerTxt("/com/videogame/videojuegodissotfware/mapa/mapaDesierto.txt");
+        } else {
+            this.matrizMapa = leerTxt("/com/videogame/videojuegodissotfware/mapa/mapaPradera.txt");
+        }
     }
 
     private void cargarPixeles() {
         try {
-            tileset.put(0, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Summer_Ground 01.png")));
-            tileset.put(1, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Summer_Ground 10.png")));
-            tileset.put(2, new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Summer_Prop - Rock 01.png")));
+            if (tipoMapa.equalsIgnoreCase("Pradera")) {
+                String pathPradera = "/com/videogame/videojuegodissotfware/mapa/assetsJungla/";
+
+                int[] tilesPradera = {
+                        0, 1, 2, 3, 4, 6, 7, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 33, 34, 35
+                };
+
+                for (int id : tilesPradera) {
+                    tileset.put(id, new Image(getClass().getResourceAsStream(pathPradera + "tile" + id + ".png")));
+                }
+
+            } else if (tipoMapa.equalsIgnoreCase("Desierto")) {
+
+                String pathDesierto = "/com/videogame/videojuegodissotfware/mapa/assetsDesierto/";
+
+                int[] tilesDesierto = {
+                        0, 45, 48,61,126 ,127 ,128, 129, 140, 141, 142, 143, 154, 155, 156, 157, 168, 169, 170, 171, 182, 183, 184 ,185
+                };
+
+                for (int id : tilesDesierto) {
+                    tileset.put(id, new Image(getClass().getResourceAsStream(pathDesierto + "tile" + id + ".png")));
+                }
+            }
+
         } catch (Exception e) {
             System.err.println("Error cargando imágenes: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 

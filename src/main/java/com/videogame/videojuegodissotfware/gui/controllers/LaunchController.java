@@ -16,7 +16,7 @@ public class LaunchController {
     @FXML
     private ImageView enterImg;
     @FXML
-    private RadioButton selva;
+    private RadioButton pradera;
     @FXML
     private RadioButton desierto;
     @FXML
@@ -29,7 +29,7 @@ public class LaunchController {
         facade = GameFacade.getInstance(); // creado con MenuState
 
         typeMap = new ToggleGroup(); // inicializan los generos del los radio buttons
-        selva.setToggleGroup(typeMap);
+        pradera.setToggleGroup(typeMap);
         desierto.setToggleGroup(typeMap);
 
         enterImg.setOnMouseClicked(event -> enter());
