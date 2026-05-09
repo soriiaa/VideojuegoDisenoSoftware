@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
 import static com.videogame.videojuegodissotfware.model.actions.Accion.*;
@@ -22,6 +23,8 @@ public class FightController {
     private Label enemyRes;
     @FXML
     private Label enemyDamage;
+    @FXML
+    private ImageView enemyImage;
     @FXML
     private Label enemyState;
     @FXML
@@ -58,6 +61,7 @@ public class FightController {
         this.enemyState.setText(enemigo.getEstado().toString());
         this.enemyStrategy.setText(enemigo.getEstrategiaCombate().toString());
         this.enemyReward.setText(String.valueOf(enemigo.getBotin()));
+        this.enemyImage.setImage(enemigo.getSprite());
     }
 
     @FXML
