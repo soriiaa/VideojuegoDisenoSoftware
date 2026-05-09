@@ -61,18 +61,29 @@ public class Personaje extends Entidad {
         if (keys.contains(KeyCode.A)) nextX -= speed;
         if (keys.contains(KeyCode.D)) nextX += speed;
 
-        int tileCentro = map.getTileAt(nextX + PLAYER_SIZE/2, nextY + PLAYER_SIZE /2);
+        //hitbox personaje
+        double margenX = 20.0;
+        double margenYTop = 32.0;
+        double margenYBot = 5.0;
 
-        if (tileCentro != 2) {
+        //colisiones esquinas
+        boolean chocaArribaIzquierda = map.esColision(nextX + margenX, nextY + margenYTop);
+        boolean chocaArribaDerecha = map.esColision(nextX + PLAYER_SIZE - margenX, nextY + margenYTop);
+        boolean chocaAbajoIzquierda = map.esColision(nextX + margenX, nextY + PLAYER_SIZE - margenYBot);
+        boolean chocaAbajoDerecha = map.esColision(nextX + PLAYER_SIZE - margenX, nextY + PLAYER_SIZE - margenYBot);
+
+        if (!chocaArribaIzquierda && !chocaArribaDerecha && !chocaAbajoIzquierda && !chocaAbajoDerecha) {
             setX(nextX);
             setY(nextY);
         }
 
+        //colisiones monstruos
         for (Monstruo monstruo : map.getEnemigos()) {
             if (Math.abs(getX() - monstruo.getX()) < 32 && Math.abs(getY() - monstruo.getY()) < 32) {
                 return monstruo;
             }
         }
+
         return null;
     }
 
