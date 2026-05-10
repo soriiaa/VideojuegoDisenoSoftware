@@ -8,7 +8,6 @@ import com.videogame.videojuegodissotfware.model.factories.EnemigoFactory;
 import com.videogame.videojuegodissotfware.model.factories.EnemigoFactoryManager;
 import com.videogame.videojuegodissotfware.model.factories.desierto.DesiertoFactory;
 import com.videogame.videojuegodissotfware.model.factories.selva.PraderaFactory;
-import javafx.scene.input.KeyCode;
 
 public class GameFacade {
     private static GameFacade instance;

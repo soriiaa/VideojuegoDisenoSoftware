@@ -86,7 +86,6 @@ public class FightController {
 
     private void actualizarDatosPantalla() {
         Combate combate = facade.getCombateActual();
-
         enemyName.setText(combate.getEnemigo().getNombre());
         int hp = Math.max(0, combate.getEnemigo().getPuntosVida()); // para que no muestre negativo
         enemyHp.setText(String.valueOf(hp));
@@ -169,7 +168,6 @@ public class FightController {
         boolean tienePocion = facade.getPersonaje().tienePocion();
         potionBtn.setDisable(estado || !tienePocion);
     }
-
 
     private void verificarFinCombate() {
         Combate combate = facade.getCombateActual();

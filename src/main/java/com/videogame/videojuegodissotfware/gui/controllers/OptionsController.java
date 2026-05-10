@@ -13,9 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
-
 import java.io.IOException;
-import java.sql.ClientInfoStatus;
 
 public class OptionsController {
     @FXML
@@ -62,12 +60,14 @@ public class OptionsController {
         game.start(); // se reanuda el juego
         game.getCanvas().requestFocus();
     }
+
     public void restart() {
         timeline.stop();
         facade.reiniciarPartida();
         listener.onRestart();
         resume();
     }
+
     public void exit() {
         timeline.stop();
         facade.finalizarPartida();
