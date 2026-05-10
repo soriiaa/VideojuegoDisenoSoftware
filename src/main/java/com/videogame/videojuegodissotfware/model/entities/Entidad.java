@@ -86,16 +86,8 @@ public abstract class Entidad {
         return dano;
     }
 
-    public void setDano(int dano) {
-        this.dano = dano;
-    }
-
     public int getResistencia() {
         return resistencia;
-    }
-
-    public void setResistencia (int resistencia) {
-        this.resistencia = resistencia;
     }
 
     public EstrategiaCombate getEstrategiaCombate() {
