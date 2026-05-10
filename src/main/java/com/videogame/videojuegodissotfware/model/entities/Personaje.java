@@ -66,6 +66,22 @@ public class Personaje extends Entidad {
         return vidaNueva - vidaAnterior; // cantidad recuperada
     }
 
+    /**
+     * @param cantidad
+     * @return Retorna true si hay dinero, false si no.
+     */
+    public boolean dineroDisponible(int cantidad) {
+        if (this.oro - cantidad >= 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void gastarDinero(int cantidad) {
+        this.oro -= cantidad;
+    }
+
     public void usarPocion() {
 
     }

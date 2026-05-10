@@ -53,6 +53,36 @@ public class GameFacade {
         mundo.pausar();
     }
 
+    public void mejorarArma() {
+
+    }
+
+    public void mejorarArmadura() {
+
+    }
+
+    public void comprarPocion() {
+
+    }
+
+    /**
+     *
+     * @return 1 - Arma, 2 - Armadura, 3 - Poción
+     */
+    public int[] getPreciosTienda() {
+        int[] arrayPrecios = new int[3];
+
+        arrayPrecios[0] = mundo.getPrecioArma();
+        arrayPrecios[1] = mundo.getPrecioArmadura();
+        arrayPrecios[2] = mundo.getPrecioPocion();
+
+        return arrayPrecios;
+    }
+
+    public boolean comprobarDinero(int cantidad) {
+        return mundo.getPersonaje().dineroDisponible(cantidad);
+    }
+
     private void inicializarFactory(String tipoMapa) {
         EnemigoFactory factoryConcreta;
         if (tipoMapa.equalsIgnoreCase("Pradera")) {

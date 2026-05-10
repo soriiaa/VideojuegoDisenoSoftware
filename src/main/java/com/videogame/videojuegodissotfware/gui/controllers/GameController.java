@@ -8,10 +8,12 @@ import com.videogame.videojuegodissotfware.model.core.state.FightState;
 import com.videogame.videojuegodissotfware.model.core.state.PlayState;
 import com.videogame.videojuegodissotfware.model.entities.Monstruo;
 import com.videogame.videojuegodissotfware.model.entities.Personaje;
+import com.videogame.videojuegodissotfware.model.items.Espada;
 import com.videogame.videojuegodissotfware.model.items.Item;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -39,12 +41,29 @@ public class GameController implements GameEventListener {
     @FXML
     private HBox inventoryBox;
     @FXML
+    private HBox inventoryItems;
+    @FXML
     private ImageView pauseBtn;
     @FXML
     private StackPane contentPane;
     @FXML
     private StackPane centralContent;
     private Parent combatView;
+
+    @FXML
+    private Label precioMejorarArma;
+    @FXML
+    private Label precioMejorarArmadura;
+    @FXML
+    private Label precioComprarPocion;
+
+    @FXML
+    private Button btnMejorarArma;
+    @FXML
+    private Button btnMejorarArmadura;
+    @FXML
+    private Button btnComprarPocion;
+
 
     GameFacade facade;
     GameScene game;
@@ -57,11 +76,24 @@ public class GameController implements GameEventListener {
         game = new GameScene(centralContent, this, personaje, mapaReal);
         setPlayerData(personaje);
         refrescarInventario();
+        refrescarTienda();
 
         centralContent.getChildren().add(game.getCanvas());
         game.start();
 
         pauseBtn.setOnMouseClicked(event -> pause());
+        btnMejorarArma.setOnAction(e -> {
+            facade.mejorarArma();
+            refrescarTienda();
+        });
+        btnMejorarArmadura.setOnAction(e -> {
+            facade.mejorarArmadura();
+            refrescarTienda();
+        });
+        btnComprarPocion.setOnAction(e -> {
+            facade.comprarPocion();
+            refrescarTienda();
+        });
     }
 
     public void setPlayerData(Personaje personaje) {
@@ -109,21 +141,31 @@ public class GameController implements GameEventListener {
         }
     }
 
+    public void refrescarTienda() {
+        GameFacade facade = GameFacade.getInstance();
+        int[] precios = facade.getPreciosTienda();
+
+        this.precioMejorarArma.setText(String.valueOf(precios[0]));
+        this.precioMejorarArmadura.setText(String.valueOf(precios[1]));
+        this.precioComprarPocion.setText(String.valueOf(precios[2]));
+
+        this.btnMejorarArma.setDisable(!facade.comprobarDinero(Integer.parseInt(String.valueOf(precioMejorarArma.getText()))));
+        this.btnMejorarArmadura.setDisable(!facade.comprobarDinero(Integer.parseInt(String.valueOf(precioMejorarArmadura.getText()))));
+        this.btnComprarPocion.setDisable(!facade.comprobarDinero(Integer.parseInt(String.valueOf(precioComprarPocion.getText()))));
+    }
+
     public void refrescarInventario() {
         GameFacade facade = GameFacade.getInstance();
+
         ArrayList<Item> inventario = facade.getPersonaje().getListaItems();
+        inventoryItems.getChildren().clear();
 
         for (Item item : inventario) {
             ImageView imageView = new ImageView();
-
-            Image image = item.getSprite();
-
-            imageView.setImage(image);
-
+            imageView.setImage(item.getSprite());
             imageView.setFitWidth(28);
             imageView.setFitHeight(28);
-
-            inventoryBox.getChildren().add(imageView);
+            inventoryItems.getChildren().add(imageView);
         }
     }
 
@@ -141,6 +183,9 @@ public class GameController implements GameEventListener {
         game.getCanvas().requestFocus();
 
         game.start();
+
+        refrescarTienda();
+        refrescarInventario();
     }
 
     @FXML

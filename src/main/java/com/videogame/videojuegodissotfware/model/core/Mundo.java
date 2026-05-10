@@ -6,6 +6,9 @@ import com.videogame.videojuegodissotfware.model.entities.Monstruo;
 import com.videogame.videojuegodissotfware.model.entities.Personaje;
 import com.videogame.videojuegodissotfware.model.entities.state.EstadoBasico;
 import com.videogame.videojuegodissotfware.model.factories.EnemigoFactoryManager;
+import com.videogame.videojuegodissotfware.model.items.Armadura;
+import com.videogame.videojuegodissotfware.model.items.Espada;
+import com.videogame.videojuegodissotfware.model.items.Pocion;
 import com.videogame.videojuegodissotfware.model.strategies.Equilibrada;
 import javafx.scene.image.Image;
 
@@ -98,6 +101,18 @@ public class Mundo {
 
     public void finalizarPartida() {
 
+    }
+
+    public int getPrecioArma() {
+        return new Espada("").getPrecio();
+    }
+
+    public int getPrecioArmadura() {
+        return new Armadura("").getPrecio();
+    }
+
+    public int getPrecioPocion() {
+        return new Pocion("").getPrecio();
     }
 
     public String getTipoMapa() {
