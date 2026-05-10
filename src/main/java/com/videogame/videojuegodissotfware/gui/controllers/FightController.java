@@ -60,7 +60,6 @@ public class FightController {
         Combate combate = facade.getMundo().getCombateActual();
         rellenarEtiquetasEnemigo(combate.getEnemigo());
 
-
         String tipoMapa = facade.getMundo().getMapa().getTipoMapa();
 
         if (tipoMapa.equalsIgnoreCase("Desierto")) {
@@ -68,6 +67,8 @@ public class FightController {
         } else {
             rootPane.getStyleClass().add("backgroundFightPradera");
         }
+
+        setBotonesDeshabilitados(false);
     }
 
     public void rellenarEtiquetasEnemigo(Monstruo enemigo) {
@@ -116,7 +117,7 @@ public class FightController {
         switch (accion) {
             case ATACAR -> addMsj("¡Atacas al enemigo causando " + resultado + " de daño!", "ATAQUE");
             case PROTEGER -> addMsj("Te defiendes y recuperas un 20% de tu vida máxima: " + resultado + " de vida.", "PROTEGER");
-            case USAR_POCION -> addMsj("Usas una poción y recuperas el 100% de tu vida.", "CURACION");
+            case USAR_POCION -> addMsj("Usas una poción y recuperas " + resultado + " puntos de vida.", "CURACION");
         }
 
         actualizarDatosPantalla();
@@ -161,7 +162,8 @@ public class FightController {
     private void setBotonesDeshabilitados(boolean estado) {
         atackBtn.setDisable(estado);
         protectBtn.setDisable(estado);
-        potionBtn.setDisable(estado);
+        boolean tienePocion = facade.getPersonaje().tienePocion();
+        potionBtn.setDisable(estado || !tienePocion);
     }
 
 
@@ -200,8 +202,7 @@ public class FightController {
             }
         }
     }
-
-
+    
     private void terminarYVolverAlMapa() {
         Combate combate = facade.getCombateActual();
         Mundo mundo = facade.getMundo();
@@ -211,6 +212,7 @@ public class FightController {
         int oroActual = facade.getPersonaje().getOro();
         int oroActualizado = oroActual + recompensa;
         facade.getPersonaje().setOro(oroActualizado);
+        facade.getPersonaje().setNivel(facade.getPersonaje().getNivel() + 1);
 
         listener.onPlayerStatsChanged();
 

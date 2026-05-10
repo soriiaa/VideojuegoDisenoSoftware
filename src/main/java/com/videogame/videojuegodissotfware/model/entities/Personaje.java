@@ -80,13 +80,18 @@ public class Personaje extends Entidad {
         this.oro -= cantidad;
     }
 
-    public void usarPocion() {
+    public int usarPocion() {
         for (Item item : getListaItems()) {
             if (item instanceof Pocion) {
-                this.setPuntosVida(this.getPuntosVidaMax());
-                System.out.println("DEBUG: " + getNombre() + " usa una poción y recupera toda su vida.");
+                int vidaAnterior = this.getPuntosVida();
+                this.setPuntosVida(Math.min(this.getPuntosVida() + item.getValorEfecto(), getVidaMaxima()));
+                int vidaRestaurada = this.getPuntosVida() - vidaAnterior;
+                this.listaItems.remove(item);
+                System.out.println("DEBUG: " + getNombre() + " usa una poción y recupera " + vidaRestaurada + " vida.");
+                return vidaRestaurada;
             }
         }
+        return 0;
     }
 
     public void comprarItem(int precio) {

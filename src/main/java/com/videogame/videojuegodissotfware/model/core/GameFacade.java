@@ -36,6 +36,14 @@ public class GameFacade {
         setEstado(new PlayState());
     }
 
+    public void reiniciarPartida() {
+
+    }
+
+    public void finalizarPartida() {
+
+    }
+
     public void iniciarCombate(Monstruo enemigo) {
         mundo.gestionarCombate(enemigo);
     }

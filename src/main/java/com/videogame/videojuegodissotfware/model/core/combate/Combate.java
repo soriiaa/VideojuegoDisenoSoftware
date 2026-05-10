@@ -48,7 +48,7 @@ public class Combate {
                     resultado = personaje.proteger();
                     break;
                 case USAR_POCION:
-                    personaje.usarPocion();
+                    resultado = personaje.usarPocion();
                     break;
             }
             comprobarResultado();

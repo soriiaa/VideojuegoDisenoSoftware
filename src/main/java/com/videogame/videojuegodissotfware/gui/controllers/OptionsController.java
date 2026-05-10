@@ -1,6 +1,7 @@
 package com.videogame.videojuegodissotfware.gui.controllers;
 
 import com.videogame.videojuegodissotfware.gui.view.GameScene;
+import com.videogame.videojuegodissotfware.model.core.GameFacade;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
@@ -15,13 +16,14 @@ public class OptionsController {
     @FXML
     private StackPane contentPane;
     private GameScene game;
+    GameFacade facade;
     private StackPane pauseMenuRoot; // Necesitaremos esto para cerrarlo
 
     public void initialize() {
         resumeBtn.setOnMouseClicked(event -> resume());
         restartBtn.setOnMouseClicked(event -> restart());
         exitBtn.setOnMouseClicked(event -> exit());
-
+        facade = GameFacade.getInstance();
     }
 
     public void setGameContext(GameScene game, StackPane pauseMenuRoot) {
@@ -37,11 +39,11 @@ public class OptionsController {
         game.getCanvas().requestFocus();
     }
     public void restart() {
+        facade.reiniciarPartida();
     }
     public void exit() {
+        facade.finalizarPartida();
     }
-
-
 }
 
 
