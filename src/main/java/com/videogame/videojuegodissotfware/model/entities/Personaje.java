@@ -3,6 +3,8 @@ package com.videogame.videojuegodissotfware.model.entities;
 import com.videogame.videojuegodissotfware.model.core.CalculadorDano;
 import com.videogame.videojuegodissotfware.model.core.Mapa;
 import com.videogame.videojuegodissotfware.model.entities.state.EstadoEntidad;
+import com.videogame.videojuegodissotfware.model.items.Armadura;
+import com.videogame.videojuegodissotfware.model.items.Espada;
 import com.videogame.videojuegodissotfware.model.items.Item;
 import com.videogame.videojuegodissotfware.model.strategies.EstrategiaCombate;
 import javafx.scene.canvas.GraphicsContext;
@@ -12,6 +14,7 @@ import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicReferenceArray;
 
 public class Personaje extends Entidad {
     private int puntosVidaMax;
@@ -29,6 +32,7 @@ public class Personaje extends Entidad {
         this.nivel = nivel;
         this.oro = oro;
         this.listaItems = new ArrayList<>();
+        inicializarInventario();
         try {
             this.setSprite(new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Personaje.png")));
         } catch (Exception e) {
@@ -68,6 +72,13 @@ public class Personaje extends Entidad {
 
     public void comprarItem() {
 
+    }
+
+    private void inicializarInventario() {
+        Item espadaBasica = new Espada("Espada Básica");
+        Item armaduraBasica = new Armadura("Armadura Básica");
+        this.getListaItems().add(espadaBasica);
+        this.getListaItems().add(armaduraBasica);
     }
 
     public Monstruo update(Set<KeyCode> keys, Mapa map) {

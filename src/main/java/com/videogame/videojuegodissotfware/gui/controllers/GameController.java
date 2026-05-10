@@ -56,6 +56,7 @@ public class GameController implements GameEventListener {
         Mapa mapaReal = facade.getMundo().getMapa();
         game = new GameScene(centralContent, this, personaje, mapaReal);
         setPlayerData(personaje);
+        refrescarInventario();
 
         centralContent.getChildren().add(game.getCanvas());
         game.start();
@@ -79,6 +80,7 @@ public class GameController implements GameEventListener {
     @Override
     public void onPlayerStatsChanged() {
         setPlayerData(facade.getPersonaje());
+        refrescarInventario();
         System.out.println("UI Lateral actualizada desde el combate");
     }
 
@@ -108,7 +110,6 @@ public class GameController implements GameEventListener {
     }
 
     public void refrescarInventario() {
-
         GameFacade facade = GameFacade.getInstance();
         ArrayList<Item> inventario = facade.getPersonaje().getListaItems();
 

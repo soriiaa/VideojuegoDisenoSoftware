@@ -6,8 +6,8 @@ public class Pocion extends Item {
 
     private int incrementadorResistencia;
 
-    public Pocion (String nombre, int precio) {
-        super(nombre, precio, "/com/videogame/videojuegodissotfware/images/items/pocion.png");
+    public Pocion (String nombre) {
+        super(nombre, 40, "/com/videogame/videojuegodissotfware/images/items/pocion.png");
         this.incrementadorResistencia = 10;
     }
 

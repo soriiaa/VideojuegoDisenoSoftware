@@ -6,8 +6,8 @@ public class Espada extends Item {
 
     private int incrementadorResistencia;
 
-    public Espada(String nombre, int precio) {
-        super(nombre, precio, "/com/videogame/videojuegodissotfware/images/items/espada.png");
+    public Espada(String nombre) {
+        super(nombre, 60, "/com/videogame/videojuegodissotfware/images/items/espada.png");
         this.incrementadorResistencia = 10;
     }
 

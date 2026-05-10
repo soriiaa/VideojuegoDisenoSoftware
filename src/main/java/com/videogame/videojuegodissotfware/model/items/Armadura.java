@@ -4,8 +4,8 @@ public class Armadura extends Item {
 
     private int incrementadorResistencia;
 
-    public Armadura(String nombre, int precio) {
-        super(nombre, precio, "/com/videogame/videojuegodissotfware/images/items/armadura.png");
+    public Armadura(String nombre) {
+        super(nombre, 70, "/com/videogame/videojuegodissotfware/images/items/armadura.png");
         this.incrementadorResistencia = 10;
     }
 
