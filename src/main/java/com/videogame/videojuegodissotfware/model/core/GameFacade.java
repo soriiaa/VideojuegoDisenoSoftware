@@ -106,6 +106,10 @@ public class GameFacade {
         EnemigoFactoryManager.getInstance().setEnemigoFactory(factoryConcreta);
     }
 
+    public String getTiempoFormateado() {
+        return mundo.getTiempoFormateado();
+    }
+
     public Combate getCombateActual() {
         return mundo.getCombateActual();
     }

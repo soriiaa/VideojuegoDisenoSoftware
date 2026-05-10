@@ -1,7 +1,6 @@
 package com.videogame.videojuegodissotfware.model.core;
 
 import com.videogame.videojuegodissotfware.model.core.combate.Combate;
-import com.videogame.videojuegodissotfware.model.entities.Entidad;
 import com.videogame.videojuegodissotfware.model.entities.Monstruo;
 import com.videogame.videojuegodissotfware.model.entities.Personaje;
 import com.videogame.videojuegodissotfware.model.entities.state.EstadoBasico;
@@ -14,7 +13,6 @@ import com.videogame.videojuegodissotfware.model.items.decorator.EncantamientoFo
 import com.videogame.videojuegodissotfware.model.strategies.Equilibrada;
 import javafx.scene.image.Image;
 
-import java.sql.Array;
 import java.util.ArrayList;
 
 public class Mundo {
@@ -22,12 +20,11 @@ public class Mundo {
     private Personaje personaje;
     private ArrayList<Combate> listaCombates;
     private Mapa mapa;
-    private long tiempoPartida;
+    private long tiempoInicio;
 
     public Mundo(String nombrePersonaje, String tipoMapa) {
         this.listaCombates = new ArrayList<>();
-        this.tiempoPartida = 0;
-
+        this.tiempoInicio = System.currentTimeMillis();
         inicializarMundo(nombrePersonaje, tipoMapa);
     }
 
@@ -131,6 +128,15 @@ public class Mundo {
 
     public void finalizarPartida() {
 
+    }
+
+    public String getTiempoFormateado() {
+        long tiempoActual = System.currentTimeMillis();
+        long diferencia = tiempoActual - tiempoInicio;
+        long segundosTotales = diferencia / 1000;
+        long minutos = segundosTotales / 60;
+        long segundos = segundosTotales % 60;
+        return String.format("%02d:%02d", minutos, segundos);
     }
 
     public Combate getCombateActual() {
