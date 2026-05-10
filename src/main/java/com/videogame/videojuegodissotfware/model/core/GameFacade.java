@@ -105,15 +105,15 @@ public class GameFacade {
         return mundo.getTipoMapa();
     }
 
+    public Mundo getMundo() {
+        return mundo;
+    }
+
     public Personaje getPersonaje() {
         if (mundo != null) {
             return mundo.getPersonaje();
         } else {
             return null;
         }
-    }
-
-    public Mundo getMundo() {
-        return mundo;
     }
 }

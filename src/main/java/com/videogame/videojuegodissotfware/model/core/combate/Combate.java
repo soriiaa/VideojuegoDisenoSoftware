@@ -96,11 +96,6 @@ public class Combate {
         }
     }
 
-
-    public void finalizarCombate() {
-
-    }
-
     public void comprobarResultado() {
         if (enemigo.getPuntosVida() <= 0) {
             ganador = personaje;
@@ -109,6 +104,10 @@ public class Combate {
             ganador = enemigo;
             estadoActual = FaseCombate.FINALIZADO;
         }
+    }
+
+    public void finalizarCombate() {
+
     }
 
     public Monstruo getEnemigo() {

@@ -73,6 +73,17 @@ public class FightController {
         }
     }
 
+    private void actualizarDatosPantalla() {
+        Combate combate = facade.getCombateActual();
+        enemyName.setText(combate.getEnemigo().getNombre());
+        int hp = Math.max(0, combate.getEnemigo().getPuntosVida()); // para que no muestre negativo
+        enemyHp.setText(String.valueOf(hp));
+        enemyRes.setText(String.valueOf(combate.getEnemigo().getResistencia()));
+        enemyDamage.setText(String.valueOf(combate.getEnemigo().getDano()));
+        enemyState.setText(combate.getEnemigo().getEstado().getNombre());
+        enemyStrategy.setText(combate.getEnemigo().getEstrategiaCombate().getNombre());
+    }
+
     public void rellenarEtiquetasEnemigo(Monstruo enemigo) {
         enemyName.setText(enemigo.getNombre());
         enemyHp.setText(String.valueOf(enemigo.getPuntosVida()));
@@ -84,16 +95,6 @@ public class FightController {
         enemyImage.setImage(enemigo.getSprite());
     }
 
-    private void actualizarDatosPantalla() {
-        Combate combate = facade.getCombateActual();
-        enemyName.setText(combate.getEnemigo().getNombre());
-        int hp = Math.max(0, combate.getEnemigo().getPuntosVida()); // para que no muestre negativo
-        enemyHp.setText(String.valueOf(hp));
-        enemyRes.setText(String.valueOf(combate.getEnemigo().getResistencia()));
-        enemyDamage.setText(String.valueOf(combate.getEnemigo().getDano()));
-        enemyState.setText(combate.getEnemigo().getEstado().getNombre());
-        enemyStrategy.setText(combate.getEnemigo().getEstrategiaCombate().getNombre());
-    }
     @FXML
     private void handleAttack() {
         procesarTurnoJugador(ATACAR);
