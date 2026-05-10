@@ -74,10 +74,6 @@ public abstract class Entidad {
         return vidaMaxima;
     }
 
-    public void setVidaMaxima(int vidaMaxima) {
-        this.vidaMaxima = vidaMaxima;
-    }
-
     public EstadoEntidad getEstado() {
         return estado;
     }
@@ -90,24 +86,12 @@ public abstract class Entidad {
         return dano;
     }
 
-    public void setDano(int dano) {
-        this.dano = dano;
-    }
-
     public int getResistencia() {
         return resistencia;
     }
 
-    public void setResistencia(int resistencia) {
-        this.resistencia = resistencia;
-    }
-
     public EstrategiaCombate getEstrategiaCombate() {
         return estrategiaCombate;
-    }
-
-    public void setEstrategiaCombate(EstrategiaCombate estrategiaCombate) {
-        this.estrategiaCombate = estrategiaCombate;
     }
 
     /**

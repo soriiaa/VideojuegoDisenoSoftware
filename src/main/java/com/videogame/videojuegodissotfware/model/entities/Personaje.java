@@ -179,24 +179,6 @@ public class Personaje extends Entidad {
         }
     }
 
-    public String getNombre() {
-        return super.getNombre();
-    }
-    public int getPuntosVida() {
-        return super.getPuntosVida();
-    }
-    public EstadoEntidad getEstado() {
-        return super.getEstado();
-    }
-
-    public int getDano() {
-        return super.getDano();
-    }
-
-    public int getResistencia() {
-        return super.getResistencia();
-    }
-
     public EstrategiaCombate getEstrategiaCombate() {
         return super.getEstrategiaCombate();
     }
@@ -225,7 +207,21 @@ public class Personaje extends Entidad {
         return listaItems;
     }
 
-    public void setListaItems(ArrayList<Item> listaItems) {
-        this.listaItems = listaItems;
+    public String getNombre() {
+        return super.getNombre();
+    }
+    public int getPuntosVida() {
+        return super.getPuntosVida();
+    }
+    public EstadoEntidad getEstado() {
+        return super.getEstado();
+    }
+
+    public int getDano() {
+        return super.getDano();
+    }
+
+    public int getResistencia() {
+        return super.getResistencia();
     }
 }
