@@ -76,10 +76,6 @@ public class Personaje extends Entidad {
         }
     }
 
-    public void gastarDinero(int cantidad) {
-        this.oro -= cantidad;
-    }
-
     public int usarPocion() {
         for (Item item : getListaItems()) {
             if (item instanceof Pocion) {
