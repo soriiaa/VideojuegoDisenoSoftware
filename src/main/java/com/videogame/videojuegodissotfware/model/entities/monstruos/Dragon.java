@@ -20,8 +20,8 @@ public class Dragon extends Monstruo {
     }
 
     @Override
-    public void proteger() {
-
+    public int proteger() {
+        return 0;
     }
 
     @Override

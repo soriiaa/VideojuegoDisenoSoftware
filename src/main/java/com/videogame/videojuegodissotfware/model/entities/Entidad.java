@@ -106,6 +106,6 @@ public abstract class Entidad {
      * @return El daño que se le ha inflingido al enemigo.
      */
     public abstract int atacar(Entidad enemigo);
-    public abstract void proteger();
+    public abstract int proteger();
     public abstract void usarPocion();
 }

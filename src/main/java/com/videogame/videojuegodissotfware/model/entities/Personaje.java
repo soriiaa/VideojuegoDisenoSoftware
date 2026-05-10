@@ -1,5 +1,6 @@
 package com.videogame.videojuegodissotfware.model.entities;
 
+import com.videogame.videojuegodissotfware.model.core.CalculadorDano;
 import com.videogame.videojuegodissotfware.model.core.Mapa;
 import com.videogame.videojuegodissotfware.model.entities.state.EstadoEntidad;
 import com.videogame.videojuegodissotfware.model.items.Item;
@@ -35,13 +36,30 @@ public class Personaje extends Entidad {
         }
     }
 
-    public int atacar (Entidad enemigo) {
-        enemigo.setPuntosVida(enemigo.getPuntosVida() - this.getDano());
-        return this.getDano();
+    public int atacar(Entidad enemigo) {
+        CalculadorDano calc = CalculadorDano.getInstance();
+
+        int danoPotencial = calc.calcularAtaque(this.getDano(), this.getEstado(), this.getEstrategiaCombate()); // segun estrategia y estado (y daño base)
+        int defensaJugador = calc.calcularDefensa(enemigo.getResistencia(), enemigo.getEstrategiaCombate()); // segun estrategia y resistencia del enemigo
+
+        System.out.println("DEBUG: " + getNombre() + " ataca a " + enemigo.getNombre() + " con daño potencial " + danoPotencial + " y defensa del enemigo " + defensaJugador);
+
+        int danoFinal = Math.max(0, danoPotencial - defensaJugador);
+        enemigo.setPuntosVida(enemigo.getPuntosVida() - danoFinal);
+
+        return danoFinal;
     }
 
-    public void proteger() {
+    public int proteger() {
+        CalculadorDano calc = CalculadorDano.getInstance();
+        int recuperado = calc.calcularVidaRecuperada(this.getPuntosVidaMax(), this.getEstrategiaCombate());
 
+        int vidaAnterior = this.getPuntosVida();
+        int vidaNueva = Math.min(this.getPuntosVidaMax(), vidaAnterior + recuperado);
+        this.setPuntosVida(vidaNueva);
+        System.out.println("DEBUG: " + getNombre() + " se protege y recupera " + (vidaNueva - vidaAnterior) + " puntos de vida (de " + vidaAnterior + " a " + vidaNueva + ")");
+
+        return vidaNueva - vidaAnterior; // cantidad recuperada
     }
 
     public void usarPocion() {

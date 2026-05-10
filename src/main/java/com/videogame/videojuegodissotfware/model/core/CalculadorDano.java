@@ -25,4 +25,12 @@ public class CalculadorDano {
     public int calcularDefensa(int defensaBase, EstrategiaCombate estrategia) {
         return (int) Math.round(defensaBase * estrategia.modificadorDefensa());
     }
+
+    public int calcularVidaRecuperada(int vidaMax, EstrategiaCombate estrategia) {
+        double baseRecuperacion = vidaMax * 0.20;
+        double recuperacionFinal = baseRecuperacion * estrategia.modificadorDefensa();
+        System.out.println("DEBUG: Vida recuperada calculada: " + recuperacionFinal);
+
+        return (int) Math.round(recuperacionFinal);
+    }
 }

@@ -93,18 +93,17 @@
     -fx-font-size: 14px;
 }
 
-.mensaje-ataque {
+.mensaje-proteger {
     -fx-text-fill: #f0e68c;
     -fx-font-weight: bold;
 }
 
-.mensaje-proteger {
+.mensaje-ataque {
     -fx-text-fill: #ff4d4d;
     -fx-font-weight: bold;
 }
 
-
-
-
-
-
+.mensaje-info {
+    -fx-text-fill: #4dffff;
+    -fx-font-weight: bold;
+}

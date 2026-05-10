@@ -16,28 +16,55 @@ public class Combate {
     public Combate (Monstruo enemigo, Personaje personaje) {
         this.enemigo = enemigo;
         this.personaje = personaje;
+        // el turno de quien empieza se decide aleatoriamente
+        //this.estadoActual = quienEmpieza();
         this.estadoActual = FaseCombate.TURNO_JUGADOR;
     }
 
+    public FaseCombate quienEmpieza() {
+        Random rand = new Random();
+        if (rand.nextBoolean()) {
+            System.out.println("Empieza el jugador");
+            return FaseCombate.TURNO_JUGADOR;
+        } else {
+            System.out.println("Empieza el enemigo");
+            return FaseCombate.TURNO_ENEMIGO;
+        }
+    }
+
     public int ejecutarTurno(Accion accion) {
+        int danoRealizado = 0;
+        int vidaAumentada = 0;
         if (estadoActual == FaseCombate.TURNO_JUGADOR) {
-            estadoActual = FaseCombate.TURNO_ENEMIGO;
             switch (accion) {
                 case ATACAR:
-                    return personaje.atacar(enemigo);
+                    danoRealizado = personaje.atacar(enemigo);
+                    break;
                 case PROTEGER:
-                    personaje.proteger();
+                    vidaAumentada = personaje.proteger();
                     break;
                 case USAR_POCION:
                     personaje.usarPocion();
                     break;
             }
-        } else if (estadoActual == FaseCombate.TURNO_ENEMIGO) {
-            enemigo.realizarTurno();
-            estadoActual = FaseCombate.TURNO_JUGADOR;
             comprobarResultado();
+
+            // si no ha terminado, pasamos el turno al enemigo
+            if (estadoActual != FaseCombate.FINALIZADO) {
+                estadoActual = FaseCombate.TURNO_ENEMIGO;
+
+                enemigo.realizarTurno();
+                comprobarResultado();
+
+                if (estadoActual != FaseCombate.FINALIZADO) {
+                    estadoActual = FaseCombate.TURNO_JUGADOR;
+                }
+            }
         }
-        return 0;
+        return switch (accion) {
+            case ATACAR -> danoRealizado;
+            case PROTEGER, USAR_POCION -> vidaAumentada;
+        };
     }
 
     public void finalizarCombate() {
@@ -47,8 +74,10 @@ public class Combate {
     public void comprobarResultado() {
         if (enemigo.getPuntosVida() <= 0) {
             ganador = personaje;
+            estadoActual = FaseCombate.FINALIZADO;
         } else if (personaje.getPuntosVida() <= 0) {
             ganador = enemigo;
+            estadoActual = FaseCombate.FINALIZADO;
         }
     }
 
@@ -66,5 +95,9 @@ public class Combate {
 
     private void setGanador(Entidad entidadGanadora) {
         this.ganador = entidadGanadora;
+    }
+
+    public FaseCombate getEstadoActual() {
+        return estadoActual;
     }
 }

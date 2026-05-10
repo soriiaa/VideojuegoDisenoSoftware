@@ -26,11 +26,11 @@ public abstract class Monstruo extends Entidad {
     }
 
     private void comprobarEstado() {
-
+        System.out.println("DEBUG: Comprobando estado del monstruo " + getNombre() + " con estado " + getEstado().getNombre());
     }
 
     private void comprobarEstrategia() {
-
+        System.out.println("DEBUG: Comprobando estrategia del monstruo " + getNombre() + " con estrategia " + getEstrategiaCombate().getNombre());
     }
 
     public void render(GraphicsContext gc) {

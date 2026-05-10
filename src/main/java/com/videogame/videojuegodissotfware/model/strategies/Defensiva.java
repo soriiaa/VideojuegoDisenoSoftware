@@ -11,7 +11,7 @@ public class Defensiva implements EstrategiaCombate {
     }
 
     @Override
-    public String getEstrategia() {
+    public String getNombre() {
         return "Defensiva";
     }
 }

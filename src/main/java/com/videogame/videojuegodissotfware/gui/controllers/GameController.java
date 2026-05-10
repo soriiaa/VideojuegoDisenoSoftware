@@ -5,6 +5,7 @@ import com.videogame.videojuegodissotfware.gui.view.GameScene;
 import com.videogame.videojuegodissotfware.model.core.GameFacade;
 import com.videogame.videojuegodissotfware.model.core.Mapa;
 import com.videogame.videojuegodissotfware.model.core.state.FightState;
+import com.videogame.videojuegodissotfware.model.core.state.PlayState;
 import com.videogame.videojuegodissotfware.model.entities.Monstruo;
 import com.videogame.videojuegodissotfware.model.entities.Personaje;
 import javafx.fxml.FXML;
@@ -39,13 +40,14 @@ public class GameController implements GameEventListener {
     private StackPane centralContent;
 
     GameFacade facade;
+    GameScene game;
 
     public void initialize() {
         this.facade = GameFacade.getInstance();
 
         Personaje personaje = facade.getPersonaje();
         Mapa mapaReal = facade.getMundo().getMapa();
-        GameScene game = new GameScene(centralContent, this, personaje, mapaReal);
+        game = new GameScene(centralContent, this, personaje, mapaReal);
         setPlayerData(personaje);
 
         centralContent.getChildren().add(game.getCanvas());
@@ -66,6 +68,13 @@ public class GameController implements GameEventListener {
         // FALTA SETTEAR EL ARRAY DE ITEMS, AL INICIAR LA PARTIDA NO TIENE NINGUNO
     }
 
+    // necesario para que con el listener se actualice la UI lateral cada vez que el personaje sufra cambios en sus stats (sobretodo en el combate)
+    @Override
+    public void onPlayerStatsChanged() {
+        setPlayerData(facade.getPersonaje());
+        System.out.println("UI Lateral actualizada desde el combate");
+    }
+
     @Override
     public void onFightStarted(Monstruo enemigo) {
         facade.setEstado(new FightState());
@@ -73,12 +82,27 @@ public class GameController implements GameEventListener {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/videogame/videojuegodissotfware/fxml/fight-view.fxml"));
             Parent combatView = loader.load();
+
+            // al iniciar el combate, se necesita el controlador del combate para pasarle el listener (que es el GameController)
+            // y que así pueda actualizar la UI lateral cada vez que el personaje sufra cambios en sus stats
+            FightController fightController = loader.getController();
+            fightController.setListener(this); // El GameController se pasa a sí mismo como listener
+
             centralContent.getChildren().clear();
             centralContent.getChildren().add(combatView);
             System.out.println("Creado el combate con enemigo de tipo: " + enemigo.getTipo());
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void onFightEnded() {
+        centralContent.getChildren().clear();
+        centralContent.getChildren().add(game.getCanvas());
+
+        facade.setEstado(new PlayState());
+        game.start();
     }
 
     @FXML

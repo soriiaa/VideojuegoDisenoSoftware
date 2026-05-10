@@ -12,7 +12,7 @@ public class Equilibrada implements EstrategiaCombate {
     }
 
     @Override
-    public String getEstrategia() {
+    public String getNombre() {
         return "Equilibrada";
     }
 }

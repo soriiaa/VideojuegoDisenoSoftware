@@ -191,4 +191,6 @@ public class Mapa {
     public List<Monstruo> getEnemigos() { return enemigos; }
     public int getAnchoMapa() { return matrizMapa[0].length * TILE_SIZE; }
     public int getAltoMapa() { return matrizMapa.length * TILE_SIZE; }
+
+
 }

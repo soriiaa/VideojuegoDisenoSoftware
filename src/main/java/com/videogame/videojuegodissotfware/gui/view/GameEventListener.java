@@ -4,4 +4,6 @@ import com.videogame.videojuegodissotfware.model.entities.Monstruo;
 
 public interface GameEventListener {
     void onFightStarted(Monstruo monstruo);
+    void onPlayerStatsChanged();
+    void onFightEnded();
 }
