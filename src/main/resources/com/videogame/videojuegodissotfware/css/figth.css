@@ -103,7 +103,17 @@
     -fx-font-weight: bold;
 }
 
+.mensaje-curacion {
+    -fx-text-fill: #05ff00;
+    -fx-font-weight: bold;
+}
+
 .mensaje-info {
     -fx-text-fill: #4dffff;
+    -fx-font-weight: bold;
+}
+
+.mensaje-estado {
+    -fx-text-fill: #ac00c5;
     -fx-font-weight: bold;
 }

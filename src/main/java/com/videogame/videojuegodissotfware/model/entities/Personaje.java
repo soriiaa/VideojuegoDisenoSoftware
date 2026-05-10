@@ -13,24 +13,20 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
-
 import java.util.ArrayList;
 import java.util.Set;
-import java.util.concurrent.atomic.AtomicReferenceArray;
 
 public class Personaje extends Entidad {
-    private int puntosVidaMax;
     private int nivel;
     private int oro;
     private ArrayList<Item> listaItems;
     private double speed = 1.0;
     private final double PLAYER_SIZE = 64.0;
 
-    public Personaje(String nombre, int puntosVida, EstadoEntidad estado, int dano, int resistencia,
+    public Personaje(String nombre, int puntosVida, int vidaMaxima, EstadoEntidad estado, int dano, int resistencia,
                      Image sprite, double x, double y, EstrategiaCombate estrategiaCombate,
-                     int puntosVidaMax, int nivel, int oro) {
-        super(nombre, puntosVida, estado, dano, resistencia, sprite, x, y, estrategiaCombate);
-        this.puntosVidaMax = puntosVidaMax;
+                     int nivel, int oro) {
+        super(nombre, puntosVida, vidaMaxima, estado, dano, resistencia, sprite, x, y, estrategiaCombate);
         this.nivel = nivel;
         this.oro = oro;
         this.listaItems = new ArrayList<>();
@@ -85,7 +81,12 @@ public class Personaje extends Entidad {
     }
 
     public void usarPocion() {
-
+        for (Item item : getListaItems()) {
+            if (item instanceof Pocion) {
+                this.setPuntosVida(this.getPuntosVidaMax());
+                System.out.println("DEBUG: " + getNombre() + " usa una poción y recupera toda su vida.");
+            }
+        }
     }
 
     public void comprarItem(int precio) {
@@ -196,7 +197,7 @@ public class Personaje extends Entidad {
     }
 
     public int getPuntosVidaMax() {
-        return puntosVidaMax;
+        return super.getVidaMaxima();
     }
 
     public int getNivel() {

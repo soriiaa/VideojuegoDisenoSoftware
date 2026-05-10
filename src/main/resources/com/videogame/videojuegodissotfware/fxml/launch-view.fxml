@@ -6,16 +6,14 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<StackPane fx:id="root" alignment="CENTER" styleClass="background"
-           xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="com.videogame.videojuegodissotfware.gui.controllers.LaunchController">
+<StackPane fx:id="root" alignment="CENTER" styleClass="background" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.videogame.videojuegodissotfware.gui.controllers.LaunchController">
 
   <stylesheets>
       <URL value="@../css/launch.css" />
   </stylesheets>
 
   <VBox styleClass="launchBox">
-    <Label fx:id="title" styleClass="title" text="NOMBRE VIDEOGAME" />
+    <Label fx:id="title" alignment="TOP_CENTER" contentDisplay="CENTER" styleClass="title" text="PELEAS PANCHITAS" />
     <VBox alignment="CENTER">
       <TextField fx:id="name" alignment="TOP_LEFT" prefHeight="52.0" prefWidth="600.0" promptText="Nombre del guerrero/a" styleClass="input">
             <VBox.margin>

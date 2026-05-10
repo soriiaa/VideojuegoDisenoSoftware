@@ -10,15 +10,17 @@ public abstract class Entidad {
     private EstrategiaCombate estrategiaCombate;
     private String nombre;
     private int puntosVida;
+    private int vidaMaxima;
     private int dano;
     private int resistencia;
     private Image sprite;
     private double x, y;
 
-    public Entidad (String nombre, int puntosVida, EstadoEntidad estado, int dano, int resistencia,
+    public Entidad (String nombre, int puntosVida, int vidaMaxima, EstadoEntidad estado, int dano, int resistencia,
                     Image sprite, double x, double y, EstrategiaCombate estrategiaCombate) {
         this.nombre = nombre;
         this.puntosVida = puntosVida;
+        this.vidaMaxima = vidaMaxima;
         this.estado = estado;
         this.dano = dano;
         this.resistencia = resistencia;
@@ -68,6 +70,14 @@ public abstract class Entidad {
         this.puntosVida = puntosVida;
     }
 
+    public int getVidaMaxima() {
+        return vidaMaxima;
+    }
+
+    public void setVidaMaxima(int vidaMaxima) {
+        this.vidaMaxima = vidaMaxima;
+    }
+
     public EstadoEntidad getEstado() {
         return estado;
     }
@@ -102,10 +112,9 @@ public abstract class Entidad {
 
     /**
      *
-     * @param enemigo
+     * @param entidad
      * @return El daño que se le ha inflingido al enemigo.
      */
-    public abstract int atacar(Entidad enemigo);
+    public abstract int atacar(Entidad entidad);
     public abstract int proteger();
-    public abstract void usarPocion();
 }

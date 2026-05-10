@@ -5,7 +5,10 @@ public class EstadoBasico implements EstadoEntidad{
     public double modificarDano(int danoBase) {
         return danoBase;
     }
-
+    @Override
+    public EstadoEntidad actualizarEstado() {
+        return this;
+    }
     @Override
     public String getNombre() {
         return "Basico";
