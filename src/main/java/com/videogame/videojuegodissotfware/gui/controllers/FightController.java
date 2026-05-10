@@ -202,7 +202,99 @@ public class FightController {
             }
         }
     }
-    
+
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+            a
+    a
+
     private void terminarYVolverAlMapa() {
         Combate combate = facade.getCombateActual();
         Mundo mundo = facade.getMundo();
