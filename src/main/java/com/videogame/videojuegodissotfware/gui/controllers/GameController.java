@@ -4,8 +4,6 @@ import com.videogame.videojuegodissotfware.gui.view.GameEventListener;
 import com.videogame.videojuegodissotfware.gui.view.GameScene;
 import com.videogame.videojuegodissotfware.model.core.GameFacade;
 import com.videogame.videojuegodissotfware.model.core.Mapa;
-import com.videogame.videojuegodissotfware.model.core.state.FightState;
-import com.videogame.videojuegodissotfware.model.core.state.PlayState;
 import com.videogame.videojuegodissotfware.model.entities.Monstruo;
 import com.videogame.videojuegodissotfware.model.entities.Personaje;
 import com.videogame.videojuegodissotfware.model.items.Item;
@@ -45,6 +43,10 @@ public class GameController implements GameEventListener {
     @FXML
     private ImageView pauseBtn;
     @FXML
+    private ImageView restartBtn;
+    @FXML
+    private ImageView exitBtn;
+    @FXML
     private StackPane contentPane;
     @FXML
     private StackPane centralContent;
@@ -82,6 +84,7 @@ public class GameController implements GameEventListener {
         game.start();
 
         pauseBtn.setOnMouseClicked(event -> pause());
+
         btnMejorarArma.setOnAction(e -> {
             facade.mejorarArma(Integer.parseInt(String.valueOf(this.precioMejorarArma.getText())));
             refrescarTienda();
@@ -122,7 +125,6 @@ public class GameController implements GameEventListener {
 
     @Override
     public void onFightStarted(Monstruo enemigo) {
-        facade.setEstado(new FightState());
         facade.iniciarCombate(enemigo);
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/videogame/videojuegodissotfware/fxml/fight-view.fxml"));
@@ -194,7 +196,6 @@ public class GameController implements GameEventListener {
             combatView = null;
         }
         game.resetAfterFight();
-        facade.setEstado(new PlayState());
 
         // Devolvemos el foco al Canvas para que el personaje vuelva a moverse inmediatamente
         game.getCanvas().setFocusTraversable(true);
@@ -246,6 +247,7 @@ public class GameController implements GameEventListener {
 
             OptionsController optionsController = loader.getController();
             optionsController.setGameContext(this.game);
+            optionsController.setListener(this);
 
             contentPane.getChildren().add(pauseMenu);
             game.getCanvas().setFocusTraversable(false);
@@ -254,6 +256,33 @@ public class GameController implements GameEventListener {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void onRestart() {
+        // si estamos en vista de combate, se cierra el combate
+        if (combatView != null) {
+            centralContent.getChildren().remove(combatView);
+            combatView = null;
+        }
+        if (game != null) {
+            game.stop();
+            centralContent.getChildren().remove(game.getCanvas());
+        }
+        facade.reiniciarPartida();
+
+        Personaje personaje = facade.getPersonaje();
+        Mapa mapaReal = facade.getMundo().getMapa();
+        game = new GameScene(centralContent, this, personaje, mapaReal);
+
+        centralContent.getChildren().add(game.getCanvas());
+        setPlayerData(personaje);
+        refrescarTienda();
+        refrescarInventario();
+
+        game.start();
+        game.getCanvas().requestFocus();
+
     }
 
 }

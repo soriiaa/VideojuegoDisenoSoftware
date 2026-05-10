@@ -1,15 +1,21 @@
 package com.videogame.videojuegodissotfware.gui.controllers;
 
+import com.videogame.videojuegodissotfware.gui.view.GameEventListener;
 import com.videogame.videojuegodissotfware.gui.view.GameScene;
 import com.videogame.videojuegodissotfware.model.core.GameFacade;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
+
+import java.io.IOException;
+import java.sql.ClientInfoStatus;
 
 public class OptionsController {
     @FXML
@@ -25,6 +31,7 @@ public class OptionsController {
     private GameScene game;
     GameFacade facade;
     private Timeline timeline;
+    GameEventListener listener;
 
     public void initialize() {
         resumeBtn.setOnMouseClicked(event -> resume());
@@ -56,12 +63,31 @@ public class OptionsController {
         game.getCanvas().requestFocus();
     }
     public void restart() {
+<<<<<<< HEAD
         timeline.stop();
         facade.reiniciarPartida();
+=======
+        listener.onRestart();
+        resume();
+>>>>>>> 26a9045d2aefc0453fdf0ef7db09717a3ab335d0
     }
     public void exit() {
         timeline.stop();
         facade.finalizarPartida();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/videogame/videojuegodissotfware/fxml/launch-view.fxml"));
+            Parent root = loader.load();
+
+            exitBtn.getScene().setRoot(root);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.exit(0);
+        }
+    }
+
+    public void setListener(GameEventListener listener) {
+        this.listener = listener;
     }
 }
 

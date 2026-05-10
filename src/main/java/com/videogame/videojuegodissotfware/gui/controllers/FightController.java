@@ -68,7 +68,9 @@ public class FightController {
             rootPane.getStyleClass().add("backgroundFightPradera");
         }
 
-        setBotonesDeshabilitados(false);
+        if (facade.getCombateActual().getEstadoActual() == FaseCombate.TURNO_ENEMIGO) {
+            ejecutarTurnoEnemigoConDelay();
+        }
     }
 
     public void rellenarEtiquetasEnemigo(Monstruo enemigo) {
@@ -116,7 +118,7 @@ public class FightController {
 
         switch (accion) {
             case ATACAR -> addMsj("¡Atacas al enemigo causando " + resultado + " de daño!", "ATAQUE");
-            case PROTEGER -> addMsj("Te defiendes y recuperas un 20% de tu vida máxima: " + resultado + " de vida.", "PROTEGER");
+            case PROTEGER -> addMsj("Te defiendes y recuperas un 20% de tu vida máxima: +" + resultado + " de vida.", "PROTEGER");
             case USAR_POCION -> addMsj("Usas una poción y recuperas " + resultado + " puntos de vida.", "CURACION");
         }
 
@@ -133,6 +135,8 @@ public class FightController {
     }
 
     private void ejecutarTurnoEnemigoConDelay() {
+        setBotonesDeshabilitados(true);
+
         PauseTransition pausa = new PauseTransition(Duration.seconds(1.5));
         pausa.setOnFinished(event -> {
             String estadoPersonajeAntes = facade.getPersonaje().getEstado().getNombre();
