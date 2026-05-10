@@ -32,7 +32,7 @@
                           <Button fx:id="potionBtn" onAction="#handlePotion" alignment="TOP_LEFT" focusTraversable="false" styleClass="itemsButton">
                               <graphic>
                                   <ImageView fitHeight="28.0" fitWidth="28.0">
-                                      <Image url="@../images/pocion.png" />
+                                      <Image url="@../images/items/pocion.png" />
                                   </ImageView>
                               </graphic>
                           </Button>

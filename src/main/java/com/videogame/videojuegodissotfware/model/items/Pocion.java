@@ -1,14 +1,18 @@
 package com.videogame.videojuegodissotfware.model.items;
 
+import javafx.scene.image.Image;
+
 public class Pocion extends Item {
-    private int puntosCuracion;
+
+    private int incrementadorResistencia;
 
     public Pocion (String nombre, int precio) {
-        super(nombre, precio);
-        this.puntosCuracion = 10;
+        super(nombre, precio, "/com/videogame/videojuegodissotfware/images/items/pocion.png");
+        this.incrementadorResistencia = 10;
     }
 
+    @Override
     public int getValorEfecto() {
-        return this.puntosCuracion;
+        return incrementadorResistencia;
     }
 }

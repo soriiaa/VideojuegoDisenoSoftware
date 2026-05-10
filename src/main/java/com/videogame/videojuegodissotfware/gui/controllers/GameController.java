@@ -8,14 +8,18 @@ import com.videogame.videojuegodissotfware.model.core.state.FightState;
 import com.videogame.videojuegodissotfware.model.core.state.PlayState;
 import com.videogame.videojuegodissotfware.model.entities.Monstruo;
 import com.videogame.videojuegodissotfware.model.entities.Personaje;
+import com.videogame.videojuegodissotfware.model.items.Item;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class GameController implements GameEventListener {
     @FXML
@@ -32,6 +36,8 @@ public class GameController implements GameEventListener {
     public Label attack;
     @FXML
     public Label state;
+    @FXML
+    private HBox inventoryBox;
     @FXML
     private ImageView pauseBtn;
     @FXML
@@ -98,6 +104,25 @@ public class GameController implements GameEventListener {
             System.out.println("Creado el combate con enemigo de tipo: " + enemigo.getTipo());
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void refrescarInventario() {
+
+        GameFacade facade = GameFacade.getInstance();
+        ArrayList<Item> inventario = facade.getPersonaje().getListaItems();
+
+        for (Item item : inventario) {
+            ImageView imageView = new ImageView();
+
+            Image image = new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/images/" + item.getNombreImagen()));
+
+            imageView.setImage(image);
+
+            imageView.setFitWidth(28);
+            imageView.setFitHeight(28);
+
+            inventoryBox.getChildren().add(imageView);
         }
     }
 

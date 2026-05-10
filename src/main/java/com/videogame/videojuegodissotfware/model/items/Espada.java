@@ -1,15 +1,18 @@
 package com.videogame.videojuegodissotfware.model.items;
 
-public class Espada extends Item {
-    private int incrementadorDano;
+import javafx.scene.image.Image;
 
-    public Espada (String nombre, int precio) {
-        super(nombre, precio);
-        this.incrementadorDano = 10;
+public class Espada extends Item {
+
+    private int incrementadorResistencia;
+
+    public Espada(String nombre, int precio) {
+        super(nombre, precio, "/com/videogame/videojuegodissotfware/images/items/espada.png");
+        this.incrementadorResistencia = 10;
     }
 
     @Override
-    public int getValorEfecto () {
-        return incrementadorDano;
+    public int getValorEfecto() {
+        return incrementadorResistencia;
     }
 }

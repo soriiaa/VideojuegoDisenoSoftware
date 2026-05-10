@@ -116,6 +116,7 @@ public class FightController {
     private void verificarFinCombate() {
         if (facade.getCombateActual().getEstadoActual() == FaseCombate.FINALIZADO) {
             addMsj("¡El combate ha terminado! Oro ganado: " + facade.getCombateActual().getEnemigo().getBotin(), "INFO");
+            actualizarDatosPantalla();
             atackBtn.setDisable(true);
             protectBtn.setDisable(true);
             potionBtn.setDisable(true);
@@ -143,7 +144,6 @@ public class FightController {
             listener.onFightEnded(); // se avisa que ya se ha terminado el combate para que el GameController vuelva a mostrar el mapa
         });
         pause.play();
-
     }
 
     public void addMsj(String texto, String tipo) {
