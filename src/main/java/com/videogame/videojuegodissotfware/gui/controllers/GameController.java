@@ -38,6 +38,7 @@ public class GameController implements GameEventListener {
     private StackPane contentPane;
     @FXML
     private StackPane centralContent;
+    private Parent combatView;
 
     GameFacade facade;
     GameScene game;
@@ -81,15 +82,19 @@ public class GameController implements GameEventListener {
         facade.iniciarCombate(enemigo);
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/videogame/videojuegodissotfware/fxml/fight-view.fxml"));
-            Parent combatView = loader.load();
+            combatView = loader.load();
+
+            centralContent.getChildren().add(combatView);
+            combatView.toFront();
 
             // al iniciar el combate, se necesita el controlador del combate para pasarle el listener (que es el GameController)
             // y que así pueda actualizar la UI lateral cada vez que el personaje sufra cambios en sus stats
             FightController fightController = loader.getController();
-            fightController.setListener(this); // El GameController se pasa a sí mismo como listener
+            fightController.setListener(this); // el GameController se pasa a sí mismo como listener
 
-            centralContent.getChildren().clear();
-            centralContent.getChildren().add(combatView);
+            game.getCanvas().setFocusTraversable(false); // quitamos el foco del mapa para que durante combate no se mueva el personaje
+            combatView.requestFocus();
+
             System.out.println("Creado el combate con enemigo de tipo: " + enemigo.getTipo());
         } catch (IOException e) {
             e.printStackTrace();
@@ -98,10 +103,17 @@ public class GameController implements GameEventListener {
 
     @Override
     public void onFightEnded() {
-        centralContent.getChildren().clear();
-        centralContent.getChildren().add(game.getCanvas());
-
+        if (combatView != null) {
+            centralContent.getChildren().remove(combatView);
+            combatView = null;
+        }
+        game.resetAfterFight();
         facade.setEstado(new PlayState());
+
+        // Devolvemos el foco al Canvas para que el personaje vuelva a moverse inmediatamente
+        game.getCanvas().setFocusTraversable(true);
+        game.getCanvas().requestFocus();
+
         game.start();
     }
 

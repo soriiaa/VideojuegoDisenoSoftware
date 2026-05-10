@@ -72,6 +72,11 @@ public class GameScene {
         personaje.render(gc);
     }
 
+    public void resetAfterFight() {
+        this.fightStarted = false;
+        this.inputKeys.clear();
+    }
+
     public Canvas getCanvas() {
         return canvas;
     }

@@ -23,7 +23,6 @@ public class OptionsController {
     public void resume() {
         StackPane parent = (StackPane) contentPane.getParent();
         parent.getChildren().remove(contentPane); // se elimina al hijo (que es la pantalla de pausa) del stackpane general
-
     }
     public void restart() {
     }

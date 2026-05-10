@@ -137,9 +137,12 @@ public class FightController {
 
         listener.onPlayerStatsChanged();
 
-
-        //mundo.eliminarMonstruo(enemigoDerrotado);
-        //listener.onFightEnded(); // se avisa que ya se ha terminado el combate para que el GameController vuelva a mostrar el mapa
+        PauseTransition pause = new PauseTransition(Duration.seconds(2));
+        pause.setOnFinished(event -> {
+            mundo.eliminarMonstruo(enemigoDerrotado);
+            listener.onFightEnded(); // se avisa que ya se ha terminado el combate para que el GameController vuelva a mostrar el mapa
+        });
+        pause.play();
 
     }
 
