@@ -153,7 +153,6 @@ public class FightController {
 
             comprobarCambioEstado(facade.getPersonaje(), estadoPersonajeAntes);
 
-            // si el jugador no ha muerto, reactivamos botones
             if (facade.getCombateActual().getEstadoActual() != FaseCombate.FINALIZADO) {
                 setBotonesDeshabilitados(false);
             } else {
@@ -194,7 +193,6 @@ public class FightController {
     private void comprobarCambioEstado(Entidad entidad, String estadoAnterior) {
         String estadoDespues = entidad.getEstado().getNombre();
 
-        // se manda el mensaje si el estado ha cambiado realmente
         if (!estadoAnterior.equals(estadoDespues)) {
             if (estadoDespues.equals("Furioso")) {
                 addMsj("¡" + entidad.getNombre() + " ha entrado en estado FURIOSO!", "ESTADO");
