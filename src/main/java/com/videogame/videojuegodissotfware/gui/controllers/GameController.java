@@ -115,7 +115,7 @@ public class GameController implements GameEventListener {
         for (Item item : inventario) {
             ImageView imageView = new ImageView();
 
-            Image image = new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/images/" + item.getNombreImagen()));
+            Image image = item.getSprite();
 
             imageView.setImage(image);
 
