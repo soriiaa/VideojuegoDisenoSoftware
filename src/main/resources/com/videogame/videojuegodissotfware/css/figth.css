@@ -1,35 +1,36 @@
-.backgroundFightDesierto {
-    -fx-background-image: url("../images/fightBackgroundDesierto.png");
-    -fx-background-repeat: no-repeat;
-    -fx-background-size: cover;
-}
 
-.backgroundFightPradera {
-    -fx-background-image: url("../images/fightBackgroundPradera.png");
-    -fx-background-repeat: no-repeat;
-    -fx-background-size: cover;
-}
-
-.atrEnemy,.nameEnemy {
-    -fx-font-size: 12px;
-    -fx-font-weight: bold;
-    -fx-text-fill: white;
-}
-
-.nameEnemy {
-    -fx-font-family: "Bell MT";
-    -fx-font-size: 30px;
-    -fx-text-fill: #3d2a1a;
-    -fx-font-weight: bold;
-}
-
-.zonaBtn, .zonaEnemy {
-    -fx-background-color: rgba(43, 29, 18, 0.6);
-    -fx-background-radius: 10px;
+/* para los mensajes */
+.combat-log {
+    -fx-background-color: #1a120b;
     -fx-border-color: #a07d5a;
     -fx-border-width: 2px;
-    -fx-border-radius: 10px;
-    -fx-padding: 15px;
+    -fx-border-radius: 5px;
+    -fx-background-insets: 0;
+}
+
+.log-container {
+    -fx-background-color: #1a120b;
+}
+
+.mensaje-base {
+    -fx-text-fill: #1a120b;
+    -fx-font-family: "Bell MT";
+    -fx-font-size: 14px;
+}
+
+.mensaje-proteger {
+    -fx-text-fill: #f0e68c;
+    -fx-font-weight: bold;
+}
+
+.mensaje-ataque {
+    -fx-text-fill: #ff4d4d;
+    -fx-font-weight: bold;
+}
+
+.mensaje-curacion {
+    -fx-text-fill: #05ff00;
+    -fx-font-weight: bold;
 }
 
 .itemsButton {
@@ -74,40 +75,6 @@
 }
 
 
-/* para los mensajes */
-.combat-log {
-    -fx-background-color: #1a120b;
-    -fx-border-color: #a07d5a;
-    -fx-border-width: 2px;
-    -fx-border-radius: 5px;
-    -fx-background-insets: 0;
-}
-
-.log-container {
-    -fx-background-color: #1a120b;
-}
-
-.mensaje-base {
-    -fx-text-fill: #1a120b;
-    -fx-font-family: "Bell MT";
-    -fx-font-size: 14px;
-}
-
-.mensaje-proteger {
-    -fx-text-fill: #f0e68c;
-    -fx-font-weight: bold;
-}
-
-.mensaje-ataque {
-    -fx-text-fill: #ff4d4d;
-    -fx-font-weight: bold;
-}
-
-.mensaje-curacion {
-    -fx-text-fill: #05ff00;
-    -fx-font-weight: bold;
-}
-
 .mensaje-info {
     -fx-text-fill: #4dffff;
     -fx-font-weight: bold;
@@ -116,4 +83,38 @@
 .mensaje-estado {
     -fx-text-fill: #ac00c5;
     -fx-font-weight: bold;
+}
+
+.backgroundFightDesierto {
+    -fx-background-image: url("../images/fightBackgroundDesierto.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+}
+
+.backgroundFightPradera {
+    -fx-background-image: url("../images/fightBackgroundPradera.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+}
+
+.atrEnemy,.nameEnemy {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.nameEnemy {
+    -fx-font-family: "Bell MT";
+    -fx-font-size: 30px;
+    -fx-text-fill: #3d2a1a;
+    -fx-font-weight: bold;
+}
+
+.zonaBtn, .zonaEnemy {
+    -fx-background-color: rgba(43, 29, 18, 0.6);
+    -fx-background-radius: 10px;
+    -fx-border-color: #a07d5a;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+    -fx-padding: 15px;
 }

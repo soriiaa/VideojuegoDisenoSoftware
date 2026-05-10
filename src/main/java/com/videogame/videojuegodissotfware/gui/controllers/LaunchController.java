@@ -27,8 +27,7 @@ public class LaunchController {
 
     public void initialize() {
         facade = GameFacade.getInstance(); // creado con MenuState
-
-        typeMap = new ToggleGroup(); // inicializan los generos del los radio buttons
+        typeMap = new ToggleGroup();
         pradera.setToggleGroup(typeMap);
         desierto.setToggleGroup(typeMap);
 

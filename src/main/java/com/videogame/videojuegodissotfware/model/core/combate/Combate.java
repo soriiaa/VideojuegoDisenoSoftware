@@ -20,8 +20,8 @@ public class Combate {
         this.enemigo = enemigo;
         this.personaje = personaje;
         // el turno de quien empieza se decide aleatoriamente
-        //this.estadoActual = quienEmpieza();
-        this.estadoActual = FaseCombate.TURNO_JUGADOR;
+        this.estadoActual = quienEmpieza();
+
     }
 
     public FaseCombate quienEmpieza() {
@@ -96,11 +96,6 @@ public class Combate {
         }
     }
 
-
-    public void finalizarCombate() {
-
-    }
-
     public void comprobarResultado() {
         if (enemigo.getPuntosVida() <= 0) {
             ganador = personaje;
@@ -109,6 +104,10 @@ public class Combate {
             ganador = enemigo;
             estadoActual = FaseCombate.FINALIZADO;
         }
+    }
+
+    public void finalizarCombate() {
+
     }
 
     public Monstruo getEnemigo() {

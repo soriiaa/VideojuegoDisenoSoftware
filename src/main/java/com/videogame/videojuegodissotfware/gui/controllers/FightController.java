@@ -68,7 +68,20 @@ public class FightController {
             rootPane.getStyleClass().add("backgroundFightPradera");
         }
 
-        setBotonesDeshabilitados(false);
+        if (facade.getCombateActual().getEstadoActual() == FaseCombate.TURNO_ENEMIGO) {
+            ejecutarTurnoEnemigoConDelay();
+        }
+    }
+
+    private void actualizarDatosPantalla() {
+        Combate combate = facade.getCombateActual();
+        enemyName.setText(combate.getEnemigo().getNombre());
+        int hp = Math.max(0, combate.getEnemigo().getPuntosVida()); // para que no muestre negativo
+        enemyHp.setText(String.valueOf(hp));
+        enemyRes.setText(String.valueOf(combate.getEnemigo().getResistencia()));
+        enemyDamage.setText(String.valueOf(combate.getEnemigo().getDano()));
+        enemyState.setText(combate.getEnemigo().getEstado().getNombre());
+        enemyStrategy.setText(combate.getEnemigo().getEstrategiaCombate().getNombre());
     }
 
     public void rellenarEtiquetasEnemigo(Monstruo enemigo) {
@@ -82,17 +95,6 @@ public class FightController {
         enemyImage.setImage(enemigo.getSprite());
     }
 
-    private void actualizarDatosPantalla() {
-        Combate combate = facade.getCombateActual();
-
-        enemyName.setText(combate.getEnemigo().getNombre());
-        int hp = Math.max(0, combate.getEnemigo().getPuntosVida()); // para que no muestre negativo
-        enemyHp.setText(String.valueOf(hp));
-        enemyRes.setText(String.valueOf(combate.getEnemigo().getResistencia()));
-        enemyDamage.setText(String.valueOf(combate.getEnemigo().getDano()));
-        enemyState.setText(combate.getEnemigo().getEstado().getNombre());
-        enemyStrategy.setText(combate.getEnemigo().getEstrategiaCombate().getNombre());
-    }
     @FXML
     private void handleAttack() {
         procesarTurnoJugador(ATACAR);
@@ -116,7 +118,7 @@ public class FightController {
 
         switch (accion) {
             case ATACAR -> addMsj("¡Atacas al enemigo causando " + resultado + " de daño!", "ATAQUE");
-            case PROTEGER -> addMsj("Te defiendes y recuperas un 20% de tu vida máxima: " + resultado + " de vida.", "PROTEGER");
+            case PROTEGER -> addMsj("Te defiendes y recuperas un 20% de tu vida máxima: +" + resultado + " de vida.", "PROTEGER");
             case USAR_POCION -> addMsj("Usas una poción y recuperas " + resultado + " puntos de vida.", "CURACION");
         }
 
@@ -133,6 +135,8 @@ public class FightController {
     }
 
     private void ejecutarTurnoEnemigoConDelay() {
+        setBotonesDeshabilitados(true);
+
         PauseTransition pausa = new PauseTransition(Duration.seconds(1.5));
         pausa.setOnFinished(event -> {
             String estadoPersonajeAntes = facade.getPersonaje().getEstado().getNombre();
@@ -149,7 +153,6 @@ public class FightController {
 
             comprobarCambioEstado(facade.getPersonaje(), estadoPersonajeAntes);
 
-            // si el jugador no ha muerto, reactivamos botones
             if (facade.getCombateActual().getEstadoActual() != FaseCombate.FINALIZADO) {
                 setBotonesDeshabilitados(false);
             } else {
@@ -165,7 +168,6 @@ public class FightController {
         boolean tienePocion = facade.getPersonaje().tienePocion();
         potionBtn.setDisable(estado || !tienePocion);
     }
-
 
     private void verificarFinCombate() {
         Combate combate = facade.getCombateActual();
@@ -191,7 +193,6 @@ public class FightController {
     private void comprobarCambioEstado(Entidad entidad, String estadoAnterior) {
         String estadoDespues = entidad.getEstado().getNombre();
 
-        // se manda el mensaje si el estado ha cambiado realmente
         if (!estadoAnterior.equals(estadoDespues)) {
             if (estadoDespues.equals("Furioso")) {
                 addMsj("¡" + entidad.getNombre() + " ha entrado en estado FURIOSO!", "ESTADO");

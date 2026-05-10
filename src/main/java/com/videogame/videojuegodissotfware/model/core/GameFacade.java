@@ -2,26 +2,17 @@ package com.videogame.videojuegodissotfware.model.core;
 
 import com.videogame.videojuegodissotfware.model.actions.Accion;
 import com.videogame.videojuegodissotfware.model.core.combate.Combate;
-import com.videogame.videojuegodissotfware.model.core.state.EstadoPartida;
-import com.videogame.videojuegodissotfware.model.core.state.MenuState;
-import com.videogame.videojuegodissotfware.model.core.state.PauseState;
-import com.videogame.videojuegodissotfware.model.core.state.PlayState;
 import com.videogame.videojuegodissotfware.model.entities.Monstruo;
 import com.videogame.videojuegodissotfware.model.entities.Personaje;
 import com.videogame.videojuegodissotfware.model.factories.EnemigoFactory;
 import com.videogame.videojuegodissotfware.model.factories.EnemigoFactoryManager;
 import com.videogame.videojuegodissotfware.model.factories.desierto.DesiertoFactory;
 import com.videogame.videojuegodissotfware.model.factories.selva.PraderaFactory;
-import javafx.scene.input.KeyCode;
 
 public class GameFacade {
     private static GameFacade instance;
     private Mundo mundo;
-    private EstadoPartida estadoPartida;
-
-    private GameFacade() {
-        this.estadoPartida = new MenuState();
-    }
+    private GameFacade() {}
 
     public static GameFacade getInstance() {
         if (instance == null) {
@@ -33,15 +24,19 @@ public class GameFacade {
     public void inicializarNuevaPartida(String nombre, String tipoMapa) {
         inicializarFactory(tipoMapa);
         mundo = new Mundo(nombre, tipoMapa);
-        setEstado(new PlayState());
     }
 
     public void reiniciarPartida() {
-
+        if (mundo != null) {
+            String nombre = mundo.getPersonaje().getNombre();
+            String tipoMapa = mundo.getTipoMapa();
+            inicializarNuevaPartida(nombre, tipoMapa);
+        }
     }
 
     public void finalizarPartida() {
-
+        this.mundo = null;
+        System.out.println("Partida finalizada");
     }
 
     public void iniciarCombate(Monstruo enemigo) {
@@ -56,12 +51,7 @@ public class GameFacade {
         return mundo.getCombateActual().ejecutarTurnoEnemigo();
     }
 
-    public void procesarInput(KeyCode tecla) {
-        this.estadoPartida.manejarInput(tecla, this);
-    }
-
     public void pausarPartida() {
-        setEstado(new PauseState()); // Aqui hay que pausar el tiempo y eso
         mundo.pausar();
     }
 
@@ -77,10 +67,7 @@ public class GameFacade {
         mundo.comprarPocion(precio);
     }
 
-    /**
-     *
-     * @return 1 - Arma, 2 - Armadura, 3 - Poción
-     */
+
     public int[] getPreciosTienda() {
         int[] arrayPrecios = new int[3];
 
@@ -106,6 +93,10 @@ public class GameFacade {
         EnemigoFactoryManager.getInstance().setEnemigoFactory(factoryConcreta);
     }
 
+    public String getTiempoFormateado() {
+        return mundo.getTiempoFormateado();
+    }
+
     public Combate getCombateActual() {
         return mundo.getCombateActual();
     }
@@ -114,8 +105,8 @@ public class GameFacade {
         return mundo.getTipoMapa();
     }
 
-    public void setEstado(EstadoPartida nuevoEstado) {
-        this.estadoPartida = nuevoEstado;
+    public Mundo getMundo() {
+        return mundo;
     }
 
     public Personaje getPersonaje() {
@@ -124,9 +115,5 @@ public class GameFacade {
         } else {
             return null;
         }
-    }
-
-    public Mundo getMundo() {
-        return mundo;
     }
 }

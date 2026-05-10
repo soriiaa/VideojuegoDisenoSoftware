@@ -7,4 +7,5 @@ public interface GameEventListener {
     void onPlayerStatsChanged();
     void onFightEnded();
     void onGameOver();
+    void onRestart();
 }
