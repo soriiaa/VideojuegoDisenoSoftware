@@ -6,8 +6,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<StackPane fx:id="contentPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="com.videogame.videojuegodissotfware.gui.controllers.GameController">
+<StackPane fx:id="contentPane" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.videogame.videojuegodissotfware.gui.controllers.GameController">
 
     <BorderPane fx:id="rootPane" prefHeight="720" prefWidth="1280" styleClass="background">
         <stylesheets>
@@ -95,11 +94,11 @@
                    <VBox.margin>
                       <Insets bottom="10.0" left="20.0" right="20.0" />
                    </VBox.margin></Separator>
-                    <HBox fx:id="inventoryBox"
-                          alignment="CENTER_LEFT"
-                          spacing="10"
-                          styleClass="inventario">
-                        <Label styleClass="menuText" text="Inventario:" />
+                    <HBox fx:id="inventoryBox" alignment="CENTER_LEFT" spacing="10" styleClass="inventario">
+                        <Label prefWidth="80.0" styleClass="menuText" text="Inventario:">
+                     <HBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </HBox.margin></Label>
                         <Region HBox.hgrow="ALWAYS" />
                     </HBox>
                 <StackPane.margin>
