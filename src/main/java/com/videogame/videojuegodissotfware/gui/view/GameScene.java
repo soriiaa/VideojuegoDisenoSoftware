@@ -54,6 +54,15 @@ public class GameScene {
         gameLoop.start();
     }
 
+    public void stop() {
+        if (gameLoop != null) {
+            gameLoop.stop();
+            // limpia de teclas para que el personaje no se mueva solo al volver
+            inputKeys.clear();
+            System.out.println("DEBUG: GameLoop detenido.");
+        }
+    }
+
     private void update() {
         if (!fightStarted) {
             Monstruo enemigoChocado = personaje.update(inputKeys, tileMap);

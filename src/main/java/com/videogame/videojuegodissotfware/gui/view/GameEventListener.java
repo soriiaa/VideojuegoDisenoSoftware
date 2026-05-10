@@ -6,4 +6,5 @@ public interface GameEventListener {
     void onFightStarted(Monstruo monstruo);
     void onPlayerStatsChanged();
     void onFightEnded();
+    void onGameOver();
 }

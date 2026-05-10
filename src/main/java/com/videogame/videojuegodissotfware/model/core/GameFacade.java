@@ -40,8 +40,12 @@ public class GameFacade {
         mundo.gestionarCombate(enemigo);
     }
 
-    public int ejecutarTurno(Accion accion) {
-        return mundo.getCombateActual().ejecutarTurno(accion);
+    public int ejecutarTurnoJugador(Accion accion) {
+        return mundo.getCombateActual().ejecutarTurnoJugador(accion);
+    }
+
+    public int ejecutarTurnoEnemigo() {
+        return mundo.getCombateActual().ejecutarTurnoEnemigo();
     }
 
     public void procesarInput(KeyCode tecla) {

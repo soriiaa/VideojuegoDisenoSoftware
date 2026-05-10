@@ -4,6 +4,9 @@ import com.videogame.videojuegodissotfware.model.actions.Accion;
 import com.videogame.videojuegodissotfware.model.entities.Entidad;
 import com.videogame.videojuegodissotfware.model.entities.Monstruo;
 import com.videogame.videojuegodissotfware.model.entities.Personaje;
+import com.videogame.videojuegodissotfware.model.entities.state.EstadoAturdido;
+import com.videogame.videojuegodissotfware.model.entities.state.EstadoBasico;
+import com.videogame.videojuegodissotfware.model.entities.state.EstadoFurioso;
 
 import java.util.Random;
 
@@ -32,16 +35,17 @@ public class Combate {
         }
     }
 
-    public int ejecutarTurno(Accion accion) {
-        int danoRealizado = 0;
-        int vidaAumentada = 0;
+    public int ejecutarTurnoJugador(Accion accion) {
+        int resultado = 0;
         if (estadoActual == FaseCombate.TURNO_JUGADOR) {
             switch (accion) {
                 case ATACAR:
-                    danoRealizado = personaje.atacar(enemigo);
+                    resultado = personaje.atacar(enemigo);
+                    personaje.setEstado(personaje.getEstado().actualizarEstado());
+                    comprobarCambioEstado(enemigo, resultado);
                     break;
                 case PROTEGER:
-                    vidaAumentada = personaje.proteger();
+                    resultado = personaje.proteger();
                     break;
                 case USAR_POCION:
                     personaje.usarPocion();
@@ -49,23 +53,49 @@ public class Combate {
             }
             comprobarResultado();
 
-            // si no ha terminado, pasamos el turno al enemigo
+            // si el combate sigue, cambiamos el estado pero NO ejecutamos al enemigo aún
             if (estadoActual != FaseCombate.FINALIZADO) {
                 estadoActual = FaseCombate.TURNO_ENEMIGO;
-
-                enemigo.realizarTurno();
-                comprobarResultado();
-
-                if (estadoActual != FaseCombate.FINALIZADO) {
-                    estadoActual = FaseCombate.TURNO_JUGADOR;
-                }
             }
         }
-        return switch (accion) {
-            case ATACAR -> danoRealizado;
-            case PROTEGER, USAR_POCION -> vidaAumentada;
-        };
+        return resultado;
     }
+
+    public int ejecutarTurnoEnemigo() {
+
+        if (estadoActual == FaseCombate.TURNO_ENEMIGO) {
+            int resultadoEnemigo = enemigo.realizarTurno(personaje);
+            enemigo.setEstado(enemigo.getEstado().actualizarEstado());
+            comprobarCambioEstado(personaje, resultadoEnemigo);
+            comprobarResultado();
+
+            if (estadoActual != FaseCombate.FINALIZADO) {
+                estadoActual = FaseCombate.TURNO_JUGADOR;
+            }
+            return resultadoEnemigo;
+        }
+        return 0;
+    }
+
+    // se puede cambiar de estado una entidad cuando es atacada
+    private void comprobarCambioEstado(Entidad victima, int danoRecibido) {
+        // solo permitimos cambio si esta en basico para no mezclar estados
+        if (victima.getEstado() instanceof EstadoBasico) {
+            double azar = Math.random();
+
+            // 30% de probabilidad de Furioso, solo si el daño recibido es mayor a 20
+            if (danoRecibido > 20 && azar < 0.30) {
+                victima.setEstado(new EstadoFurioso());
+                System.out.println("DEBUG: " + victima.getNombre() + " ha entrado en estado FURIOSO");
+            } else if (azar < 0.10) { // 10% de probabilidad de quedar Aturdido por el golpe
+                victima.setEstado(new EstadoAturdido());
+                System.out.println("DEBUG: " + victima.getNombre() + " ha quedado ATURDIDO");
+            } else {
+                System.out.println("DEBUG: " + victima.getNombre() + " no cambia de estado tras el ataque");
+            }
+        }
+    }
+
 
     public void finalizarCombate() {
 

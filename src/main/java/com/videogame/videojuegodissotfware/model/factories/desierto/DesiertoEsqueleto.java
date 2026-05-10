@@ -9,9 +9,10 @@ public class DesiertoEsqueleto extends Esqueleto {
     public DesiertoEsqueleto(double x, double y){
         super("Esqueleto del Desierto",
                 100,
+                100,
                 new EstadoBasico(),
-                30,
-                20,
+                50,
+                10,
                 new Image(DesiertoEsqueleto.class.getResourceAsStream("/com/videogame/videojuegodissotfware/images/esqueleto.png")),
                 x,
                 y,

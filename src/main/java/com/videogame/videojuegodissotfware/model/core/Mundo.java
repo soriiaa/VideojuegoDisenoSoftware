@@ -34,9 +34,9 @@ public class Mundo {
     }
 
     private Personaje generarPersonaje(String nombrePersonaje) {
-        return new Personaje(nombrePersonaje, 40, new EstadoBasico(), 60, 30,
+        return new Personaje(nombrePersonaje, 150, 150, new EstadoBasico(), 40, 10,
                 new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Personaje.png")),
-                10, 10, new Equilibrada(), 150, 1, 0);
+                10, 10, new Equilibrada(),  1, 0);
     }
 
     private ArrayList<Monstruo> generarMonstruos() {

@@ -8,12 +8,16 @@ import com.videogame.videojuegodissotfware.model.core.state.FightState;
 import com.videogame.videojuegodissotfware.model.core.state.PlayState;
 import com.videogame.videojuegodissotfware.model.entities.Monstruo;
 import com.videogame.videojuegodissotfware.model.entities.Personaje;
+import javafx.animation.FadeTransition;
+import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 
 import java.io.IOException;
 
@@ -59,7 +63,8 @@ public class GameController implements GameEventListener {
 
     public void setPlayerData(Personaje personaje) {
         name.setText(personaje.getNombre());
-        hp.setText(personaje.getPuntosVida() + "/" + personaje.getPuntosVidaMax());
+        int hpActual = Math.max(0, personaje.getPuntosVida());
+        hp.setText(hpActual + "/" + personaje.getPuntosVidaMax());
         level.setText(String.valueOf(personaje.getNivel()));
         coins.setText(String.valueOf(personaje.getOro()));
         res.setText(String.valueOf(personaje.getResistencia()));
@@ -117,13 +122,51 @@ public class GameController implements GameEventListener {
         game.start();
     }
 
+    @Override
+    public void onGameOver() {
+        System.out.println("DEBUG: Cargando pantalla de Game Over desde FXML...");
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/videogame/videojuegodissotfware/fxml/gameover-view.fxml"));
+            Parent gameOverScreen = loader.load();
+
+            centralContent.getChildren().add(gameOverScreen);
+            gameOverScreen.toFront();
+
+            FadeTransition ft = new javafx.animation.FadeTransition(Duration.millis(1000), gameOverScreen);
+            ft.setFromValue(0.0);
+            ft.setToValue(1.0);
+            ft.play();
+
+            PauseTransition exitDelay = new PauseTransition(Duration.seconds(4));
+            exitDelay.setOnFinished(e -> {
+                javafx.application.Platform.exit();
+                System.exit(0);
+            });
+            exitDelay.play();
+
+        } catch (IOException e) {
+            System.err.println("Error al cargar game-over-view.fxml");
+            e.printStackTrace();
+            System.exit(0);
+        }
+    }
+
     @FXML
     public void pause() {
         facade.pausarPartida();
+        game.stop();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/videogame/videojuegodissotfware/fxml/options-view.fxml"));
-            Parent pauseMenu = loader.load();
+            StackPane pauseMenu = loader.load();
+
+            OptionsController optionsController = loader.getController();
+            optionsController.setGameContext(this.game, pauseMenu);
+
             contentPane.getChildren().add(pauseMenu);
+            game.getCanvas().setFocusTraversable(false);
+            pauseMenu.requestFocus();
+
         } catch (IOException e) {
             e.printStackTrace();
         }

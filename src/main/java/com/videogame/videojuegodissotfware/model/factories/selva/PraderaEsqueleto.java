@@ -9,6 +9,7 @@ public class PraderaEsqueleto extends Esqueleto {
     public PraderaEsqueleto(double x, double y){
         super("Esqueleto de la Selva",
                 100,
+                100,
                 new EstadoBasico(),
                 30,
                 20,
