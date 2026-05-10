@@ -245,7 +245,7 @@ public class GameController implements GameEventListener {
             StackPane pauseMenu = loader.load();
 
             OptionsController optionsController = loader.getController();
-            optionsController.setGameContext(this.game, pauseMenu);
+            optionsController.setGameContext(this.game);
 
             contentPane.getChildren().add(pauseMenu);
             game.getCanvas().setFocusTraversable(false);

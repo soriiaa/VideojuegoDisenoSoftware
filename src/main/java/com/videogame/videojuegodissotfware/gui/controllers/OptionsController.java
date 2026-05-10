@@ -17,7 +17,6 @@ public class OptionsController {
     private StackPane contentPane;
     private GameScene game;
     GameFacade facade;
-    private StackPane pauseMenuRoot; // Necesitaremos esto para cerrarlo
 
     public void initialize() {
         resumeBtn.setOnMouseClicked(event -> resume());
@@ -26,9 +25,8 @@ public class OptionsController {
         facade = GameFacade.getInstance();
     }
 
-    public void setGameContext(GameScene game, StackPane pauseMenuRoot) {
+    public void setGameContext(GameScene game) {
         this.game = game;
-        this.pauseMenuRoot = pauseMenuRoot;
     }
 
     public void resume() {
