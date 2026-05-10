@@ -36,12 +36,6 @@ public class Mundo {
         this.mapa.setEnemigos(this.listaMonstruos);
     }
 
-    private Personaje generarPersonaje(String nombrePersonaje) {
-        return new Personaje(nombrePersonaje, 150, 150, new EstadoBasico(), 40, 10,
-                new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Personaje.png")),
-                10, 10, new Equilibrada(),  1, 0);
-    }
-
     private ArrayList<Monstruo> generarMonstruos() {
         ArrayList<Monstruo> monstruos = new ArrayList<>();
         EnemigoFactoryManager enemigoFactoryManager = EnemigoFactoryManager.getInstance();
@@ -65,6 +59,12 @@ public class Mundo {
 
         System.out.println("DEBUG: Lista final tiene " + monstruos.size() + " monstruos");
         return monstruos;
+    }
+
+    private Personaje generarPersonaje(String nombrePersonaje) {
+        return new Personaje(nombrePersonaje, 150, 150, new EstadoBasico(), 40, 10,
+                new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Personaje.png")),
+                10, 10, new Equilibrada(),  1, 0);
     }
 
     public void eliminarMonstruo(Monstruo monstruo) {
