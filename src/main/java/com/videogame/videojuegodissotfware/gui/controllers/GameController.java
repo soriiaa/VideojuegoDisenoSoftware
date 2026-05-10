@@ -152,9 +152,17 @@ public class GameController implements GameEventListener {
         this.precioMejorarArmadura.setText(String.valueOf(precios[1]));
         this.precioComprarPocion.setText(String.valueOf(precios[2]));
 
-        this.btnMejorarArma.setDisable(!facade.comprobarDinero(Integer.parseInt(String.valueOf(precioMejorarArma.getText()))));
-        this.btnMejorarArmadura.setDisable(!facade.comprobarDinero(Integer.parseInt(String.valueOf(precioMejorarArmadura.getText()))));
-        this.btnComprarPocion.setDisable(!facade.comprobarDinero(Integer.parseInt(String.valueOf(precioComprarPocion.getText()))));
+        boolean btnMejorarArmaHabilitado = facade.getPersonaje().tieneArmaMejorada();
+        boolean btnMejorarArmaduraHabilitado = facade.getPersonaje().tieneArmaduraMejorada();
+        boolean btnComprarPocionHabilitado = facade.getPersonaje().tienePocion();
+
+        boolean tieneDineroArma = facade.comprobarDinero(Integer.parseInt(String.valueOf(precioMejorarArma.getText())));
+        boolean tieneDineroArmadura = facade.comprobarDinero(Integer.parseInt(String.valueOf(precioMejorarArmadura.getText())));
+        boolean tieneDineroPocion = facade.comprobarDinero(Integer.parseInt(String.valueOf(precioComprarPocion.getText())));
+
+        this.btnMejorarArma.setDisable(!tieneDineroArma || btnMejorarArmaHabilitado);
+        this.btnMejorarArmadura.setDisable(!tieneDineroArmadura || btnMejorarArmaduraHabilitado);
+        this.btnComprarPocion.setDisable(!tieneDineroPocion || btnComprarPocionHabilitado);
     }
 
     public void refrescarInventario() {

@@ -6,6 +6,8 @@ import com.videogame.videojuegodissotfware.model.entities.state.EstadoEntidad;
 import com.videogame.videojuegodissotfware.model.items.Armadura;
 import com.videogame.videojuegodissotfware.model.items.Espada;
 import com.videogame.videojuegodissotfware.model.items.Item;
+import com.videogame.videojuegodissotfware.model.items.Pocion;
+import com.videogame.videojuegodissotfware.model.items.decorator.ItemDecorator;
 import com.videogame.videojuegodissotfware.model.strategies.EstrategiaCombate;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -88,6 +90,35 @@ public class Personaje extends Entidad {
 
     public void comprarItem(int precio) {
         this.oro -= precio;
+    }
+
+    public boolean tieneArmaMejorada() {
+        for (Item item : listaItems) {
+            Item base = item.getObjetoBase();
+            if (base instanceof Espada && item instanceof ItemDecorator) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean tieneArmaduraMejorada() {
+        for (Item item : listaItems) {
+            Item base = item.getObjetoBase();
+            if (base instanceof Armadura && item instanceof ItemDecorator) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean tienePocion() {
+        for (Item item : listaItems) {
+            if (item instanceof Pocion) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void inicializarInventario() {

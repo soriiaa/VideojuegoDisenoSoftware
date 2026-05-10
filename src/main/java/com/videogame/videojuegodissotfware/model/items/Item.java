@@ -15,6 +15,10 @@ public abstract class Item {
         this.sprite = new Image(getClass().getResourceAsStream(rutaSprite));
     }
 
+    public Item getObjetoBase() {
+        return this;
+    }
+
     public String getNombre() {
         return nombre;
     }

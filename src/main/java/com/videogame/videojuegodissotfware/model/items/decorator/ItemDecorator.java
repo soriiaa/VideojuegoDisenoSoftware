@@ -16,6 +16,11 @@ public class ItemDecorator extends Item {
     }
 
     @Override
+    public Item getObjetoBase() {
+        return itemEnvuelto.getObjetoBase();
+    }
+
+    @Override
     public int getValorEfecto() {
         return itemEnvuelto.getValorEfecto();
     }
