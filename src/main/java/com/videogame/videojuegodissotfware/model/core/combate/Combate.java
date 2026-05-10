@@ -20,8 +20,8 @@ public class Combate {
         this.enemigo = enemigo;
         this.personaje = personaje;
         // el turno de quien empieza se decide aleatoriamente
-        //this.estadoActual = quienEmpieza();
-        this.estadoActual = FaseCombate.TURNO_JUGADOR;
+        this.estadoActual = quienEmpieza();
+
     }
 
     public FaseCombate quienEmpieza() {
