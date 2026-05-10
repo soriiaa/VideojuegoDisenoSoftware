@@ -53,16 +53,16 @@ public class GameFacade {
         mundo.pausar();
     }
 
-    public void mejorarArma() {
-
+    public void mejorarArma(int precio) {
+        mundo.decorarItem(precio);
     }
 
-    public void mejorarArmadura() {
-
+    public void mejorarArmadura(int precio) {
+        mundo.decorarItem(precio);
     }
 
-    public void comprarPocion() {
-
+    public void comprarPocion(int precio) {
+        mundo.comprarPocion(precio);
     }
 
     /**

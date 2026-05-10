@@ -8,10 +8,13 @@ import com.videogame.videojuegodissotfware.model.entities.state.EstadoBasico;
 import com.videogame.videojuegodissotfware.model.factories.EnemigoFactoryManager;
 import com.videogame.videojuegodissotfware.model.items.Armadura;
 import com.videogame.videojuegodissotfware.model.items.Espada;
+import com.videogame.videojuegodissotfware.model.items.Item;
 import com.videogame.videojuegodissotfware.model.items.Pocion;
+import com.videogame.videojuegodissotfware.model.items.decorator.EncantamientoFortaleza;
 import com.videogame.videojuegodissotfware.model.strategies.Equilibrada;
 import javafx.scene.image.Image;
 
+import java.sql.Array;
 import java.util.ArrayList;
 
 public class Mundo {
@@ -78,13 +81,40 @@ public class Mundo {
         return new Mapa(tipoMapa);
     }
 
+    public void decorarItem(int precio) {
+        ArrayList<Item> inventario = personaje.getListaItems();
+
+        for (int i = 0; i < inventario.size(); i++) {
+            Item actual = inventario.get(i);
+
+            if (actual instanceof Espada) {
+                Item espadaEncantada = new EncantamientoFortaleza(actual);
+                inventario.set(i, espadaEncantada);
+                personaje.comprarItem(precio);
+                i = inventario.size();
+            } else if (actual instanceof Armadura) {
+                Item armaduraEncantada = new EncantamientoFortaleza(actual);
+                inventario.set(i, armaduraEncantada);
+                personaje.comprarItem(precio);
+                i = inventario.size();
+            } else if (actual instanceof Pocion) {
+                Item pocionEncantada = new EncantamientoFortaleza(actual);
+                inventario.set(i, pocionEncantada);
+                personaje.comprarItem(precio);
+                i = inventario.size();
+            }
+        }
+    }
+
+    public void comprarPocion(int precio) {
+        ArrayList<Item> inventario = personaje.getListaItems();
+        inventario.add(new Pocion("Pocion"));
+        personaje.comprarItem(precio);
+    }
+
     public void gestionarCombate(Monstruo enemigo) {
         Combate combate = new Combate(enemigo, this.personaje);
         listaCombates.add(combate);
-    }
-
-    public Combate getCombateActual() {
-        return listaCombates.get(listaCombates.size() - 1);
     }
 
     public void reiniciarMundo() {
@@ -101,6 +131,10 @@ public class Mundo {
 
     public void finalizarPartida() {
 
+    }
+
+    public Combate getCombateActual() {
+        return listaCombates.get(listaCombates.size() - 1);
     }
 
     public int getPrecioArma() {

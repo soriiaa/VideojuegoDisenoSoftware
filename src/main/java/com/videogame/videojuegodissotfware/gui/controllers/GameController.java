@@ -83,16 +83,19 @@ public class GameController implements GameEventListener {
 
         pauseBtn.setOnMouseClicked(event -> pause());
         btnMejorarArma.setOnAction(e -> {
-            facade.mejorarArma();
+            facade.mejorarArma(Integer.parseInt(String.valueOf(this.precioMejorarArma.getText())));
             refrescarTienda();
+            refrescarInventario();
         });
         btnMejorarArmadura.setOnAction(e -> {
-            facade.mejorarArmadura();
+            facade.mejorarArmadura(Integer.parseInt(String.valueOf(this.precioMejorarArmadura.getText())));
             refrescarTienda();
+            refrescarInventario();
         });
         btnComprarPocion.setOnAction(e -> {
-            facade.comprarPocion();
+            facade.comprarPocion(Integer.parseInt(String.valueOf(this.precioComprarPocion.getText())));
             refrescarTienda();
+            refrescarInventario();
         });
     }
 
@@ -104,14 +107,14 @@ public class GameController implements GameEventListener {
         res.setText(String.valueOf(personaje.getResistencia()));
         attack.setText(String.valueOf(personaje.getDano()));
         state.setText(personaje.getEstado().getNombre());
-
-        // FALTA SETTEAR EL ARRAY DE ITEMS, AL INICIAR LA PARTIDA NO TIENE NINGUNO
+        refrescarInventario();
     }
 
     // necesario para que con el listener se actualice la UI lateral cada vez que el personaje sufra cambios en sus stats (sobretodo en el combate)
     @Override
     public void onPlayerStatsChanged() {
         setPlayerData(facade.getPersonaje());
+        refrescarTienda();
         refrescarInventario();
         System.out.println("UI Lateral actualizada desde el combate");
     }
@@ -167,6 +170,12 @@ public class GameController implements GameEventListener {
             imageView.setFitHeight(28);
             inventoryItems.getChildren().add(imageView);
         }
+
+        refrescarOro();
+    }
+
+    public void refrescarOro() {
+        coins.setText(String.valueOf(facade.getPersonaje().getOro()));
     }
 
     @Override

@@ -86,8 +86,8 @@ public class Personaje extends Entidad {
 
     }
 
-    public void comprarItem() {
-
+    public void comprarItem(int precio) {
+        this.oro -= precio;
     }
 
     private void inicializarInventario() {
