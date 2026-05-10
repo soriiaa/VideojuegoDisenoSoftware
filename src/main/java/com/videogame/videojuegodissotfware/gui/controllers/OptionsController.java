@@ -63,13 +63,10 @@ public class OptionsController {
         game.getCanvas().requestFocus();
     }
     public void restart() {
-<<<<<<< HEAD
         timeline.stop();
         facade.reiniciarPartida();
-=======
         listener.onRestart();
         resume();
->>>>>>> 26a9045d2aefc0453fdf0ef7db09717a3ab335d0
     }
     public void exit() {
         timeline.stop();
