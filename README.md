@@ -1,4 +1,4 @@
-# 🐉 El Ataque del Dragón
+# 🐉 Mazmorras
 
 > RPG de combate por turnos desarrollado en **Java 21 + JavaFX**, como proyecto de la asignatura de Diseño de Software.
 
@@ -8,9 +8,9 @@
 
 ## 📋 Descripción
 
-*El Ataque del Dragón* es un videojuego RPG 2D de combate por turnos. El jugador explora mapas generados con **tilemaps** (matrices numéricas que representan tiles gráficos) y se enfrenta a distintos enemigos para obtener recursos, mejorar su personaje y sobrevivir.
+*Mazmorras* es un videojuego RPG 2D de combate por turnos. El jugador explora mapas generados con **tilemaps** (matrices numéricas que representan tiles gráficos) y se enfrenta a distintos enemigos para obtener recursos, mejorar su personaje y sobrevivir.
 
-El proyecto aplica los **7 patrones de diseño** vistos en clase, integrando la lógica del modelo con la interfaz gráfica JavaFX a través de controladores FXML + CSS.
+El proyecto aplica algunos **patrones de diseño** vistos en clase, integrando la lógica del modelo con la interfaz gráfica JavaFX a través de controladores FXML + CSS.
 
 ---
 
