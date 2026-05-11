@@ -62,7 +62,7 @@ public class Mundo {
     }
 
     private Personaje generarPersonaje(String nombrePersonaje) {
-        return new Personaje(nombrePersonaje, 150, 150, new EstadoBasico(), 60, 10,
+        return new Personaje(nombrePersonaje, 200, 200, new EstadoBasico(), 15, 5,
                 new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Personaje.png")),
                 10, 10, new Equilibrada(),  1, 0);
     }

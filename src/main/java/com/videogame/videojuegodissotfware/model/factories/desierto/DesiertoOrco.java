@@ -9,11 +9,11 @@ import javafx.scene.image.Image;
 public class DesiertoOrco extends Orco {
     public DesiertoOrco(double x, double y){
         super("Orco del Desierto",
-                150,
-                150,
+                160,
+                160,
                 new EstadoBasico(),
-                80,
-                40,
+                45,
+                16,
                 new Image(DesiertoOrco.class.getResourceAsStream("/com/videogame/videojuegodissotfware/images/orco.png")),
                 x,
                 y,

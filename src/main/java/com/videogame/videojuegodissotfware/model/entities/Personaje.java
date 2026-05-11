@@ -20,7 +20,7 @@ public class Personaje extends Entidad {
     private int nivel;
     private int oro;
     private ArrayList<Item> listaItems;
-    private double speed = 1.0;
+    private double speed = 2.0;
     private final double PLAYER_SIZE = 64.0;
 
     public Personaje(String nombre, int puntosVida, int vidaMaxima, EstadoEntidad estado, int dano, int resistencia,

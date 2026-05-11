@@ -8,11 +8,11 @@ import javafx.scene.image.Image;
 public class PraderaEsqueleto extends Esqueleto {
     public PraderaEsqueleto(double x, double y){
         super("Esqueleto de la Pradera",
-                100,
-                100,
+                80,
+                80,
                 new EstadoBasico(),
-                30,
-                20,
+                55,
+                8,
                 new Image(PraderaEsqueleto.class.getResourceAsStream("/com/videogame/videojuegodissotfware/images/esqueleto.png")),
                 x,
                 y,

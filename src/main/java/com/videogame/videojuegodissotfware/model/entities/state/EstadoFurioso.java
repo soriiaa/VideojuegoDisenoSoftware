@@ -5,7 +5,7 @@ public class EstadoFurioso implements EstadoEntidad{
 
     @Override
     public double modificarDano(int danoBase) {
-        return danoBase * 1.2;
+        return danoBase * 1.5;
     }
 
     @Override

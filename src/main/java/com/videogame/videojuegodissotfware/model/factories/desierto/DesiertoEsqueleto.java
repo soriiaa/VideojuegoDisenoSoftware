@@ -8,11 +8,11 @@ import javafx.scene.image.Image;
 public class DesiertoEsqueleto extends Esqueleto {
     public DesiertoEsqueleto(double x, double y){
         super("Esqueleto del Desierto",
-                100,
-                100,
+                80,
+                80,
                 new EstadoBasico(),
-                50,
-                10,
+                55,
+                8,
                 new Image(DesiertoEsqueleto.class.getResourceAsStream("/com/videogame/videojuegodissotfware/images/esqueleto.png")),
                 x,
                 y,

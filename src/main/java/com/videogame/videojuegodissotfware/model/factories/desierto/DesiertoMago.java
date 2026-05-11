@@ -9,11 +9,11 @@ import javafx.scene.image.Image;
 public class DesiertoMago extends Mago {
     public DesiertoMago(double x, double y){
         super("Mago del Desierto",
-                80,
-                80,
+                60,
+                60,
                 new EstadoBasico(),
-                10,
-                5,
+                65,
+                4,
                 new Image(DesiertoMago.class.getResourceAsStream("/com/videogame/videojuegodissotfware/images/mago.png")),
                 x,
                 y,

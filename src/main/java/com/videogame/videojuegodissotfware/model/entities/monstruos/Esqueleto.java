@@ -18,8 +18,8 @@ public class Esqueleto extends Monstruo {
 
     @Override
     public Accion decidirAccion() {
-        // esqueleto: si tiene más del 40% de vida, ataca (es agresivo), si no, se protege
-        if (this.getPuntosVida() > (this.getVidaMaxima() * 0.6)) {
+        // esqueleto: si tiene poca vida (menos del 30%), intenta sobrevivir
+        if (this.getPuntosVida() > (this.getVidaMaxima() * 0.3)) {
             return Accion.ATACAR;
         }
         return Accion.PROTEGER;

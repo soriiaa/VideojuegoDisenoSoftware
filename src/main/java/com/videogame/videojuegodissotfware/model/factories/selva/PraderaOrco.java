@@ -8,11 +8,11 @@ import javafx.scene.image.Image;
 public class PraderaOrco extends Orco {
     public PraderaOrco(double x, double y) {
         super("Orco de la Pradera",
-                150,
-                150,
+                160,
+                160,
                 new EstadoBasico(),
-                30,
-                20,
+                45,
+                16,
                 new Image(PraderaOrco.class.getResourceAsStream("/com/videogame/videojuegodissotfware/images/orco.png")),
                 x,
                 y,
