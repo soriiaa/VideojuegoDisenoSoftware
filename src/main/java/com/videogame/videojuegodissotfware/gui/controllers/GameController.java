@@ -199,6 +199,9 @@ public class GameController implements GameEventListener {
             combatView = null;
         }
         game.resetAfterFight();
+        if (facade.getMundo().getListaMonstruos().isEmpty()) {
+            pantallaVictoria();
+        }
 
         // Devolvemos el foco al Canvas para que el personaje vuelva a moverse inmediatamente
         game.getCanvas().setFocusTraversable(true);
@@ -208,6 +211,27 @@ public class GameController implements GameEventListener {
 
         refrescarTienda();
         refrescarInventario();
+    }
+
+    private void pantallaVictoria() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/videogame/videojuegodissotfware/fxml/win-view.fxml"));
+            Parent gameWinScreen = loader.load();
+
+            centralContent.getChildren().add(gameWinScreen);
+            gameWinScreen.toFront();
+
+            FadeTransition ft = new FadeTransition(Duration.millis(1000), gameWinScreen);
+            ft.setFromValue(0.0);
+            ft.setToValue(1.0);
+            ft.play();
+
+
+        } catch (IOException e) {
+            System.err.println("Error al cargar win-view.fxml");
+            e.printStackTrace();
+            System.exit(0);
+        }
     }
 
     @Override
@@ -221,7 +245,7 @@ public class GameController implements GameEventListener {
             centralContent.getChildren().add(gameOverScreen);
             gameOverScreen.toFront();
 
-            FadeTransition ft = new javafx.animation.FadeTransition(Duration.millis(1000), gameOverScreen);
+            FadeTransition ft = new FadeTransition(Duration.millis(1000), gameOverScreen);
             ft.setFromValue(0.0);
             ft.setToValue(1.0);
             ft.play();
@@ -234,7 +258,7 @@ public class GameController implements GameEventListener {
             exitDelay.play();
 
         } catch (IOException e) {
-            System.err.println("Error al cargar game-over-view.fxml");
+            System.err.println("Error al cargar gameover-view.fxml");
             e.printStackTrace();
             System.exit(0);
         }

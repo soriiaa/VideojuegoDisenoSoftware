@@ -154,4 +154,7 @@ public class Mundo {
     public Personaje getPersonaje() {
         return personaje;
     }
+    public ArrayList<Monstruo> getListaMonstruos() {
+        return listaMonstruos;
+    }
 }
