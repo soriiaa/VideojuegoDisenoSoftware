@@ -68,6 +68,8 @@ public class FightController {
             rootPane.getStyleClass().add("backgroundFightPradera");
         }
 
+        setBotonesDeshabilitados(false);
+
         if (facade.getCombateActual().getEstadoActual() == FaseCombate.TURNO_ENEMIGO) {
             ejecutarTurnoEnemigoConDelay();
         }
