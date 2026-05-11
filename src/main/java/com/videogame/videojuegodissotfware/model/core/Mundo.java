@@ -62,7 +62,7 @@ public class Mundo {
     }
 
     private Personaje generarPersonaje(String nombrePersonaje) {
-        return new Personaje(nombrePersonaje, 150, 150, new EstadoBasico(), 40, 10,
+        return new Personaje(nombrePersonaje, 150, 150, new EstadoBasico(), 60, 10,
                 new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Personaje.png")),
                 10, 10, new Equilibrada(),  1, 0);
     }
@@ -78,25 +78,28 @@ public class Mundo {
         return new Mapa(tipoMapa);
     }
 
-    public void decorarItem(int precio) {
+    public void decorarEspada(int precio) {
         ArrayList<Item> inventario = personaje.getListaItems();
 
         for (int i = 0; i < inventario.size(); i++) {
             Item actual = inventario.get(i);
-
             if (actual instanceof Espada) {
                 Item espadaEncantada = new EncantamientoFortaleza(actual);
                 inventario.set(i, espadaEncantada);
                 personaje.comprarItem(precio);
                 i = inventario.size();
-            } else if (actual instanceof Armadura) {
+            }
+        }
+    }
+
+    public void decorarArmadura(int precio) {
+        ArrayList<Item> inventario = personaje.getListaItems();
+
+        for (int i = 0; i < inventario.size(); i++) {
+            Item actual = inventario.get(i);
+            if (actual instanceof Armadura) {
                 Item armaduraEncantada = new EncantamientoFortaleza(actual);
                 inventario.set(i, armaduraEncantada);
-                personaje.comprarItem(precio);
-                i = inventario.size();
-            } else if (actual instanceof Pocion) {
-                Item pocionEncantada = new EncantamientoFortaleza(actual);
-                inventario.set(i, pocionEncantada);
                 personaje.comprarItem(precio);
                 i = inventario.size();
             }

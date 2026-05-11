@@ -9,7 +9,7 @@ public class EncantamientoFortaleza extends ItemDecorator {
 
     @Override
     public int getValorEfecto() {
-        return super.getValorEfecto() + 5;
+        return super.getValorEfecto() + 15;
     }
 
     public String getNombre() {

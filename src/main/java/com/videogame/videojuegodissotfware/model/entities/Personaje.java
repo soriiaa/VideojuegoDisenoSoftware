@@ -41,12 +41,14 @@ public class Personaje extends Entidad {
     public int atacar(Entidad enemigo) {
         CalculadorDano calc = CalculadorDano.getInstance();
 
-        int danoPotencial = calc.calcularAtaque(this.getDano(), this.getEstado(), this.getEstrategiaCombate()); // segun estrategia y estado (y daño base)
-        int defensaJugador = calc.calcularDefensa(enemigo.getResistencia(), enemigo.getEstrategiaCombate()); // segun estrategia y resistencia del enemigo
+        Item espada = getEspada();
 
-        System.out.println("DEBUG: " + getNombre() + " ataca a " + enemigo.getNombre() + " con daño potencial " + danoPotencial + " y defensa del enemigo " + defensaJugador);
+        int danoPotencial = calc.calcularAtaque(this.getDano(), this.getEstado(), this.getEstrategiaCombate(), espada); // segun estrategia y estado (y daño base)
+        int defensaMonstruo = calc.calcularDefensa(enemigo.getResistencia(), enemigo.getEstrategiaCombate()); // segun estrategia y resistencia del enemigo
 
-        int danoFinal = Math.max(0, danoPotencial - defensaJugador);
+        System.out.println("DEBUG: " + getNombre() + " ataca a " + enemigo.getNombre() + " con daño potencial " + danoPotencial + " y defensa del enemigo " + defensaMonstruo);
+
+        int danoFinal = Math.max(0, danoPotencial - defensaMonstruo);
         enemigo.setPuntosVida(enemigo.getPuntosVida() - danoFinal);
 
         return danoFinal;
@@ -177,6 +179,25 @@ public class Personaje extends Entidad {
             gc.setFill(Color.BLUE);
             gc.fillRect(getX(), getY(), PLAYER_SIZE, PLAYER_SIZE);
         }
+    }
+
+    public Item getEspada() {
+        for (Item item : listaItems) {
+            // Sacamos lo que hay dentro de los posibles encantamientos
+            if (item.getObjetoBase() instanceof Espada) {
+                return item; // Devolvemos el item (con sus decoradores)
+            }
+        }
+        return null;
+    }
+
+    public Item getArmadura() {
+        for (Item item : listaItems) {
+            if (item.getObjetoBase() instanceof Armadura) {
+                return item;
+            }
+        }
+        return null;
     }
 
     public EstrategiaCombate getEstrategiaCombate() {
