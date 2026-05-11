@@ -117,21 +117,6 @@ public class Mundo {
         listaCombates.add(combate);
     }
 
-    public void reiniciarMundo() {
-
-    }
-
-    public void pausar() {
-
-    }
-
-    public void comprobarResultado() {
-
-    }
-
-    public void finalizarPartida() {
-
-    }
 
     public String getTiempoFormateado() {
         long tiempoActual = System.currentTimeMillis();

@@ -8,7 +8,7 @@ import javafx.scene.image.Image;
 
 public class PraderaMago extends Mago {
     public PraderaMago(double x, double y){
-        super("Mago de la Selva",
+        super("Mago de la Pradera",
                 80,
                 80,
                 new EstadoBasico(),

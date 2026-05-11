@@ -94,11 +94,6 @@ public abstract class Entidad {
         return estrategiaCombate;
     }
 
-    /**
-     *
-     * @param entidad
-     * @return El daño que se le ha inflingido al enemigo.
-     */
     public abstract int atacar(Entidad entidad);
     public abstract int proteger();
 }

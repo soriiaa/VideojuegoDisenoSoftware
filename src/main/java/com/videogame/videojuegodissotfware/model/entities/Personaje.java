@@ -31,16 +31,16 @@ public class Personaje extends Entidad {
         this.oro = oro;
         this.listaItems = new ArrayList<>();
         inicializarInventario();
+
         try {
             this.setSprite(new Image(getClass().getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/Personaje.png")));
         } catch (Exception e) {
-            System.out.println("No se pudo cargar el sprite del jugador, se usará un cuadro azul.");
+            System.out.println("No se pudo cargar el sprite del jugador");
         }
     }
 
     public int atacar(Entidad enemigo) {
         CalculadorDano calc = CalculadorDano.getInstance();
-
         Item espada = getEspada();
 
         int danoPotencial = calc.calcularAtaque(this.getDano(), this.getEstado(), this.getEstrategiaCombate(), espada); // segun estrategia y estado (y daño base)
@@ -66,20 +66,12 @@ public class Personaje extends Entidad {
         return vidaNueva - vidaAnterior; // cantidad recuperada
     }
 
-    /**
-     * @param cantidad
-     * @return Retorna true si hay dinero, false si no.
-     */
     public boolean dineroDisponible(int cantidad) {
         if (this.oro - cantidad >= 0) {
             return true;
         } else {
             return false;
         }
-    }
-
-    public void gastarDinero(int cantidad) {
-        this.oro -= cantidad;
     }
 
     public int usarPocion() {

@@ -23,7 +23,7 @@ public abstract class Monstruo extends Entidad {
     }
 
     public int realizarTurno(Personaje personaje) {
-        System.out.println("DEBUG: El " + getNombre() + " está pensando... (ESTRATEGIA: " + getEstrategiaCombate().getClass().getSimpleName() + ", ESTADO: " + getEstado().getNombre() + ")");
+        System.out.println("DEBUG: El " + getNombre() + " está pensando... (ESTRATEGIA: " + getEstrategiaCombate().getNombre() + ", ESTADO: " + getEstado().getNombre() + ")");
 
         Accion decision = decidirAccion();
         if (decision == Accion.ATACAR) {

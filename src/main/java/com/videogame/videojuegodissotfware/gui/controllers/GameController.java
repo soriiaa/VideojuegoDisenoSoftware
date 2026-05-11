@@ -76,7 +76,7 @@ public class GameController implements GameEventListener {
         Personaje personaje = facade.getPersonaje();
         Mapa mapaReal = facade.getMundo().getMapa();
         game = new GameScene(centralContent, this, personaje, mapaReal);
-        setPlayerData(personaje);
+        refreshPlayerData(personaje);
         refrescarInventario();
         refrescarTienda();
 
@@ -89,22 +89,23 @@ public class GameController implements GameEventListener {
             facade.mejorarArma(Integer.parseInt(String.valueOf(this.precioMejorarArma.getText())));
             refrescarTienda();
             refrescarInventario();
-            attack.setText(String.valueOf((personaje.getDano()) + personaje.getEspada().getValorEfecto()));
+            refreshPlayerData(personaje);
         });
         btnMejorarArmadura.setOnAction(e -> {
             facade.mejorarArmadura(Integer.parseInt(String.valueOf(this.precioMejorarArmadura.getText())));
             refrescarTienda();
             refrescarInventario();
-            res.setText(String.valueOf((personaje.getResistencia() + personaje.getArmadura().getValorEfecto())));
+            refreshPlayerData(personaje);
         });
         btnComprarPocion.setOnAction(e -> {
             facade.comprarPocion(Integer.parseInt(String.valueOf(this.precioComprarPocion.getText())));
             refrescarTienda();
             refrescarInventario();
+            refreshPlayerData(personaje);
         });
     }
 
-    public void setPlayerData(Personaje personaje) {
+    public void refreshPlayerData(Personaje personaje) {
         name.setText(personaje.getNombre());
         int hpActual = Math.max(0, personaje.getPuntosVida());
         hp.setText(hpActual + "/" + personaje.getPuntosVidaMax());
@@ -119,7 +120,7 @@ public class GameController implements GameEventListener {
     // necesario para que con el listener se actualice la UI lateral cada vez que el personaje sufra cambios en sus stats (sobretodo en el combate)
     @Override
     public void onPlayerStatsChanged() {
-        setPlayerData(facade.getPersonaje());
+        refreshPlayerData(facade.getPersonaje());
         refrescarTienda();
         refrescarInventario();
         System.out.println("UI Lateral actualizada desde el combate");
@@ -241,7 +242,6 @@ public class GameController implements GameEventListener {
 
     @FXML
     public void pause() {
-        facade.pausarPartida();
         game.stop();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/videogame/videojuegodissotfware/fxml/options-view.fxml"));
@@ -278,13 +278,11 @@ public class GameController implements GameEventListener {
         game = new GameScene(centralContent, this, personaje, mapaReal);
 
         centralContent.getChildren().add(game.getCanvas());
-        setPlayerData(personaje);
+        refreshPlayerData(personaje);
         refrescarTienda();
         refrescarInventario();
 
         game.start();
         game.getCanvas().requestFocus();
-
     }
-
 }

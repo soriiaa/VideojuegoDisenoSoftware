@@ -15,7 +15,7 @@ public class CalculadorDano {
         }
         return instance;
     }
-
+    // metodo para el ataque del monstruo, que no tiene item espada, hacia el personaje
     public int calcularAtaque(int fuerzaBase, EstadoEntidad estado, EstrategiaCombate estrategia) {
         double danoConEstado = estado.modificarDano(fuerzaBase);
         double danoFinal = danoConEstado * estrategia.modificadorCombate();
@@ -23,6 +23,7 @@ public class CalculadorDano {
         return (int) Math.round(danoFinal);
     }
 
+    // metodo para el ataque del personaje (con su item, mejorado o no), hacia el monstruo
     public int calcularAtaque(int fuerzaBase, EstadoEntidad estado, EstrategiaCombate estrategia, Item espada) {
 
         int danoAdicional = 0;
@@ -37,10 +38,12 @@ public class CalculadorDano {
         return (int) Math.round(danoFinal);
     }
 
+    // metodo para calcular la defensa del monstruo (sin item armadura)
     public int calcularDefensa(int defensaBase, EstrategiaCombate estrategia) {
         return (int) Math.round(defensaBase * estrategia.modificadorDefensa());
     }
 
+    // metodo para calcular la defensa del personaje (con su item, mejorado o no)
     public int calcularDefensa(int defensaBase, EstrategiaCombate estrategia, Item armadura) {
 
         int resistenciaExtra = 0;
