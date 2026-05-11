@@ -89,11 +89,13 @@ public class GameController implements GameEventListener {
             facade.mejorarArma(Integer.parseInt(String.valueOf(this.precioMejorarArma.getText())));
             refrescarTienda();
             refrescarInventario();
+            attack.setText(String.valueOf((personaje.getDano()) + personaje.getEspada().getValorEfecto()));
         });
         btnMejorarArmadura.setOnAction(e -> {
             facade.mejorarArmadura(Integer.parseInt(String.valueOf(this.precioMejorarArmadura.getText())));
             refrescarTienda();
             refrescarInventario();
+            res.setText(String.valueOf((personaje.getResistencia() + personaje.getArmadura().getValorEfecto())));
         });
         btnComprarPocion.setOnAction(e -> {
             facade.comprarPocion(Integer.parseInt(String.valueOf(this.precioComprarPocion.getText())));
@@ -108,8 +110,8 @@ public class GameController implements GameEventListener {
         hp.setText(hpActual + "/" + personaje.getPuntosVidaMax());
         level.setText(String.valueOf(personaje.getNivel()));
         coins.setText(String.valueOf(personaje.getOro()));
-        res.setText(String.valueOf(personaje.getResistencia()));
-        attack.setText(String.valueOf(personaje.getDano()));
+        res.setText(String.valueOf((personaje.getResistencia() + personaje.getArmadura().getValorEfecto())));
+        attack.setText(String.valueOf((personaje.getDano()) + personaje.getEspada().getValorEfecto()));
         state.setText(personaje.getEstado().getNombre());
         refrescarInventario();
     }

@@ -2,6 +2,7 @@ package com.videogame.videojuegodissotfware.model.entities;
 
 import com.videogame.videojuegodissotfware.model.actions.Accion;
 import com.videogame.videojuegodissotfware.model.core.CalculadorDano;
+import com.videogame.videojuegodissotfware.model.core.GameFacade;
 import com.videogame.videojuegodissotfware.model.entities.state.EstadoEntidad;
 import com.videogame.videojuegodissotfware.model.strategies.EstrategiaCombate;
 import javafx.scene.canvas.GraphicsContext;
@@ -39,8 +40,9 @@ public abstract class Monstruo extends Entidad {
     @Override
     public int atacar(Entidad entidad) {
         CalculadorDano calc = CalculadorDano.getInstance();
+        GameFacade facade = GameFacade.getInstance();
         int danoPotencial = calc.calcularAtaque(this.getDano(), this.getEstado(), this.getEstrategiaCombate());
-        int defensaJugador = calc.calcularDefensa(entidad.getResistencia(), entidad.getEstrategiaCombate());
+        int defensaJugador = calc.calcularDefensa(entidad.getResistencia(), entidad.getEstrategiaCombate(), facade.getPersonaje().getArmadura());
         System.out.println("DEBUG: " + getNombre() + " ataca a " + entidad.getNombre() + " con daño potencial " + danoPotencial + " y defensa del jugador " + defensaJugador);
 
         int danoFinal = Math.max(0, danoPotencial - defensaJugador);
