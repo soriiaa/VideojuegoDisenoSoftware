@@ -8,7 +8,7 @@ import javafx.scene.image.Image;
 
 public class DesiertoOrco extends Orco {
     public DesiertoOrco(double x, double y){
-        super("Orco del Desierto", 160, 160, new EstadoBasico(), 45, 16,
+        super("Orco del Desierto", 160, 160, new EstadoBasico(), 45, 8,
                 new Image(DesiertoOrco.class.getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/monstruosDesierto/orcoDesierto.png")),
                 x, y, new Defensiva(), 150, 2);
         System.out.println("DEBUG: Orco del Desierto creado en (" + x + ", " + y + ")");

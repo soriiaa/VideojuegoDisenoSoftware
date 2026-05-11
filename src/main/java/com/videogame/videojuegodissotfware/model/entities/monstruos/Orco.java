@@ -19,8 +19,8 @@ public class Orco extends Monstruo {
 
     @Override
     public Accion decidirAccion() {
-        // orco: Si tiene más del 15% de vida, ataca (es agresivo)
-        if (this.getPuntosVida() > (this.getVidaMaxima() * 0.15)) {
+        // orco: Si tiene más del 10% de vida, ataca (es agresivo)
+        if (this.getPuntosVida() > (this.getVidaMaxima() * 0.1)) {
             return Accion.ATACAR;
         }
         return Accion.PROTEGER;

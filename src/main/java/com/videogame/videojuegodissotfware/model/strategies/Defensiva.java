@@ -7,7 +7,7 @@ public class Defensiva implements EstrategiaCombate {
     }
     @Override
     public double modificadorDefensa() {
-        return 1.4; // aumenta la defensa en un 40%
+        return 1.1; // aumenta la defensa en un 10%
     }
 
     @Override
