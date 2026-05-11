@@ -1,8 +1,6 @@
-# 🐉 Mazmorras
+# Mazmorras
 
 > RPG de combate por turnos desarrollado en **Java 21 + JavaFX**, como proyecto de la asignatura de Diseño de Software.
-
-**Autores:** Ignacio Oya · Mario Seoane · Alejandro Soria
 
 ---
 
