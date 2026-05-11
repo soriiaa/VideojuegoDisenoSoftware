@@ -13,7 +13,7 @@ public class PraderaOrco extends Orco {
                 new EstadoBasico(),
                 45,
                 16,
-                new Image(PraderaOrco.class.getResourceAsStream("/com/videogame/videojuegodissotfware/images/orco.png")),
+                new Image(PraderaOrco.class.getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/monstruosPradera/ogroPradera.png")),
                 x,
                 y,
                 new Defensiva(),

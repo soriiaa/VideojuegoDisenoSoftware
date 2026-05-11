@@ -14,7 +14,7 @@ public class DesiertoMago extends Mago {
                 new EstadoBasico(),
                 65,
                 4,
-                new Image(DesiertoMago.class.getResourceAsStream("/com/videogame/videojuegodissotfware/images/mago.png")),
+                new Image(DesiertoMago.class.getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/monstruosDesierto/magoDesierto.png")),
                 x,
                 y,
                 new Agresiva(),
