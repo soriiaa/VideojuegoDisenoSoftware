@@ -13,7 +13,7 @@ public class PraderaEsqueleto extends Esqueleto {
                 new EstadoBasico(),
                 55,
                 8,
-                new Image(PraderaEsqueleto.class.getResourceAsStream("/com/videogame/videojuegodissotfware/images/esqueleto.png")),
+                new Image(PraderaEsqueleto.class.getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/monstruosPradera/esqueletoPradera.png")),
                 x,
                 y,
                 new Equilibrada(),

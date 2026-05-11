@@ -13,7 +13,7 @@ public class PraderaMago extends Mago {
                 new EstadoBasico(),
                 50,
                 4,
-                new Image(PraderaMago.class.getResourceAsStream("/com/videogame/videojuegodissotfware/images/mago.png")),
+                new Image(PraderaMago.class.getResourceAsStream("/com/videogame/videojuegodissotfware/mapa/monstruosPradera/magoPradera.png")),
                 x,
                 y,
                 new Agresiva(),
