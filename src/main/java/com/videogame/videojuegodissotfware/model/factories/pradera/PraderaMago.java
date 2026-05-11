@@ -1,9 +1,8 @@
-package com.videogame.videojuegodissotfware.model.factories.selva;
+package com.videogame.videojuegodissotfware.model.factories.pradera;
 
 import com.videogame.videojuegodissotfware.model.entities.monstruos.Mago;
 import com.videogame.videojuegodissotfware.model.entities.state.EstadoBasico;
 import com.videogame.videojuegodissotfware.model.strategies.Agresiva;
-import com.videogame.videojuegodissotfware.model.strategies.Equilibrada;
 import javafx.scene.image.Image;
 
 public class PraderaMago extends Mago {
@@ -12,7 +11,7 @@ public class PraderaMago extends Mago {
                 60,
                 60,
                 new EstadoBasico(),
-                65,
+                50,
                 4,
                 new Image(PraderaMago.class.getResourceAsStream("/com/videogame/videojuegodissotfware/images/mago.png")),
                 x,

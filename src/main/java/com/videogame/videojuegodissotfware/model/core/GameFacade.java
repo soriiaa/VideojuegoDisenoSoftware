@@ -7,7 +7,7 @@ import com.videogame.videojuegodissotfware.model.entities.Personaje;
 import com.videogame.videojuegodissotfware.model.factories.EnemigoFactory;
 import com.videogame.videojuegodissotfware.model.factories.EnemigoFactoryManager;
 import com.videogame.videojuegodissotfware.model.factories.desierto.DesiertoFactory;
-import com.videogame.videojuegodissotfware.model.factories.selva.PraderaFactory;
+import com.videogame.videojuegodissotfware.model.factories.pradera.PraderaFactory;
 
 public class GameFacade {
     private static GameFacade instance;

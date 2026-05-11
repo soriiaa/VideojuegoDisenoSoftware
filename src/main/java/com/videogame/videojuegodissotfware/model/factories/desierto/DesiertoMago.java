@@ -12,7 +12,7 @@ public class DesiertoMago extends Mago {
                 60,
                 60,
                 new EstadoBasico(),
-                65,
+                50,
                 4,
                 new Image(DesiertoMago.class.getResourceAsStream("/com/videogame/videojuegodissotfware/images/mago.png")),
                 x,

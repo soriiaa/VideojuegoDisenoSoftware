@@ -13,7 +13,7 @@ public class DesiertoOrco extends Orco {
                 160,
                 new EstadoBasico(),
                 45,
-                16,
+                10,
                 new Image(DesiertoOrco.class.getResourceAsStream("/com/videogame/videojuegodissotfware/images/orco.png")),
                 x,
                 y,

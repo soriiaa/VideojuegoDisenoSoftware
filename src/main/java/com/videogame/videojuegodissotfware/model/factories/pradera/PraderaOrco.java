@@ -1,4 +1,4 @@
-package com.videogame.videojuegodissotfware.model.factories.selva;
+package com.videogame.videojuegodissotfware.model.factories.pradera;
 
 import com.videogame.videojuegodissotfware.model.entities.monstruos.Orco;
 import com.videogame.videojuegodissotfware.model.entities.state.EstadoBasico;
@@ -12,7 +12,7 @@ public class PraderaOrco extends Orco {
                 160,
                 new EstadoBasico(),
                 45,
-                16,
+                10,
                 new Image(PraderaOrco.class.getResourceAsStream("/com/videogame/videojuegodissotfware/images/orco.png")),
                 x,
                 y,

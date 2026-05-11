@@ -1,4 +1,4 @@
-package com.videogame.videojuegodissotfware.model.factories.selva;
+package com.videogame.videojuegodissotfware.model.factories.pradera;
 
 import com.videogame.videojuegodissotfware.model.entities.Monstruo;
 import com.videogame.videojuegodissotfware.model.factories.EnemigoFactory;

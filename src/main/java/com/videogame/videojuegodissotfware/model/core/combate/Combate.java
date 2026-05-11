@@ -84,7 +84,7 @@ public class Combate {
             double azar = Math.random();
 
             // 30% de probabilidad de Furioso, solo si el daño recibido es mayor a 20
-            if (danoRecibido > 20 && azar < 0.30) {
+            if (danoRecibido > 15 && azar < 0.30) {
                 victima.setEstado(new EstadoFurioso());
                 System.out.println("DEBUG: " + victima.getNombre() + " ha entrado en estado FURIOSO");
             } else if (azar < 0.10) { // 10% de probabilidad de quedar Aturdido por el golpe
