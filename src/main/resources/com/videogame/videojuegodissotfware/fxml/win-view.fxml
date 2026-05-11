@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -12,10 +15,7 @@
         <URL value="@../css/endgame.css" />
     </stylesheets>
 
-    <Label text="GAME OVER" styleClass="textOver" />
+    <Label text="HAS GANADO!" styleClass="textWin" />
 
-    <Label text="Tu aventura ha llegado a su fin." styleClass="subOver" />
-
-    <Region prefHeight="50" />
-    <Label text="Cerrando aplicación..." styleClass="subOver" />
+    <Label text="Nuevos mapas pronto..." styleClass="subOver" />
 </VBox>

@@ -39,7 +39,7 @@
 
                         <HBox alignment="CENTER_LEFT" spacing="10" styleClass="menuAtr">
                             <ImageView fitHeight="24" fitWidth="24">
-                                <Image url="@../images/items/espada.png" />
+                                <Image url="@../images/items/estado.png" />
                             </ImageView>
                             <Label styleClass="menuText" text="Estado:" />
                             <Region HBox.hgrow="ALWAYS" />

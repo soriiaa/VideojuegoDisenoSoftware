@@ -106,24 +106,11 @@ public class Combate {
         }
     }
 
-    public void finalizarCombate() {
-
-    }
-
     public Monstruo getEnemigo() {
         return this.enemigo;
     }
-
-    public void setEnemigo(Monstruo enemigo) {
-        this.enemigo = enemigo;
-    }
-
-    public void setPersonaje(Personaje personaje) {
-        this.personaje = personaje;
-    }
-
-    private void setGanador(Entidad entidadGanadora) {
-        this.ganador = entidadGanadora;
+    public Entidad getGanador() {
+        return this.ganador;
     }
 
     public FaseCombate getEstadoActual() {

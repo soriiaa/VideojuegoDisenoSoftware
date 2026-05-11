@@ -7,7 +7,7 @@ import javafx.scene.image.Image;
 
 public class PraderaEsqueleto extends Esqueleto {
     public PraderaEsqueleto(double x, double y){
-        super("Esqueleto de la Selva",
+        super("Esqueleto de la Pradera",
                 100,
                 100,
                 new EstadoBasico(),

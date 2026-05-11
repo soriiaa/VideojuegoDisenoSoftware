@@ -117,21 +117,6 @@ public class Mundo {
         listaCombates.add(combate);
     }
 
-    public void reiniciarMundo() {
-
-    }
-
-    public void pausar() {
-
-    }
-
-    public void comprobarResultado() {
-
-    }
-
-    public void finalizarPartida() {
-
-    }
 
     public String getTiempoFormateado() {
         long tiempoActual = System.currentTimeMillis();
@@ -168,5 +153,8 @@ public class Mundo {
 
     public Personaje getPersonaje() {
         return personaje;
+    }
+    public ArrayList<Monstruo> getListaMonstruos() {
+        return listaMonstruos;
     }
 }

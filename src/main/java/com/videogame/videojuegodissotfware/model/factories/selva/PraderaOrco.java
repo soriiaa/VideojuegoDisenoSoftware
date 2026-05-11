@@ -1,19 +1,18 @@
 package com.videogame.videojuegodissotfware.model.factories.selva;
 
-import com.videogame.videojuegodissotfware.model.entities.monstruos.Mago;
+import com.videogame.videojuegodissotfware.model.entities.monstruos.Orco;
 import com.videogame.videojuegodissotfware.model.entities.state.EstadoBasico;
 import com.videogame.videojuegodissotfware.model.strategies.Defensiva;
-import com.videogame.videojuegodissotfware.model.strategies.Equilibrada;
 import javafx.scene.image.Image;
 
-public class PraderaOrco extends Mago {
+public class PraderaOrco extends Orco {
     public PraderaOrco(double x, double y) {
-        super("Orco de la Selva",
+        super("Orco de la Pradera",
                 150,
                 150,
                 new EstadoBasico(),
-                10,
-                40,
+                30,
+                20,
                 new Image(PraderaOrco.class.getResourceAsStream("/com/videogame/videojuegodissotfware/images/orco.png")),
                 x,
                 y,

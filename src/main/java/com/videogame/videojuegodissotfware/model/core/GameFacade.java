@@ -51,10 +51,6 @@ public class GameFacade {
         return mundo.getCombateActual().ejecutarTurnoEnemigo();
     }
 
-    public void pausarPartida() {
-        mundo.pausar();
-    }
-
     public void mejorarArma(int precio) {
         mundo.decorarEspada(precio);
     }
@@ -99,10 +95,6 @@ public class GameFacade {
 
     public Combate getCombateActual() {
         return mundo.getCombateActual();
-    }
-
-    public String getTipoMapa() {
-        return mundo.getTipoMapa();
     }
 
     public Mundo getMundo() {
